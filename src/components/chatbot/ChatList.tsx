@@ -15,7 +15,7 @@ const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
         <div className="flex flex-col gap-3 mb-12">
           {chatList && chatList.length > 0 ? (
             chatList.map((chat: any) => (
-              <ChatHeader key={chat.id} id={chat.id} href={chatList}>
+              <ChatHeader key={chat.id} id={chat.id} href={`/chat/${chat.id}`}>
                 {chat.chatTitle}
               </ChatHeader>
             ))

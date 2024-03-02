@@ -1,4 +1,3 @@
-import { FC } from "react"
 import prisma from "@/lib/db"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
@@ -6,8 +5,9 @@ import { addChat } from "@/actions/actions"
 import ViewWrapper from "@/components/ViewWrapper"
 import ChatView from "@/components/ChatView"
 import ChatList from "@/components/chatbot/ChatList"
+import { NextPage } from "next"
 
-const Chat: FC = async () => {
+const Page: NextPage = async () => {
   const { isAuthenticated, getUser } = getKindeServerSession()
   const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
@@ -30,4 +30,4 @@ const Chat: FC = async () => {
   )
 }
 
-export default Chat
+export default Page

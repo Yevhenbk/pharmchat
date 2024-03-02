@@ -20,7 +20,7 @@ export async function addChat(formData: FormData) {
     },
   })
 
-  revalidatePath("/dashboard")
+  revalidatePath("/chat")
 }
 
 export async function addMessage(formData: FormData) {

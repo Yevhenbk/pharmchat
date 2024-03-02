@@ -16,9 +16,9 @@ const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
   return (
     <Link key={id} href={href} className="border-[1px] border-[#27272A] 
     rounded-md py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex 
-    justify-between items-center">
+    justify-between items-center z-[1]">
       {children}
-      <FaRegTrashAlt className="text-gray-500 hover:text-white" onClick={() => deleteChat(id)} />
+      <FaRegTrashAlt className="text-gray-500 hover:text-white z-[9]" onClick={() => deleteChat(id)} />
     </Link>
   )
 }
