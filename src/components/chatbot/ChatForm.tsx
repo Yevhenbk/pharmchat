@@ -17,9 +17,9 @@ const ChatForm: FC<ChatFormProps> = ({ createChat }) => {
         placeholder="Chat title"
         input="chat"
       />
-      <div className="absolute z-30 top-8 right-2">
-        <Button type="submit" height={10} width="2.5rem" background="white">
-          <MdOutlineSubdirectoryArrowLeft  className="text-xl" />
+      <div className="absolute z-30 top-3 right-3">
+        <Button type="submit" height={8} width="2rem" background="white">
+          <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
         </Button>
       </div>
     </form>

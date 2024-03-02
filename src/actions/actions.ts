@@ -48,7 +48,7 @@ export async function addMessage(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
-export async function deleteChat(id: number) {
+export async function deleteChat(chatId: number) {
   const { isAuthenticated } = getKindeServerSession();
   const isLoggedIn = await isAuthenticated();
   if (!isLoggedIn) {
@@ -57,7 +57,7 @@ export async function deleteChat(id: number) {
 
   await prisma.chat.delete({
     where: {
-      id,
+      id: chatId,
     },
   });
 
