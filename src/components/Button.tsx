@@ -1,6 +1,5 @@
 import { FC, ReactNode, MouseEventHandler } from "react"
 import classNames from "classnames"
-import { useFormStatus } from "react-dom"
 
 interface ButtonProps {
   children: ReactNode,
@@ -12,8 +11,6 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({children, onClick, type, height, width, background}) => {
-  const { pending } = useFormStatus()
-
   return (
     <button className={classNames("relative flex items-center justify-center rounded-md text-center", 
     "font-medium", {
@@ -23,7 +20,7 @@ const Button: FC<ButtonProps> = ({children, onClick, type, height, width, backgr
         height === 10 && background === "white",
       "h-8 text-xs border-[1px] border-[#27272a] hover:bg-[#27272A]": 
         height === 8 && background === "transparent",
-    })} onClick={onClick} type={type} disabled={pending} style={{ width: width}}>
+    })} onClick={onClick} type={type} style={{ width: width}}>
       {children}
     </button>
   )

@@ -7,8 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Question {
-  id          Int    @id @default(autoincrement())
-  text        String
+model Chat {
+  id          Int      @id @default(autoincrement())
+  chatTitle   String
+  messages    Message[]
   kindeAuthId String
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  kindeAuthId String
+  question    String
+  response    String
+  chatId      Int
+  chat        Chat     @relation(fields: [chatId], references: [id])
 }
