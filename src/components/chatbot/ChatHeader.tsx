@@ -14,12 +14,18 @@ interface ChatHeaderProps {
 
 const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
   return (
-    <Link key={id} href={href} className="border-[1px] border-[#27272A] 
-    rounded-md py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex 
-    justify-between items-center z-[1]">
-      {children}
-      <FaRegTrashAlt className="text-gray-500 hover:text-white z-[9]" onClick={() => deleteChat(id)} />
-    </Link>
+    <div key={id}  className="flex relative w-full rounded-md overflow-hidden">
+      <Link href={href} className="border-[1px] border-[#27272A] 
+      py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex 
+      justify-between items-center z-[1] relative w-full">
+        {children}
+      </Link>
+      <span className="absolute right-0 top-0 w-20 flex items-center justify-center 
+      h-[49.6px] border-[1px] border-[#27272A] z-[9] hover:bg-white rounded-e-md
+      hover:text-red-600 hover:cursor-pointer" onClick={() => deleteChat(id)}>
+        <FaRegTrashAlt />
+      </span>
+    </div>
   )
 }
 
