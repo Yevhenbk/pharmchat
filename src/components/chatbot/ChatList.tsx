@@ -10,7 +10,7 @@ interface ChatListProps {
 
 const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
   return (
-    <div className="relative flex f-full flex-col items-center">
+    <div className="relative flex w-full flex-col items-center bottom-0">
       <div className="flex flex-col h-[55dvh] overflow-y-scroll w-full">
         <ChatForm createChat={createChat} />
         <div className="flex flex-col gap-3 mb-12">
@@ -20,10 +20,11 @@ const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
                 {chat.chatTitle}
               </ChatHeader>
             ))
-          ) : <>Pepa</>}
+          ) : <></>}
         </div>
       </div>
-      <div className="w-full bg-black absolute -bottom-0 flex justify-center rounded-t-md">
+      <div className="w-full bg-black absolute -bottom-0 flex justify-center 
+      rounded-t-md border-t-[1px] border-[#27272A]">
         <FaGripLines  className="text-xl text-gray-500" />
       </div>
     </div>

@@ -2,8 +2,9 @@ import { FC } from "react"
 import prisma from "@/lib/db"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
-import { addChat } from "@/actions/actions"
+import { addChat, deleteChat } from "@/actions/actions"
 import ViewWrapper from "@/components/ViewWrapper"
+import ChatView from "@/components/ChatView"
 import ChatList from "@/components/chatbot/ChatList"
 
 const Chat: FC = async () => {
@@ -20,10 +21,11 @@ const Chat: FC = async () => {
     },
   })
 
-
   return (
     <ViewWrapper>
-      <ChatList chatList={chat} createChat={addChat} />
+      <ChatView>
+        <ChatList chatList={chat} createChat={addChat} />
+      </ChatView>
     </ViewWrapper>
   )
 }

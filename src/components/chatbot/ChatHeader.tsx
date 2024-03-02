@@ -1,11 +1,14 @@
+"use client"
+
 import { FC, ReactNode } from "react"
 import Link from "next/link"
 import { FaRegTrashAlt } from "react-icons/fa"
 import { Url } from "next/dist/shared/lib/router/router"
+import { deleteChat } from "@/actions/actions"
 
 interface ChatHeaderProps {
   children: ReactNode,
-  id: string | number,
+  id: number,
   href: Url
 }
 
@@ -15,7 +18,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
     rounded-md py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex 
     justify-between items-center">
       {children}
-      <FaRegTrashAlt className="text-gray-500 hover:text-white" />
+      <FaRegTrashAlt className="text-gray-500 hover:text-white" onClick={() => deleteChat(id)} />
     </Link>
   )
 }

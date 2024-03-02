@@ -48,25 +48,20 @@ export async function addMessage(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
-export async function deleteChat(chatId: number) {
-  const { isAuthenticated, getPermission } = getKindeServerSession();
+export async function deleteChat(id: number) {
+  const { isAuthenticated } = getKindeServerSession();
   const isLoggedIn = await isAuthenticated();
   if (!isLoggedIn) {
     redirect("/api/auth/login");
   }
 
-  const requiredPermission = await getPermission("delete:chat");
-  if (!requiredPermission?.isGranted) {
-    redirect("/dashboard");
-  }
-
   await prisma.chat.delete({
     where: {
-      id: chatId,
+      id,
     },
   });
 
-  revalidatePath("/admin-area");
+  revalidatePath("/chat");
 }
 
 export async function deleteMessage(messageId: number) {

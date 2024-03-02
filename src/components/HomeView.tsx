@@ -4,10 +4,7 @@ import Link from "next/link"
 import pharmchat from "../../public/pharmchat.svg"
 
 interface HomeViewProps {
-  children: ReactNode,
-  login?: boolean,
-  signin?: boolean,
-  setUserData?: () => void
+  children: ReactNode
 }
 
 const HomeView: FC<HomeViewProps> = ({children}) => {
