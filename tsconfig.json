@@ -18,7 +18,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/": ["./src/components/*"],
+      "@authentication/": ["./src/components/authentication/*"],
+      "@chatbot/": ["./src/components/chatbot/*"],
+      "@types/": ["./src/types/*"],
+      "@lib/": ["./src/lib/*"],
+      "@api/": ["./src/app/api/*"],
+      "@store/": ["./src/store/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
