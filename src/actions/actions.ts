@@ -23,30 +23,30 @@ export async function addChat(formData: FormData) {
   revalidatePath("/chat")
 }
 
-export async function addMessage(formData: FormData) {
-  const { isAuthenticated, getUser } = getKindeServerSession();
-  const isLoggedIn = await isAuthenticated();
-  if (!isLoggedIn) {
-    redirect("/api/auth/login");
-  }
+// export async function addMessage(formData: FormData) {
+//   const { isAuthenticated, getUser } = getKindeServerSession();
+//   const isLoggedIn = await isAuthenticated();
+//   if (!isLoggedIn) {
+//     redirect("/api/auth/login");
+//   }
 
-  const user = await getUser();
+//   const user = await getUser();
 
-  await prisma.message.create({
-    data: {
-      chat: {
-        connect: {
-          id: parseInt(formData.get("chatId") as string, 10),
-        },
-      },
-      kindeAuthId: user?.id as string,
-      question: formData.get("question") as string,
-      response: formData.get("response") as string,
-    },
-  });
+//   await prisma.message.create({
+//     data: {
+//       chat: {
+//         connect: {
+//           id: parseInt(formData.get("chatId") as string, 10),
+//         },
+//       },
+//       kindeAuthId: user?.id as string,
+//       question: formData.get("question") as string,
+//       response: formData.get("response") as string,
+//     },
+//   });
 
-  revalidatePath("/dashboard");
-}
+//   revalidatePath("/dashboard");
+// }
 
 export async function deleteChat(chatId: number) {
   const { isAuthenticated } = getKindeServerSession();
