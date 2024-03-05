@@ -28,7 +28,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   return (
     <div>
       My Post: {params.id}
-      <AI chatId={parseInt(params.id)} messagesId={messages} />
+      <AI chatId={parseInt(params.id)} chatMessages={messages} />
     </div>
   )
 }

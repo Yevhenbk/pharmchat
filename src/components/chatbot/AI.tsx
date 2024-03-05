@@ -1,72 +1,99 @@
-"use client"
+'use client'
 
-import { useChat } from "ai/react"
-import { FC, FormEvent } from "react"
-import prisma from "@/lib/db"
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
-import { addMessage } from "@/actions/clientActions"
-import symptomsKeywords from "@/utils/symptomsKeywords"
+import { useState } from 'react';
+import prisma from '@/lib/db';
+import { useChat } from 'ai/react';
+import { FormEvent, useEffect } from 'react';
+import symptomsKeywords from '@/utils/symptomsKeywords';
 
 interface AIProps {
-  chatId: number,
-  messagesId: any
+  chatId: any,
+  chatMessages: messageResponse[]
+}
+
+interface messageResponse {
+    id: number;
+    kindeAuthId: string;
+    question: string;
+    response: string;
+    chatId: number;
 }
  
-const AI: FC<AIProps> = ({chatId, messagesId}) => {
-  const { messages, input, handleInputChange, handleSubmit } = useChat()
-
-  const { isAuthenticated, user } = useKindeBrowserClient()
+export default function AI({chatId, chatMessages }: AIProps) {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   const isHealthRelated = (input:any) => {
-    const lowercasedInput = input.toLowerCase()
-    return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword))
-  }
+    // Implement your logic to check if the input is health-related
+    // You can use regular expressions, keyword matching, or any other method
+    // For simplicity, let's assume a keyword "health" in the input means it's health-related
+    const lowercasedInput = input.toLowerCase();
+    return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword));
+  };
 
   const handleHealthSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
-    const latestMessage = messages[messages.length - 1]
+    e.preventDefault(); // Prevent the default form submission behavior
 
     if (isHealthRelated(input)) {
-      await handleSubmit(e)
-      console.log(messages)
-
-      await prisma.message.create({
-        data: {
-          chat: {
-            connect: {
-              id: chatId as number,
-            },
-          },
-          kindeAuthId: user?.id as string,
-          question: input,
-          response: latestMessage.content
-          }
-        }) // Pass the event to handleSubmit
+      // Only generate AI response if the input is health-related
+      await handleSubmit(e); // Pass the event to handleSubmit
     } else {
       // Handle non-health-related input (you can display a message, clear the input, etc.)
-      console.log("Please ask a health-related question.")
+      console.log("Please ask a health-related question.");
     }
-  }
-  const latestMessage = messages[messages.length - 1]
+  };
 
-  // const chat = prisma.chat.findMany({
-  //   where: {
-  //     kindeAuthId: user?.id,
-  //   },
-  // })
+  const sendMessageToAPI = async () => {
+    const userMessage = messages.find(message => message.role === 'user');
+    const aiMessage = messages.find(message => message.role === 'assistant');
+
+// Access the content of the user's message
+    const userContent = userMessage ? userMessage.content : null;
+    const aiContent = aiMessage ? aiMessage.content : null;
+    // console.log("userContent", userContent)
+    try {
+      const response = await fetch("/api/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userContent, aiContent, chatId: chatId }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send messages");
+      }
+
+      console.log(messages, chatId)
+
+      const result = await response.json();
+      console.log("Messages sent successfully:", result);
+      // Do something with the result if needed
+    } catch (error) {
+      console.error("Error sending messages:", error);
+      // Handle errors
+    }
+  };
+
+  // useEffect to automatically send messages to the API when the component mounts
+  // useEffect(() => {
+  //   sendMessageToAPI();
+  // }, [messages]);
 
   return (
     <div className="mx-auto w-full max-w-md py-24 flex flex-col stretch">
-      {messages.map((m: any) => (
+      {chatMessages && chatMessages.map(m => (
         <div key={m.id}>
-          {m.role === "user" ? "User: " : "AI: "}
-          {m.content}
+          {m.question}
+          {m.response}
         </div>
       ))}
 
+        <button onClick={() => {
+          sendMessageToAPI()
+          console.log(chatMessages)
+          }}>Messages</button>
+
       <form onSubmit={handleHealthSubmit}>
-      <button onClick={() => console.log(latestMessage)}>messages</button>
         <label>
           Say something...
           <input
@@ -78,7 +105,5 @@ const AI: FC<AIProps> = ({chatId, messagesId}) => {
         <button type="submit">Send</button>
       </form>
     </div>
-  )
+  );
 }
-
-export default AI
