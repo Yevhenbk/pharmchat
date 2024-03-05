@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react';
 import prisma from '@/lib/db';
+import { revalidatePath } from "next/cache"
 import { useChat } from 'ai/react';
-import { FormEvent, useEffect } from 'react';
+import { FormEvent, useEffect, useState, useRef } from 'react';
 import symptomsKeywords from '@/utils/symptomsKeywords';
 
 interface AIProps {
@@ -21,6 +21,8 @@ interface messageResponse {
  
 export default function AI({chatId, chatMessages }: AIProps) {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const [isTyping, setIsTyping] = useState<boolean>(false)
+  const isFirstRender = useRef(true)
 
   const isHealthRelated = (input:any) => {
     // Implement your logic to check if the input is health-related
@@ -74,10 +76,24 @@ export default function AI({chatId, chatMessages }: AIProps) {
     }
   };
 
-  // useEffect to automatically send messages to the API when the component mounts
-  // useEffect(() => {
-  //   sendMessageToAPI();
-  // }, [messages]);
+  const aiMessage = messages.find(message => message.role === 'assistant');
+
+  const aiContent = aiMessage ? aiMessage.content : null;
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // Skip the initial render
+      isFirstRender.current = false;
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      console.log('aiContent has stopped changing. Sending API message...');
+      await sendMessageToAPI();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [aiContent]);
 
   return (
     <div className="mx-auto w-full max-w-md py-24 flex flex-col stretch">
@@ -88,10 +104,7 @@ export default function AI({chatId, chatMessages }: AIProps) {
         </div>
       ))}
 
-        <button onClick={() => {
-          sendMessageToAPI()
-          console.log(chatMessages)
-          }}>Messages</button>
+      <button onClick={() => sendMessageToAPI()}>Send</button> 
 
       <form onSubmit={handleHealthSubmit}>
         <label>

@@ -1,6 +1,7 @@
 import prisma from "@/lib/db"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { NextResponse } from "next/server"
+import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
 export async function POST(request: Request) {
@@ -24,8 +25,12 @@ export async function POST(request: Request) {
       },
     })
 
-    console.log("LAAAAA", savedMessages)
+    // revalidatePath(`/chat/${chatId}`)
 
+
+      revalidatePath(`/chat/${chatId}`)
+
+    
     return NextResponse.json(savedMessages)
   } catch (error) {
     console.error(error)
