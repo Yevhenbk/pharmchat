@@ -16,7 +16,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
   return (
     <div key={id}  className="flex relative w-full rounded-md overflow-hidden">
       <Link href={href} className="border-[1px] border-[#27272A] 
-      py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex 
+      py-3 px-6 hover:cursor-pointer hover:bg-[#27272A] flex rounded-md
       justify-between items-center z-[1] relative w-full">
         {children}
       </Link>
