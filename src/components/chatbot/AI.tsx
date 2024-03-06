@@ -1,14 +1,15 @@
 'use client'
 
-import prisma from '@/lib/db';
-import { revalidatePath } from "next/cache"
+import { useState } from 'react';
 import { useChat } from 'ai/react';
-import { FormEvent, useEffect, useState, useRef } from 'react';
+import { FormEvent, useEffect } from 'react';
 import symptomsKeywords from '@/utils/symptomsKeywords';
+import { debounce } from 'lodash'
 
 interface AIProps {
   chatId: any,
-  chatMessages: messageResponse[]
+  chatMessages: messageResponse[],
+  createMessage: any
 }
 
 interface messageResponse {
@@ -19,15 +20,11 @@ interface messageResponse {
     chatId: number;
 }
  
-export default function AI({chatId, chatMessages }: AIProps) {
+export default function AI({chatId, chatMessages, createMessage }: AIProps) {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const [isTyping, setIsTyping] = useState<boolean>(false)
-  const isFirstRender = useRef(true)
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const isHealthRelated = (input:any) => {
-    // Implement your logic to check if the input is health-related
-    // You can use regular expressions, keyword matching, or any other method
-    // For simplicity, let's assume a keyword "health" in the input means it's health-related
     const lowercasedInput = input.toLowerCase();
     return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword));
   };
@@ -37,74 +34,58 @@ export default function AI({chatId, chatMessages }: AIProps) {
 
     if (isHealthRelated(input)) {
       // Only generate AI response if the input is health-related
-      await handleSubmit(e); // Pass the event to handleSubmit
+      handleSubmit(e); // Pass the event to handleSubmit
     } else {
       // Handle non-health-related input (you can display a message, clear the input, etc.)
       console.log("Please ask a health-related question.");
     }
   };
 
-  const sendMessageToAPI = async () => {
-    const userMessage = messages.find(message => message.role === 'user');
-    const aiMessage = messages.find(message => message.role === 'assistant');
-
-// Access the content of the user's message
-    const userContent = userMessage ? userMessage.content : null;
-    const aiContent = aiMessage ? aiMessage.content : null;
-    // console.log("userContent", userContent)
-    try {
-      const response = await fetch("/api/message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userContent, aiContent, chatId: chatId }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send messages");
-      }
-
-      console.log(messages, chatId)
-
-      const result = await response.json();
-      console.log("Messages sent successfully:", result);
-      // Do something with the result if needed
-    } catch (error) {
-      console.error("Error sending messages:", error);
-      // Handle errors
-    }
-  };
-
+  const userMessage = messages.find(message => message.role === 'user');
   const aiMessage = messages.find(message => message.role === 'assistant');
 
+// Access the content of the user's message
+  const userContent = userMessage ? userMessage.content : null;
   const aiContent = aiMessage ? aiMessage.content : null;
 
+  const delayedCreateMessage = debounce(async (chatId, userContent, aiContent) => {
+    console.log('aiContent has stopped changing. Sending API message...');
+    // await sendMessageToAPI();
+    await createMessage(chatId, userContent, aiContent);
+  }, 1000)
+
   useEffect(() => {
-    if (isFirstRender.current) {
-      // Skip the initial render
-      isFirstRender.current = false;
-      return;
+    if (isFirstRender) {
+      // Skip the effect on the first render
+      setIsFirstRender(false);
+    } else {
+      // Do something on subsequent renders
+      console.log("The count has changed to");
+      delayedCreateMessage(chatId, userContent, aiContent);
     }
+    // const timer = setTimeout(async () => {
+    //   console.log('aiContent has stopped changing. Sending API message...');
+    //   // await sendMessageToAPI();
+    //   await createMessage(chatId, userContent, aiContent)
+    // }, 500)
 
-    const timer = setTimeout(async () => {
-      console.log('aiContent has stopped changing. Sending API message...');
-      await sendMessageToAPI();
-    }, 500);
+    // return () => clearTimeout(timer);
+    
 
-    return () => clearTimeout(timer);
-  }, [aiContent]);
+  // Cleanup function to cancel the debounce on component unmount
+    return () => delayedCreateMessage.cancel();
+  }, [aiContent, messages]);
 
   return (
     <div className="mx-auto w-full max-w-md py-24 flex flex-col stretch">
-      {chatMessages && chatMessages.map(m => (
+      {Array.isArray(chatMessages) && chatMessages.map(m => (
         <div key={m.id}>
           {m.question}
           {m.response}
         </div>
       ))}
 
-      <button onClick={() => sendMessageToAPI()}>Send</button> 
+      <button onClick={() => console.log(messages)}>Send</button> 
 
       <form onSubmit={handleHealthSubmit}>
         <label>

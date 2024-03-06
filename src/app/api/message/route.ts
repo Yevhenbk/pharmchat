@@ -26,12 +26,11 @@ export async function POST(request: Request) {
     })
 
     // revalidatePath(`/chat/${chatId}`)
+    const response = NextResponse.json(savedMessages)
 
+    revalidatePath(`/chat/${chatId}`)
 
-      revalidatePath(`/chat/${chatId}`)
-
-    
-    return NextResponse.json(savedMessages)
+    return response
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error: "Internal Server Error" })
