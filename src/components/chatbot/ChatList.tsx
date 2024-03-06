@@ -10,7 +10,7 @@ interface ChatListProps {
 const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
   return (
     <div className="relative flex w-full flex-col items-center bottom-0">
-      <div className="flex flex-col h-[65dvh] overflow-y-scroll w-full">
+      <div className="flex flex-col h-[85dvh] overflow-y-scroll w-full">
         <ChatForm createChat={createChat} />
         <div className="flex flex-col gap-3 mb-12">
           {chatList && chatList.length > 0 ? (
