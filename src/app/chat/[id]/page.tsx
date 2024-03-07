@@ -29,11 +29,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   return (
     <div>
       My Post: {params.id}
-      <AI 
-        chatId={parseInt(params.id)} 
-        chatMessages={messages} 
-        createMessage={addMessage} 
-      />
+      <AI />
     </div>
   )
 }
