@@ -1,6 +1,5 @@
 import { NextPage } from 'next'
 import prisma from '@/lib/db'
-import { addMessage } from '@/actions/actions'
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
 import AI from '@/components/chatbot/AI'

@@ -1,52 +1,40 @@
-'use client'
+import { getMedication } from "@/actions/actions"
+import prisma from "@/lib/db"
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { redirect } from "next/navigation"
 
-import { useChat } from 'ai/react';
-import { FormEvent } from 'react';
-import symptomsKeywords from '@/utils/symptomsKeywords';
  
-export default function Testroute() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+export default async function Testroute() {
+  const { isAuthenticated, getUser } = getKindeServerSession()
+  const isLoggedIn = await isAuthenticated()
+  if (!isLoggedIn) {
+    redirect("/api/auth/login")
+  }
 
-  const isHealthRelated = (input:any) => {
-    // Implement your logic to check if the input is health-related
-    // You can use regular expressions, keyword matching, or any other method
-    // For simplicity, let's assume a keyword "health" in the input means it's health-related
-    const lowercasedInput = input.toLowerCase();
-    return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword));
-  };
+  const user = await getUser()
+  // const data = await getMedication(4, 'ibuprofen', 'purpose')
 
-  const handleHealthSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+  const messages = await prisma.message.findMany({
+    where: {
+      kindeAuthId: user?.id,
+      chatId: 4
+    },
+  })
 
-    if (isHealthRelated(input)) {
-      // Only generate AI response if the input is health-related
-      handleSubmit(e); // Pass the event to handleSubmit
-    } else {
-      // Handle non-health-related input (you can display a message, clear the input, etc.)
-      console.log("Please ask a health-related question.");
-    }
-  };
+  console.log(messages)
 
   return (
-    <div className="mx-auto w-full max-w-md py-24 flex flex-col stretch">
-      {messages.map(m => (
-        <div key={m.id}>
-          {m.role === 'user' ? 'User: ' : 'AI: '}
-          {m.content}
+        <div className="text-black">
+        {messages && Array.isArray(messages) ? (
+          messages.map((m: any) => (
+            <div key={m.id}>
+              {m.question}
+              {m.response}
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
         </div>
-      ))}
-
-      <form onSubmit={handleHealthSubmit}>
-        <label>
-          Say something...
-          <input
-            className="fixed w-full max-w-md bottom-0 border border-gray-300 rounded mb-8 shadow-xl p-2"
-            value={input}
-            onChange={handleInputChange}
-          />
-        </label>
-        <button type="submit">Send</button>
-      </form>
-    </div>
   );
 }
