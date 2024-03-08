@@ -25,50 +25,45 @@ export async function addChat(formData: FormData) {
 }
 
 export async function deleteChat(chatId: number) {
-  const { isAuthenticated } = getKindeServerSession();
-  const isLoggedIn = await isAuthenticated();
+  const { isAuthenticated } = getKindeServerSession()
+  const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
-    redirect("/api/auth/login");
+    redirect("/api/auth/login")
   }
 
   await prisma.chat.delete({
     where: {
       id: chatId,
     },
-  });
+  })
 
-  revalidatePath("/chat");
+  revalidatePath("/chat")
 }
 
 export async function deleteMessage(messageId: number) {
-  const { isAuthenticated, getPermission } = getKindeServerSession();
-  const isLoggedIn = await isAuthenticated();
+  const { isAuthenticated } = getKindeServerSession()
+  const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
-    redirect("/api/auth/login");
-  }
-
-  const requiredPermission = await getPermission("delete:message");
-  if (!requiredPermission?.isGranted) {
-    redirect("/dashboard");
+    redirect("/api/auth/login")
   }
 
   await prisma.message.delete({
     where: {
       id: messageId,
     },
-  });
+  })
 
-  revalidatePath("/admin-area");
+  revalidatePath("/chat")
 }
 
 export async function addMessage(chatId: number, question: any, response: string) {
-  const { isAuthenticated, getUser } = getKindeServerSession();
-  const isLoggedIn = await isAuthenticated();
+  const { isAuthenticated, getUser } = getKindeServerSession()
+  const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
-    redirect("/api/auth/login");
+    redirect("/api/auth/login")
   }
 
-  const user = await getUser();
+  const user = await getUser()
 
   await prisma.message.create({
     data: {
@@ -81,13 +76,16 @@ export async function addMessage(chatId: number, question: any, response: string
       question: question,
       response: String(response),
     },
-  });
+  })
 
-  revalidatePath(`/chat/${chatId}`);
+  revalidatePath(`/chat/${chatId}`)
 }
 
 export async function getMedication(chatId: number, genericName: string, selectedInfo: string | null = null) {
-  const res = await fetch(`https://api.fda.gov/drug/label.json?api_key=t62Chde4gVkYohphhcmfh6VKb0aH4i2nBaSasURK&search=openfda.generic_name:${genericName}&limit=1`)
+  const apiKey = process.env.NEXT_FDA_API_KEY
+  const baseUrl = `https://api.fda.gov/drug/label.json?api_key=${apiKey}`
+
+  const res = await fetch(`${baseUrl}&search=openfda.generic_name:${genericName}&limit=1`)
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -96,13 +94,15 @@ export async function getMedication(chatId: number, genericName: string, selecte
   const jsonData = await res.json()
 
   if (!selectedInfo) {
+    // change response !!
     return "jsonData"
   }
 
-  const normalizedInfo = normalizeProperty(selectedInfo);
+  // change format response !!
+  const normalizedInfo = normalizeProperty(selectedInfo)
 
   const selectedData = jsonData.results.map((result: any) => (
-    result[normalizedInfo]));
+    result[normalizedInfo]))
 
   if (selectedData) {
     await addMessage(chatId, genericName, selectedData)
