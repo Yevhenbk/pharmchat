@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import prisma from '@/lib/db'
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
-import AI from '@/components/chatbot/AI'
+import AskAI from '@/components/chatbot/AskAI'
 
 interface PageProps {
   params: {
@@ -28,7 +28,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   return (
     <div>
       My Post: {params.id}
-      <AI />
+      <AskAI />
     </div>
   )
 }

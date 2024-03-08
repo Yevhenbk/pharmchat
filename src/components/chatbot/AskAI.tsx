@@ -4,7 +4,7 @@ import { useChat } from 'ai/react';
 import { FormEvent } from 'react';
 import symptomsKeywords from '@/utils/symptomsKeywords';
  
-export default function AI() {
+export default function AskAI() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   const isHealthRelated = (input:any) => {

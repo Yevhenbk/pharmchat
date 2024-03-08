@@ -2,9 +2,12 @@ import { getMedication } from "@/actions/actions"
 import prisma from "@/lib/db"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
+import StreamingContent from "@/components/StreamingContent"
 
  
 export default async function Testroute() {
+  const content = "Your paragraph content goes here."
+
   const { isAuthenticated, getUser } = getKindeServerSession()
   const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
@@ -25,7 +28,8 @@ export default async function Testroute() {
 
   return (
         <div className="text-black">
-        {messages && Array.isArray(messages) ? (
+          <StreamingContent content={content} />
+        {/* {messages && Array.isArray(messages) ? (
           messages.map((m: any) => (
             <div key={m.id}>
               {m.question}
@@ -34,7 +38,7 @@ export default async function Testroute() {
           ))
         ) : (
           <></>
-        )}
+        )} */}
         </div>
   );
 }
