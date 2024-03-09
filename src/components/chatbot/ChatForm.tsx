@@ -10,7 +10,7 @@ interface ChatFormProps {
 const ChatForm: FC<ChatFormProps> = ({ createChat }) => {
 
   return (
-    <form action={createChat} className="sticky top-0 left-0">
+    <form action={createChat} className="relative top-0 left-0">
       <Input
         name="chatTitle"
         type="text"
