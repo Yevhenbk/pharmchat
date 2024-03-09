@@ -29,7 +29,7 @@ const ChatView: FC<ChatViewProps> = ({children, user}) => {
             </h2>
             {children}
           </div>
-          <div className="w-full max-w-[440px] flex flex-col pb-8 border-[1px] border-[#27272a] border-b-0 
+          <div className="w-full max-w-[440px] flex flex-col pb-8 
           md:rounded-md fixed bottom-0 bg-black z-[9]">
             <div className="w-full flex items-center justify-center">
               <FaGripLines  className="text-md text-gray-500 mt-2" />

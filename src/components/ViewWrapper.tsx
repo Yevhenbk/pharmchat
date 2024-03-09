@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react"
+import ContentRotator from "./ContentRotator"
 import Image from "next/image"
 import Link from "next/link"
 import logo from "../../public/logo.svg"
@@ -22,6 +23,13 @@ const ViewWrapper: FC<ViewWrapperProps> = ({children}) => {
             </p>
           </Link>
         </nav>
+        <div className="flex justify-center items-center">
+          <div className="flex flex-col gap-4 text-white items-start justify-center text-start">
+            <h1 className="font-semibold text-3xl max-w-[40rem] w-[640px]">
+              <ContentRotator />
+            </h1>
+          </div>
+        </div>
       </div>
       {children}
     </main>
