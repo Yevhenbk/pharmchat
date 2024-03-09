@@ -28,7 +28,6 @@ export default async function Testroute() {
 
   return (
         <div className="text-black">
-          <StreamingContent content={content} />
         {/* {messages && Array.isArray(messages) ? (
           messages.map((m: any) => (
             <div key={m.id}>

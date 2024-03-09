@@ -1,9 +1,5 @@
-"use client"
-
 import React, { useState, useEffect, FC } from "react"
 import StreamingContent from "./StreamingContent"
-
-// use dynamic?
 
 const ContentRotator: FC = () => {
   const contents: string[] = [
@@ -16,26 +12,16 @@ const ContentRotator: FC = () => {
   ]
   const [currentContentIndex, setCurrentContentIndex] = useState<number>(0)
 
-  const updateContentIndex = () => {
-    const newIndex = Math.floor(Math.random() * contents.length)
-    setCurrentContentIndex(newIndex)
-  }
-
   useEffect(() => {
-    updateContentIndex()
+    const intervalId = setInterval(() => {
+      setCurrentContentIndex(prevIndex => (prevIndex + 1) % contents.length)
+    }, 10000)
 
-    const handleReload = () => {
-      updateContentIndex()
-    }
-
-    window.addEventListener("beforeunload", handleReload)
-
-    return () => {
-      window.removeEventListener("beforeunload", handleReload)
-    }
+    return () => clearInterval(intervalId)
   }, [])
 
-  return <StreamingContent content={contents[currentContentIndex]} />
+  return <StreamingContent content={[contents[currentContentIndex]]} loop={false} speed={30} />
 }
 
 export default ContentRotator
+

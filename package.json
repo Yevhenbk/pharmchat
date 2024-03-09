@@ -21,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-typed": "^2.0.12",
     "swr": "^2.2.5"
   },
   "devDependencies": {

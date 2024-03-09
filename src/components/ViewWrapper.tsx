@@ -1,3 +1,5 @@
+"use client"
+
 import { FC, ReactNode } from "react"
 import ContentRotator from "./ContentRotator"
 import Image from "next/image"

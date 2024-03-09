@@ -1,44 +1,17 @@
 "use client"
 
-import { useState, useEffect, FC } from "react"
+import { FC } from "react"
+import { ReactTyped } from "react-typed"
 
 interface StreamingContentProps {
-  content: string,
-  loop?: boolean
+  content: string[],
+  loop?: boolean,
+  speed?: number
 }
 
-const StreamingContent: FC<StreamingContentProps> = ({ content, loop }) => {
-  const [displayedContent, setDisplayedContent] = useState("")
+const StreamingContent: FC<StreamingContentProps> = ({ content, speed, loop }) => {
 
-  useEffect(() => {
-    let isMounted = true
-
-    const streamContent = async () => {
-      const words = content.split(" ")
-
-      for (let i = 0; i < words.length; i++) {
-        // Delay each word to create a streaming effect
-        await new Promise(resolve => setTimeout(resolve, 500))
-
-        if (isMounted) {
-          setDisplayedContent(prevContent => prevContent + words[i] + (i < words.length - 1 ? " " : ""))
-        }
-      }
-
-      if (loop && isMounted) {
-        setDisplayedContent("")
-        streamContent()
-      }
-    }
-
-    streamContent()
-
-    return () => {
-      isMounted = false
-    }
-  }, [content, loop])
-
-  return <p>{displayedContent}</p>
+  return <ReactTyped strings={content} typeSpeed={speed} loop={loop} />
 }
 
 export default StreamingContent
