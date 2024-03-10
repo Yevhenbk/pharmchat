@@ -30,7 +30,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
   return (
     <form className="absolute bottom-[3rem] flex flex-row text-white
     justify-between gap-0 w-[80vw] md:w-[50rem]">
-      <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
+      <Input type="text" input="view" placeholder="Ex. Ibuprofen, purpose..."
       value={inputText} onChange={handleInputChange} />
       <div className="absolute z-30 top-3 right-3">
         <Button type="submit" height={8} width="2rem" background="white"
