@@ -15,7 +15,7 @@ const ViewWrapper: FC<ViewWrapperProps> = ({children}) => {
     <main className="flex min-h-full w-screen flex-col sm:supports-[min-height:100dvh]:min-h-[100dvh] 
     md:grid md:grid-cols-2 lg:grid-cols-[60%_40%]">
       <div className="relative hidden flex-1 flex-col justify-center px-5 pt-8 md:flex md:px-6 
-      md:py-[22px] lg:px-8 bg-[#18181A]">
+      md:py-[22px] lg:px-8 bg-primaryGrey">
         <nav className="left-0 top-8 flex w-full px-6 sm:absolute md:top-[22px] md:px-6 lg:px-8">
           <Link className="flex cursor-default items-center text-[20px] font-bold leading-none lg:text-[22px] gap-2
           hover:cursor-pointer" href="/">

@@ -26,9 +26,9 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   })
 
   return (
-    <div>
-      My Post: {params.id}
-      <AskAI />
+    <div className='bg-background w-full h-full'>
+      {/* My Post: {params.id}
+      <AskAI /> */}
     </div>
   )
 }

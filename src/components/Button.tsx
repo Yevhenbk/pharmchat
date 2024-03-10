@@ -14,11 +14,11 @@ const Button: FC<ButtonProps> = ({children, onClick, type, height, width, backgr
   return (
     <button className={classNames("relative flex items-center justify-center rounded-md text-center", 
     "font-medium", {
-      "h-12 text-base bg-[#ffffff] text-black hover:bg-[#bbbbbb] disabled:bg-zinc-50": 
+      "h-12 text-base bg-white text-black hover:bg-buttonHover disabled:bg-zinc-50": 
         height === 12 && background === "white",
-      "h-8 text-xs bg-[#ffffff] text-black hover:bg-[#bbbbbb] disabled:bg-zinc-50": 
+      "h-8 text-xs bg-white text-black hover:bg-buttonHover disabled:bg-zinc-50": 
         height === 8 && background === "white",
-      "h-8 text-xs border-[1px] border-[#27272a] hover:bg-[#27272A]": 
+      "h-8 text-xs border-[1px] border-secondaryGrey hover:bg-secondaryGrey": 
         height === 8 && background === "transparent",
     })} onClick={onClick} type={type} style={{ width: width}}>
       {children}

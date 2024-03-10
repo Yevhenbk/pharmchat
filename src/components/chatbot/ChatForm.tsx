@@ -4,7 +4,7 @@ import Input from "../Input"
 import Button from "../Button"
 
 interface ChatFormProps {
-  createChat?: any
+  createChat: (formData: FormData) => Promise<void>
 }
 
 const ChatForm: FC<ChatFormProps> = ({ createChat }) => {

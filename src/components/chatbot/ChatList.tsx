@@ -3,8 +3,12 @@ import ChatHeader from "./ChatHeader"
 import ChatForm from "./ChatForm"
 
 interface ChatListProps {
-  chatList: any,
-  createChat: any
+  chatList: { 
+    id: number
+    chatTitle: string
+    kindeAuthId: string
+  }[],
+  createChat: (formData: FormData) => Promise<void>
 }
 
 const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
