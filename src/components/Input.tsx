@@ -3,7 +3,7 @@ import classNames from "classnames"
 
 interface InputProps {
   type: string,
-  name: string,
+  name?: string,
   placeholder?: string,
   input: "form" | "chat"
 }

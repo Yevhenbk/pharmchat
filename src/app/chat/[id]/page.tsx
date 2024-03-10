@@ -3,8 +3,9 @@ import prisma from '@/lib/db'
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
 import LogoNav from '@/components/LogoNav'
-import logo from "../../../../public/logo.svg"
-import AskAI from '@/components/chatbot/AskAI'
+import { BiHealth } from "react-icons/bi"
+import ChatWindow from '@/components/chatbot/ChatWindow'
+import Input from '@/components/Input'
 
 interface PageProps {
   params: {
@@ -28,10 +29,10 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   })
 
   return (
-    <div className='bg-primaryGrey w-full h-full'>
+    <div className='bg-primaryGrey h-[100dvh] w-full flex flex-col justify-between
+    items-center'>
       <LogoNav />
-      {/* My Post: {params.id}
-      <AskAI /> */}
+      <ChatWindow messages={messages} />
     </div>
   )
 }
