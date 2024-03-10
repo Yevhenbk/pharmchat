@@ -2,6 +2,8 @@ import { NextPage } from 'next'
 import prisma from '@/lib/db'
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
+import LogoNav from '@/components/LogoNav'
+import logo from "../../../../public/logo.svg"
 import AskAI from '@/components/chatbot/AskAI'
 
 interface PageProps {
@@ -26,7 +28,8 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   })
 
   return (
-    <div className='bg-background w-full h-full'>
+    <div className='bg-primaryGrey w-full h-full'>
+      <LogoNav />
       {/* My Post: {params.id}
       <AskAI /> */}
     </div>
