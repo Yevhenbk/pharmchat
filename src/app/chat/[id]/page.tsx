@@ -31,6 +31,8 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     },
   })
 
+  console.log(messages)
+
   return (
     <div className='bg-primaryGrey h-[100dvh] w-full flex flex-col justify-between
     items-center'>

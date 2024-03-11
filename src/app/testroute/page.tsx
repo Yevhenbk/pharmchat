@@ -20,7 +20,7 @@ export default async function Testroute() {
   const messages = await prisma.message.findMany({
     where: {
       kindeAuthId: user?.id,
-      chatId: 4
+      chatId: 5
     },
   })
 
@@ -28,7 +28,7 @@ export default async function Testroute() {
 
   return (
         <div className="text-black">
-        {/* {messages && Array.isArray(messages) ? (
+        {messages && Array.isArray(messages) ? (
           messages.map((m: any) => (
             <div key={m.id}>
               {m.question}
@@ -37,7 +37,7 @@ export default async function Testroute() {
           ))
         ) : (
           <></>
-        )} */}
+        )}
         </div>
   );
 }
