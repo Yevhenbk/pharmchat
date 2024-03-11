@@ -8,7 +8,7 @@ interface InputProps {
   onKeyDown?: KeyboardEventHandler<HTMLInputElement> | undefined
   onChange?: ChangeEventHandler<HTMLInputElement> | undefined
   placeholder?: string
-  input: "form" | "chat" | "view"
+  input: "form" | "chat"
 }
 
 const Input: FC<InputProps> = ({type, name, placeholder, input, value, onChange, onKeyDown}) => {
@@ -17,8 +17,7 @@ const Input: FC<InputProps> = ({type, name, placeholder, input, value, onChange,
     onChange={onChange} onKeyDown={onKeyDown} className={classNames("rounded-md py-4",
     "border-[1px] border-secondaryGrey focus:bg-secondaryGrey px-6 z-[9]", {
       "w-full  mb-3 bg-black": input === "chat",
-      "text-md font-normal bg-black":  input === "form",
-      "w-full  mb-3 bg-primaryGrey":  input === "view"
+      "text-md font-normal bg-black":  input === "form"
     })} />
   )
 }
