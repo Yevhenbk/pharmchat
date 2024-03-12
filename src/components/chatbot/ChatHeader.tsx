@@ -2,9 +2,8 @@
 
 import { FC, ReactNode } from "react"
 import Link from "next/link"
-import { FaRegTrashAlt } from "react-icons/fa"
 import { Url } from "next/dist/shared/lib/router/router"
-import { deleteChat } from "@/actions/actions"
+import IconDelete from "./IconDelete"
 
 interface ChatHeaderProps {
   children: ReactNode,
@@ -20,11 +19,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
       justify-between items-center z-[1] relative w-full">
         {children}
       </Link>
-      <span className="absolute right-0 top-0 w-20 flex items-center justify-center 
-      h-[49.6px] border-[1px] border-secondaryGrey z-[9] hover:bg-white rounded-e-md
-      hover:text-red-600 hover:cursor-pointer" onClick={() => deleteChat(id)}>
-        <FaRegTrashAlt />
-      </span>
+      <IconDelete id={id} />
     </div>
   )
 }
