@@ -1,6 +1,8 @@
 import { FC } from "react"
 import ChatHeader from "./ChatHeader"
 import ChatForm from "./ChatForm"
+import AskAIButton from "../AskAIButton"
+import { ChatData } from "@/utils/chatData"
 
 interface ChatListProps {
   chatList: { 
@@ -18,7 +20,7 @@ const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
         <ChatForm createChat={createChat} />
         <div className="flex flex-col gap-3 mb-12">
           {chatList && chatList.length > 0 ? (
-            chatList.map((chat: any) => (
+            chatList.map((chat: ChatData) => (
               <ChatHeader key={chat.id} id={chat.id} href={`/chat/${chat.id}`}>
                 {chat.chatTitle}
               </ChatHeader>
