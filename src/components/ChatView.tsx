@@ -5,6 +5,7 @@ import Image from "next/image"
 import { FaGripLines } from "react-icons/fa"
 import { LogoutLink, useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types"
+import logo from "../../public/pharmchat.svg"
 
 interface ChatViewProps {
   children: ReactNode,
@@ -23,14 +24,18 @@ const ChatView: FC<ChatViewProps> = ({children, user}) => {
     overflow-hidden">
       <div className="relative flex w-full grow flex-col items-center justify-center gap-4">
         <div className="mt-2 w-full max-w-[440px] h-full flex flex-col justify-between relative">
-          <div className="grid mt-10 px-4 md:px-0">
-            <h2 className="text-center text-xl leading-[1.2] md:text-2xl md:leading-8 font-bold mb-4">
-              Welcome
-            </h2>
+          <div className="grid px-4 md:px-0">
+            <div className="flex cursor-default items-center text-[20px] font-bold leading-none lg:text-[22px] gap-2
+            hover:cursor-pointer w-full justify-center mb-6">
+              <Image src={logo} className="w-8 h-8 object-cover bg-white" alt="pharmchat image" />
+              <p className="text-white font-semibold text-xl">
+                Pharmchat
+              </p>
+            </div>
             {children}
           </div>
-          <div className="w-full max-w-[440px] flex flex-col pb-8 
-          md:rounded-md fixed bottom-0 bg-black z-[9]">
+          <div className="w-full max-w-[440px] flex flex-col pb-8 border-t-[1px] border-x-[1px] 
+          border-secondaryGrey md:rounded-md fixed bottom-0 bg-black z-[9]">
             <div className="w-full flex items-center justify-center">
               <FaGripLines  className="text-md text-gray-500 mt-2" />
             </div>
