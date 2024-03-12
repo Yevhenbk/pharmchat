@@ -13,7 +13,8 @@ interface SubmitMessageProps {
 const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
   const [inputText, setInputText] = useState<string>("")
 
-  const handleSendClick = () => {
+  const handleSendClick = (e: any) => {
+    e.preventDefault()
     if (inputText.trim() !== "") {
       const [medicationName, medicationPurpose] = inputText.split(",")
 
