@@ -1,27 +1,19 @@
 import { FC } from "react"
 import Message from "./Message"
+import { MessageData } from "@/utils/messageData"
 
 interface ChatWindowProps {
-  messages?: any
+  messages: MessageData[]
 }
 
 const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
-  // const scrollContainerRef = useRef<HTMLDivElement | null>(null)
-  
-
-  // useEffect(() => {
-
-  //   if (scrollContainerRef.current) {
-  //     scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
-  //   }
-
-  // }, [messages])
-
   return (
-    <div className="w-[80vw] md:w-[50rem] relative">
-        {messages.map((message: any) => (
+    <div className="w-[80vw] md:w-[50rem] relative overflow-y-scroll h-full pt-20
+    pb-40 text-white">
+        {messages && Array.isArray(messages) ? (
+          messages.map((message: MessageData) => (
           <Message key={message.id} response={message.response} question={message.question} />
-        ))}
+        ))) : <></>}
     </div>
   )
 }
