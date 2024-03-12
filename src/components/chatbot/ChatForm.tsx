@@ -18,7 +18,8 @@ const ChatForm: FC<ChatFormProps> = ({ createChat }) => {
         input="chat"
       />
       <div className="absolute z-30 top-3 right-3">
-        <Button type="submit" height={8} width="2rem" background="white">
+        <Button type="submit" height={8} width="2rem" background="white"
+        ariaLabel="Submit Form">
           <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
         </Button>
       </div>

@@ -7,10 +7,13 @@ interface ButtonProps {
   type?: "submit" | "reset" | "button" | undefined,
   height: 12 | 8,
   width?: string,
-  background: "white" | "transparent"
+  background: "white" | "transparent",
+  ariaLabel: string
 }
 
-const Button: FC<ButtonProps> = ({children, onClick, type, height, width, background}) => {
+const Button: FC<ButtonProps> = (
+    { children, onClick, type, height, width, background, ariaLabel }
+  ) => {
   return (
     <button className={classNames("relative flex items-center justify-center rounded-md text-center", 
     "font-medium", {
@@ -20,7 +23,7 @@ const Button: FC<ButtonProps> = ({children, onClick, type, height, width, backgr
         height === 8 && background === "white",
       "h-8 text-xs border-[1px] border-secondaryGrey hover:bg-secondaryGrey": 
         height === 8 && background === "transparent",
-    })} onClick={onClick} type={type} style={{ width: width}}>
+    })} onClick={onClick} type={type} style={{ width: width}} aria-label={ariaLabel}>
       {children}
     </button>
   )
