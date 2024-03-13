@@ -35,7 +35,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
       value={inputText} onChange={handleInputChange} />
       <div className="absolute z-30 top-3 right-3">
         <Button type="submit" height={8} width="2rem" background="white"
-        onClick={handleSendClick}>
+        onClick={handleSendClick} ariaLabel="Submit Message">
           <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
         </Button>
       </div>

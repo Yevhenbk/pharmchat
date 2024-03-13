@@ -15,7 +15,7 @@ const Input: FC<InputProps> = ({type, name, placeholder, input, value, onChange,
   return (
     <input type={type} placeholder={placeholder} name={name} spellCheck={false} value={value}
     onChange={onChange} onKeyDown={onKeyDown} className={classNames("rounded-md py-4",
-    "border-[1px] border-secondaryGrey focus:bg-secondaryGrey px-6 z-[9]", {
+    "border-[1px] border-secondaryGray focus:bg-secondaryGray px-6 z-[9]", {
       "w-full  mb-3 bg-black": input === "chat",
       "text-md font-normal bg-black":  input === "form"
     })} />

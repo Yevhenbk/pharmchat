@@ -14,8 +14,8 @@ interface ChatHeaderProps {
 const ChatHeader: FC<ChatHeaderProps> = ({children, id, href}) => {
   return (
     <div key={id}  className="flex relative w-full rounded-md overflow-hidden">
-      <Link href={href} className="border-[1px] border-secondaryGrey 
-      py-3 px-6 hover:cursor-pointer hover:bg-secondaryGrey flex rounded-md
+      <Link href={href} className="border-[1px] border-secondaryGray 
+      py-3 px-6 hover:cursor-pointer hover:bg-secondaryGray flex rounded-md
       justify-between items-center z-[1] relative w-full">
         {children}
       </Link>

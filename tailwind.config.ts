@@ -9,9 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primaryGrey: '#18181A',
-        secondaryGrey: '#27272a',
-        teritaryGrey: '#94949D',
+        primaryGray: '#18181A',
+        secondaryGray: '#27272a',
+        teritaryGray: '#94949D',
         buttonHover: '#bbbbbb',
       },
     },

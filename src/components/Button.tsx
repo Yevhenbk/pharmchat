@@ -21,7 +21,7 @@ const Button: FC<ButtonProps> = (
         height === 12 && background === "white",
       "h-8 text-xs bg-white text-black hover:bg-buttonHover disabled:bg-zinc-50": 
         height === 8 && background === "white",
-      "h-8 text-xs border-[1px] border-secondaryGrey hover:bg-secondaryGrey": 
+      "h-8 text-xs border-[1px] border-secondaryGray hover:bg-secondaryGray": 
         height === 8 && background === "transparent",
     })} onClick={onClick} type={type} style={{ width: width}} aria-label={ariaLabel}>
       {children}
