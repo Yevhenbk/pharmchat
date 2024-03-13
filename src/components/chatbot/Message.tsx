@@ -5,7 +5,8 @@ import StreamingContent from "../StreamingContent"
 const Message: FC<MessageData> = ({ question, response }) => (
   <div className="flex flex-col gap-4">
     <p>{question}</p>
-    <StreamingContent content={[response]} loop={false} />
+    <p>{response}</p>
+    {/* <StreamingContent content={[response]} loop={false} /> */}
   </div>
 )
 

@@ -4,9 +4,9 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { redirect } from "next/navigation"
 import { getMedication } from '@/actions/actions'
 import LogoNav from '@/components/LogoNav'
-import { BiHealth } from "react-icons/bi"
 import ChatWindow from '@/components/chatbot/ChatWindow'
 import SubmitMessage from '@/components/chatbot/SubmitMessage'
+import logo from "../../../../public/pharmchat.svg"
 
 interface PageProps {
   params: {
@@ -31,12 +31,10 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     },
   })
 
-  console.log(messages)
-
   return (
-    <div className='bg-primaryGrey h-[100dvh] w-full flex flex-col justify-between
+    <div className='bg-black h-[100dvh] w-full flex flex-col justify-between
     items-center'>
-      <LogoNav />
+      <LogoNav logo={logo} />
       <ChatWindow messages={messages} />
       <SubmitMessage id={id} handleSubmit={getMedication} />
     </div>

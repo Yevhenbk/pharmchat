@@ -2,9 +2,8 @@
 
 import { FC, ReactNode } from "react"
 import ContentRotator from "./ContentRotator"
-import Image from "next/image"
-import Link from "next/link"
 import LogoNav from "./LogoNav"
+import logo from "../../public/logo.svg"
 
 interface ViewWrapperProps {
   children: ReactNode
@@ -16,7 +15,7 @@ const ViewWrapper: FC<ViewWrapperProps> = ({children}) => {
     md:grid md:grid-cols-2 lg:grid-cols-[60%_40%]">
       <div className="relative hidden flex-1 flex-col justify-center px-5 pt-8 md:flex md:px-6 
       md:py-[22px] lg:px-8 bg-primaryGrey">
-        <LogoNav />
+        <LogoNav logo={logo} />
         <div className="flex justify-center items-center">
           <div className="flex flex-col gap-4 text-white items-start justify-center text-start">
             <h1 className="font-semibold text-3xl max-w-[40rem] w-[640px]">
