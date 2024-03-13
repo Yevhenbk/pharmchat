@@ -2,7 +2,7 @@
 
 import { FC } from "react"
 import { MessageData } from "@/utils/messageData"
-import StreamingContent from "../StreamingContent"
+import { GiHealthCapsule } from "react-icons/gi"
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import Image from "next/image"
 
@@ -29,7 +29,7 @@ const Message: FC<MessageData> = ({ question, response }) => {
         <div>
           <div className="h-[30px] w-[30px] rounded-sm bg-zinc-800 text-lg 
           font-semibold flex justify-center items-center">
-            <p>P</p>
+            <GiHealthCapsule />
           </div>
         </div>
         <p>
