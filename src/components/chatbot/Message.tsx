@@ -10,7 +10,7 @@ const Message: FC<MessageData> = ({ question, response }) => {
   const { user } = useKindeBrowserClient()
 
   return (
-    <div className="flex flex-col gap-4 text-gray-100">
+    <div className="flex flex-col gap-12 text-gray-300 mb-12">
       <div className="flex gap-4 items-center">
         {user?.picture && (
           <Image
@@ -21,11 +21,21 @@ const Message: FC<MessageData> = ({ question, response }) => {
             className="rounded-sm"
           />
         )}
-        <p>{question}</p>
+        <p className="text-md font-normal">
+          {question}
+        </p>
       </div>
-      
-      <p>{response}</p>
-      {/* <StreamingContent content={[response]} loop={false} /> */}
+      <div className="flex gap-4 items-start">
+        <div>
+          <div className="h-[30px] w-[30px] rounded-sm bg-zinc-800 text-lg 
+          font-semibold flex justify-center items-center">
+            <p>P</p>
+          </div>
+        </div>
+        <p>
+          {response}
+        </p>
+      </div>
     </div>
   )
 }
