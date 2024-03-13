@@ -26,12 +26,12 @@ const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
   }, [messages])
 
   return (
-    <div className="w-[65vw] md:w-[45rem] relative overflow-y-scroll pt-16 pb-6
+    <div className="w-[80vw] md:w-[45rem] relative overflow-y-scroll pt-16 pb-6
     mb-28 text-white  h-[-webkit-fill-available]" ref={chatContainerRef}>
-        {messages && Array.isArray(messages) ? (
-          messages.map((message: MessageData) => (
-          <Message key={message.id} response={message.response} question={message.question} />
-        ))) : <></>}
+      {messages && Array.isArray(messages) ? (
+        messages.map((message: MessageData) => (
+        <Message key={message.id} response={message.response} question={message.question} />
+      ))) : <></>}
     </div>
   )
 }

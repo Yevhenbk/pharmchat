@@ -21,7 +21,7 @@ const Message: FC<MessageData> = ({ question, response }) => {
             className="rounded-sm"
           />
         )}
-        <p className="text-md font-normal">
+        <p className="text-sm md:text-md font-normal">
           {question}
         </p>
       </div>
@@ -32,7 +32,7 @@ const Message: FC<MessageData> = ({ question, response }) => {
             <GiHealthCapsule />
           </div>
         </div>
-        <p>
+        <p className="text-sm md:text-md font-normal">
           {response}
         </p>
       </div>
