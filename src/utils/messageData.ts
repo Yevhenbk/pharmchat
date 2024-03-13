@@ -1,7 +1,7 @@
 export interface MessageData {
-  id?: number; 
-  kindeAuthId?: string; 
-  question: string; 
-  response: string; 
-  chatId?: number;
+  id?: number
+  kindeAuthId?: string
+  question: string
+  response: string
+  chatId?: number
 }
