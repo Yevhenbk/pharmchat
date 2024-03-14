@@ -2,8 +2,11 @@
 
 import { useChat } from "ai/react"
 import { FC, FormEvent } from "react"
+import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
 import ChatWindow from "@/components/chatbot/ChatWindow"
 import LogoNav from "@/components/LogoNav"
+import Input from "@/components/Input"
+import Button from "@/components/Button"
 import symptomsKeywords from "@/utils/symptomsKeywords"
 import logo from "../../../public/logo.svg"
  
@@ -30,18 +33,22 @@ const Page: FC = () => {
     items-center">
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} />
-
-      <form onSubmit={handleHealthSubmit}>
-        <label>
-          Say something...
-          <input
-            className="fixed w-full max-w-md bottom-0 border border-gray-300 rounded mb-8 shadow-xl p-2"
-            value={input}
-            onChange={handleInputChange}
-          />
-        </label>
-        <button type="submit">Send</button>
+      <form className="absolute bottom-[3rem] flex flex-row text-white
+      justify-between gap-0 w-[80vw] md:w-[50rem]" onSubmit={handleHealthSubmit}>
+        <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
+        value={input} onChange={handleInputChange} />
+        <div className="absolute z-30 top-3 right-3">
+          <Button type="submit" height={8} width="2rem" background="white"
+          ariaLabel="Submit Message">
+            <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
+          </Button>
+        </div>
       </form>
+      <div className="absolute bottom-4 w-full flex justify-center items-center">
+      <p className="text-xs text-teritaryGray md:w-full w-[60vw] text-center">
+        Open Assistant AI - This chat won't be saved
+      </p>
+    </div>
     </div>
   )
 }

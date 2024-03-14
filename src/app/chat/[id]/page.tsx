@@ -6,7 +6,7 @@ import { getMedication } from "@/actions/actions"
 import LogoNav from "@/components/LogoNav"
 import ChatWindow from "@/components/chatbot/ChatWindow"
 import SubmitMessage from "@/components/chatbot/SubmitMessage"
-import Link from "next/link"
+import Caption from "@/components/Caption"
 import logo from "../../../../public/pharmchat.svg"
 
 interface PageProps {
@@ -38,13 +38,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} />
       <SubmitMessage id={id} handleSubmit={getMedication} />
-      <div className="absolute bottom-4 w-full flex justify-center items-center">
-        <p className="text-xs text-teritaryGray md:w-full w-[60vw] text-center">
-          Medication information from the <Link href="https://open.fda.gov/apis/"
-          className="cursor-pointer underline underline-offset-2 hover:text-white"
-          target="_blank">FDA drug label API</Link>
-        </p>
-      </div>
+      <Caption />
     </div>
   )
 }
