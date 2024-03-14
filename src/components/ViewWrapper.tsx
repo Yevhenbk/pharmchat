@@ -14,7 +14,7 @@ const ViewWrapper: FC<ViewWrapperProps> = ({children}) => {
     <main className="flex min-h-full w-screen flex-col sm:supports-[min-height:100dvh]:min-h-[100dvh] 
     md:grid md:grid-cols-2 lg:grid-cols-[60%_40%]">
       <div className="relative hidden flex-1 flex-col justify-center px-5 pt-8 md:flex md:px-6 
-      md:py-[22px] lg:px-8 bg-primaryGrey">
+      md:py-[22px] lg:px-8 bg-primaryGray">
         <LogoNav logo={logo} />
         <div className="flex justify-center items-center">
           <div className="flex flex-col gap-4 text-white items-start justify-center text-start">

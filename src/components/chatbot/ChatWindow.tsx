@@ -2,10 +2,12 @@
 
 import { FC, useEffect, useRef } from "react"
 import Message from "./Message"
-import { MessageData } from "@/utils/messageData"
+import AIResponse from "./AIResponse"
+import { Message as MessageAIData } from "ai/react"
+import { MessageData as MessageAPIData } from "@/utils/messageData"
 
 interface ChatWindowProps {
-  messages: MessageData[]
+  messages: (MessageAPIData | MessageAIData)[]
 }
 
 const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
@@ -28,10 +30,19 @@ const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
   return (
     <div className="w-[80vw] md:w-[45rem] relative overflow-y-scroll pt-16 pb-6
     mb-28 text-white  h-[-webkit-fill-available]" ref={chatContainerRef}>
-      {messages && Array.isArray(messages) ? (
-        messages.map((message: MessageData) => (
-        <Message key={message.id} response={message.response} question={message.question} />
-      ))) : <></>}
+      {messages.map((message) => {
+        if ('question' in message) {
+          const apiMessage = message as MessageAPIData
+          return (
+            <Message key={apiMessage.id} response={apiMessage.response} question={apiMessage.question} />
+          )
+        } else {
+          const aiMessage = message as MessageAIData
+          return (
+            <AIResponse message={aiMessage} />
+          )
+        }
+      })}
     </div>
   )
 }

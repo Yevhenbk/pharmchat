@@ -11,7 +11,7 @@ const Message: FC<MessageData> = ({ question, response }) => {
 
   return (
     <div className="flex flex-col gap-12 text-gray-300 mb-12">
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-start">
         {user?.picture && (
           <Image
             src={user?.picture}
