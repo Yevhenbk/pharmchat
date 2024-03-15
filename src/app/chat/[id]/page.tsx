@@ -37,7 +37,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     items-center">
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} />
-      <SubmitMessage id={id} handleSubmit={getMedication} />
+      <SubmitMessage id={id} handleSubmit={getMedication} placeholder="Ex. Ibuprofen, purpose..." />
       <Caption text="Medication information from the"
       linkText="FDA drug label API" link="https://open.fda.gov/apis/" />
     </div>
