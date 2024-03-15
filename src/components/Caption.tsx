@@ -8,13 +8,12 @@ interface CaptionProps {
   text: string
 }
 
-const Caption: FC<CaptionProps> = ({link, text, linkText}) => {
+const Caption: FC<CaptionProps> = ({ link, text, linkText }) => {
   return (
     <div className="absolute bottom-4 w-full flex justify-center items-center">
       <p className="text-xs text-teritaryGray md:w-full w-[60vw] text-center">
-        {text} <Link href={link} 
-        className="cursor-pointer underline underline-offset-2 hover:text-white"
-        target="_blank">{linkText}</Link>
+        {text} <Link href={link} className="cursor-pointer underline underline-offset-2 
+        hover:text-white" target="_blank">{linkText}</Link>
       </p>
     </div>
   )
