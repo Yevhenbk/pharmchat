@@ -11,7 +11,9 @@ interface InputProps {
   input: "form" | "chat"
 }
 
-const Input: FC<InputProps> = ({type, name, placeholder, input, value, onChange, onKeyDown}) => {
+const Input: FC<InputProps> = ({
+  type, name, placeholder, input, value, onChange, onKeyDown
+}) => {
   return (
     <input type={type} placeholder={placeholder} name={name} spellCheck={false} value={value}
     onChange={onChange} onKeyDown={onKeyDown} className={classNames("rounded-md py-4",
