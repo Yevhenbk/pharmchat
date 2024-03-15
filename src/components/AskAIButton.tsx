@@ -4,8 +4,9 @@ import Link from "next/link"
 
 const AskAIButton: FC = () => {
   return (
-    <Link className="border-[1px] border-secondaryGray flex justify-between
-    py-3 px-6 hover:cursor-pointer hover:bg-secondaryGray rounded-md" href="/askai">
+    <Link className="border border-secondaryGray flex justify-between
+    py-3 px-6 hover:cursor-pointer hover:bg-secondaryGray rounded-md" 
+    href="/askai">
       Ask AI
       <SiWorldhealthorganization className="text-2xl" />
     </Link>
