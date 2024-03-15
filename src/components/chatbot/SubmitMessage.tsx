@@ -28,6 +28,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
       handleSubmit?.(id, medicationName, medicationPurpose)
       setInputText("")
       setIsButtonDisabled(true)
+      setModal(false)
     } else {
       console.log("Please enter a non-empty input.")
       setModal(true)
