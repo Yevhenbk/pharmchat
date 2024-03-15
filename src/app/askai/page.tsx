@@ -53,7 +53,7 @@ const Page: FC = () => {
         </div>
       </form>
       <Caption link="https://github.com/LAION-AI/Open-Assistant" linkText="Open Assistant AI"
-      text="This chat won't be saved - " />
+      text="This chat won't be saved::  " />
     </div>
   )
 }
