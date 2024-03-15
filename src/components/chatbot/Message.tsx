@@ -1,12 +1,12 @@
 "use client"
 
 import { FC } from "react"
-import { MessageData } from "@/utils/messageTypes"
+import { MessageTypes } from "@/utils/messageTypes"
 import { GiHealthCapsule } from "react-icons/gi"
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import Image from "next/image"
 
-const Message: FC<MessageData> = ({ question, response }) => {
+const Message: FC<MessageTypes> = ({ question, response }) => {
   const { user } = useKindeBrowserClient()
 
   return (
