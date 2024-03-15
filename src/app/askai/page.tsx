@@ -9,7 +9,7 @@ import Input from "@/components/Input"
 import Button from "@/components/Button"
 import symptomsKeywords from "@/utils/symptomsKeywords"
 import Caption from "@/components/Caption"
-import logo from "../../../public/logo.svg"
+import logo from "../../../public/pharmchat.svg"
  
 const Page: FC = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat()
