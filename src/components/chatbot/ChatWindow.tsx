@@ -31,7 +31,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
     <div className="w-[80vw] md:w-[45rem] relative overflow-y-scroll pt-16 pb-6
     mb-28 text-white  h-[-webkit-fill-available]" ref={chatContainerRef}>
       {messages.map((message) => {
-        if ('question' in message) {
+        if ("question" in message) {
           const apiMessage = message as MessageAPIData
           return (
             <Message key={apiMessage.id} response={apiMessage.response} question={apiMessage.question} />
