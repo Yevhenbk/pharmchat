@@ -12,15 +12,15 @@ interface ChatViewProps {
   user?: KindeUser | null
 }
 
-const ChatView: FC<ChatViewProps> = ({children, user}) => {
+const ChatView: FC<ChatViewProps> = ({ children, user }) => {
   const { isAuthenticated } = useKindeBrowserClient()
 
   const logoutLink = `relative flex items-center justify-center rounded-md text-center
-  font-medium h-8 text-xs border-[1px] border-secondaryGray hover:bg-secondaryGray w-20`
+  font-medium h-8 text-xs border border-secondaryGray hover:bg-secondaryGray w-20`
 
   return (
     <div className="relative flex grow flex-col items-center justify-between  text-white 
-    bg-black sm:rounded-t-[30px] md:rounded-none md:px-6 md:border-l-[1px] border-secondaryGray w-[100dvvh]
+    bg-black sm:rounded-t-[30px] md:rounded-none md:px-6 md:border-l border-secondaryGray w-[100dvvh]
     overflow-hidden">
       <div className="relative flex w-full grow flex-col items-center justify-center gap-4">
         <div className="mt-2 w-full max-w-[440px] h-full flex flex-col justify-between relative">
@@ -34,7 +34,7 @@ const ChatView: FC<ChatViewProps> = ({children, user}) => {
             </div>
             {children}
           </div>
-          <div className="w-full max-w-[440px] flex flex-col pb-8 border-t-[1px] border-x-[1px] 
+          <div className="w-full max-w-[440px] flex flex-col pb-8 border-t border-x 
           border-secondaryGray md:rounded-md fixed bottom-0 bg-black z-[9]">
             <div className="w-full flex items-center justify-center">
               <FaGripLines  className="text-md text-gray-500 mt-2" />
