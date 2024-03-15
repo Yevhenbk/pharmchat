@@ -12,20 +12,30 @@ interface SubmitMessageProps {
 
 const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
   const [inputText, setInputText] = useState<string>("")
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
   const handleSendClick = (e: any) => {
     e.preventDefault()
     if (inputText.trim() !== "") {
-      const [medicationName, medicationPurpose] = inputText.split(",")
-
+      const splitInput = inputText.split(",")
+      if (splitInput.length !== 2) {
+        console.log("Please enter the input in the format: 'MedicationName, Purpose'")
+        // Display a message to the user indicating the proper input format
+        return
+      }
+  
+      const [medicationName, medicationPurpose] = splitInput
       handleSubmit(id, medicationName.trim(), medicationPurpose.trim())
-
       setInputText("")
+    } else {
+      console.log("Please enter a non-empty input.")
+      // Display a message to the user indicating to enter a non-empty input
     }
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value)
+    setIsButtonDisabled(e.target.value.trim() === "")
   }
 
   return (
@@ -35,7 +45,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
       value={inputText} onChange={handleInputChange} />
       <div className="absolute z-30 top-3 right-3">
         <Button type="submit" height={8} width="2rem" background="white"
-        onClick={handleSendClick} ariaLabel="Submit Message">
+        onClick={handleSendClick} ariaLabel="Submit Message" disabled={isButtonDisabled}>
           <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
         </Button>
       </div>
