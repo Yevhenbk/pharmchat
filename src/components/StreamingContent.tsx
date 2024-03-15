@@ -10,7 +10,6 @@ interface StreamingContentProps {
 }
 
 const StreamingContent: FC<StreamingContentProps> = ({ content, speed, loop }) => {
-
   return <ReactTyped strings={content} typeSpeed={speed} loop={loop} />
 }
 
