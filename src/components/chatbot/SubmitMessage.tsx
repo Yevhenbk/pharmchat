@@ -12,7 +12,7 @@ interface SubmitMessageProps {
     ) => Promise<void>
 }
 
-const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
+const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
   const [inputText, setInputText] = useState<string>("")
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
