@@ -20,14 +20,10 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
     e.preventDefault()
     if (inputText.trim() !== "") {
       const splitInput = inputText.split(",")
-      if (splitInput.length !== 2) {
-        console.log("Please enter the input in the format: 'MedicationName, Purpose'")
-        // Display a message to the user indicating the proper input format
-        return
-      }
-  
-      const [medicationName, medicationPurpose] = splitInput
-      handleSubmit?.(id, medicationName.trim(), medicationPurpose.trim())
+      const medicationName = splitInput[0].trim()
+      const medicationPurpose = splitInput[1]?.trim() || "purpose"
+
+      handleSubmit?.(id, medicationName, medicationPurpose)
       setInputText("")
       setIsButtonDisabled(true)
     } else {
