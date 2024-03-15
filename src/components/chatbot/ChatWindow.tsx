@@ -4,7 +4,7 @@ import { FC, useEffect, useRef } from "react"
 import Message from "./Message"
 import AIResponse from "./AIResponse"
 import { Message as MessageAIData } from "ai/react"
-import { MessageData as MessageAPIData } from "@/utils/messageData"
+import { MessageTypes as MessageAPIData } from "@/utils/messageTypes"
 
 interface ChatWindowProps {
   messages: (MessageAPIData | MessageAIData)[]

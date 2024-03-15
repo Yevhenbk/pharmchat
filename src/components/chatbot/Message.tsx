@@ -1,7 +1,7 @@
 "use client"
 
 import { FC } from "react"
-import { MessageData } from "@/utils/messageData"
+import { MessageData } from "@/utils/messageTypes"
 import { GiHealthCapsule } from "react-icons/gi"
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import Image from "next/image"
