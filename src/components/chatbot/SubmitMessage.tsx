@@ -9,7 +9,7 @@ interface SubmitMessageProps {
   id: number,
   handleSubmit?: (
     chatId: number, genericName: string, selectedInfo?: string | null
-    ) => Promise<"jsonData" | undefined>
+    ) => Promise<void>
 }
 
 const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
