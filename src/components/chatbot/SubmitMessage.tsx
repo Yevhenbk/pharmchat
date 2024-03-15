@@ -4,6 +4,7 @@ import { FC, useState, ChangeEvent } from "react"
 import Input from "../Input"
 import Button from "../Button"
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
+import Modal from "../Modal"
 
 interface SubmitMessageProps {
   id: number,
@@ -44,17 +45,24 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
   }
 
   return (
-    <form className="absolute bottom-[3rem] flex flex-row text-white
-    justify-between gap-0 w-[80vw] md:w-[50rem]">
-      <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
-      value={inputText} onChange={handleInputChange} />
-      <div className="absolute z-30 top-3 right-3">
-        <Button type="submit" height={8} width="2rem" background="white"
-        onClick={handleSendClick} ariaLabel="Submit Message" disabled={isButtonDisabled}>
-          <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
-        </Button>
-      </div>
-    </form>
+    <>
+      {modal &&  (
+        <Modal>
+          Hello
+        </Modal>
+      )}
+      <form className="absolute bottom-[3rem] flex flex-row text-white
+      justify-between gap-0 w-[80vw] md:w-[50rem]">
+        <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
+        value={inputText} onChange={handleInputChange} />
+        <div className="absolute z-30 top-3 right-3">
+          <Button type="submit" height={8} width="2rem" background="white"
+          onClick={handleSendClick} ariaLabel="Submit Message" disabled={isButtonDisabled}>
+            <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
+          </Button>
+        </div>
+      </form>
+    </>
   )
 }
 
