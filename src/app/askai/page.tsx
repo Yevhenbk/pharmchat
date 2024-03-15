@@ -43,7 +43,7 @@ const Page: FC = () => {
       <ChatWindow messages={messages} />
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]" onSubmit={handleHealthSubmit}>
-        <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
+        <Input type="text" input="chat" placeholder="Your health-related question.."
         value={input} onChange={handleInputChangeAndCheck} />
         <div className="absolute z-30 top-3 right-3">
           <Button type="submit" height={8} width="2rem" background="white" disabled={isButtonDisabled}
