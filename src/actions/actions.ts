@@ -56,7 +56,7 @@ export async function deleteMessage(messageId: number) {
   revalidatePath("/chat")
 }
 
-export async function addMessage(chatId: number, question: any, response: string) {
+export async function addMessage(chatId: number, question: string, response: string) {
   const { isAuthenticated, getUser } = getKindeServerSession()
   const isLoggedIn = await isAuthenticated()
   if (!isLoggedIn) {
@@ -88,18 +88,14 @@ export async function getMedication(chatId: number, genericName: string, selecte
   const res = await fetch(`${baseUrl}&search=openfda.generic_name:${genericName}&limit=1`)
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error("Failed to fetch data")
   }
  
   const jsonData = await res.json()
 
-  if (!selectedInfo) {
-    // change response !!
-    return "jsonData"
-  }
+  let infoToUse = selectedInfo || "purpose"
 
-  // change format response !!
-  const normalizedInfo = normalizeProperty(selectedInfo)
+  const normalizedInfo = normalizeProperty(infoToUse)
 
   const selectedData = jsonData.results.map((result: any) => (
     result[normalizedInfo]))
