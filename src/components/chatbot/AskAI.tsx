@@ -1,37 +1,32 @@
-'use client'
+"use client"
 
-import { useChat } from 'ai/react';
-import { FormEvent } from 'react';
-import symptomsKeywords from '@/utils/symptomsKeywords';
+import { useChat } from "ai/react"
+import { FC, FormEvent } from "react"
+import symptomsKeywords from "@/utils/symptomsKeywords"
  
-export default function AskAI() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+const AskAI: FC = () => {
+  const { messages, input, handleInputChange, handleSubmit } = useChat()
 
   const isHealthRelated = (input:any) => {
-    // Implement your logic to check if the input is health-related
-    // You can use regular expressions, keyword matching, or any other method
-    // For simplicity, let's assume a keyword "health" in the input means it's health-related
-    const lowercasedInput = input.toLowerCase();
-    return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword));
-  };
+    const lowercasedInput = input.toLowerCase()
+    return symptomsKeywords.some(keyword => lowercasedInput.includes(keyword))
+  }
 
   const handleHealthSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault()
 
     if (isHealthRelated(input)) {
-      // Only generate AI response if the input is health-related
-      handleSubmit(e); // Pass the event to handleSubmit
+      handleSubmit(e)
     } else {
-      // Handle non-health-related input (you can display a message, clear the input, etc.)
-      console.log("Please ask a health-related question.");
+      console.log("Please ask a health-related question.")
     }
-  };
+  }
 
   return (
     <div className="mx-auto w-full max-w-md py-24 flex flex-col stretch">
       {messages.map(m => (
         <div key={m.id}>
-          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.role === "user" ? "User: " : "AI: "}
           {m.content}
         </div>
       ))}
@@ -48,5 +43,7 @@ export default function AskAI() {
         <button type="submit">Send</button>
       </form>
     </div>
-  );
+  )
 }
+
+export default AskAI
