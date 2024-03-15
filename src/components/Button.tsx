@@ -13,7 +13,8 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({ 
-  children, onClick, type, height, width, background, ariaLabel, disabled }) => {
+  children, onClick, type, height, width, background, ariaLabel, disabled 
+}) => {
   return (
     <button className={classNames("relative flex items-center justify-center rounded-md text-center", 
     "font-medium disabled:hover:cursor-default disabled:opacity-65", {
