@@ -9,7 +9,7 @@ interface ViewWrapperProps {
   children: ReactNode
 }
 
-const ViewWrapper: FC<ViewWrapperProps> = ({children}) => {
+const ViewWrapper: FC<ViewWrapperProps> = ({ children }) => {
   return (
     <main className="flex min-h-full w-screen flex-col sm:supports-[min-height:100dvh]:min-h-[100dvh] 
     md:grid md:grid-cols-2 lg:grid-cols-[60%_40%]">
