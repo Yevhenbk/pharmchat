@@ -7,7 +7,9 @@ import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
 
 interface SubmitMessageProps {
   id: number,
-  handleSubmit?: any
+  handleSubmit?: (
+    chatId: number, genericName: string, selectedInfo?: string | null
+    ) => Promise<"jsonData" | undefined>
 }
 
 const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
@@ -25,7 +27,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
       }
   
       const [medicationName, medicationPurpose] = splitInput
-      handleSubmit(id, medicationName.trim(), medicationPurpose.trim())
+      handleSubmit?.(id, medicationName.trim(), medicationPurpose.trim())
       setInputText("")
     } else {
       console.log("Please enter a non-empty input.")
