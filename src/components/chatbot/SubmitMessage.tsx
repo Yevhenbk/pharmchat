@@ -29,6 +29,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({id, handleSubmit}) => {
       const [medicationName, medicationPurpose] = splitInput
       handleSubmit?.(id, medicationName.trim(), medicationPurpose.trim())
       setInputText("")
+      setIsButtonDisabled(true)
     } else {
       console.log("Please enter a non-empty input.")
       // Display a message to the user indicating to enter a non-empty input
