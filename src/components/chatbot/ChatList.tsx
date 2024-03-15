@@ -13,7 +13,7 @@ interface ChatListProps {
   createChat: (formData: FormData) => Promise<void>
 }
 
-const ChatList: FC<ChatListProps> = ({chatList, createChat}) => {
+const ChatList: FC<ChatListProps> = ({ chatList, createChat }) => {
   return (
     <div className="relative flex w-full flex-col items-center bottom-0">
       <div className="flex flex-col h-[85dvh] overflow-y-scroll w-full">
