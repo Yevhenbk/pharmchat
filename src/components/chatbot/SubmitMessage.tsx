@@ -7,13 +7,14 @@ import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
 import Modal from "../Modal"
 
 interface SubmitMessageProps {
-  id: number,
+  id: number
   handleSubmit?: (
     chatId: number, genericName: string, selectedInfo?: string | null
     ) => Promise<void>
+  placeholder: string
 }
 
-const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
+const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit, placeholder }) => {
   const [inputText, setInputText] = useState<string>("")
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
   const [modal, setModal] = useState<boolean>(false)
@@ -53,7 +54,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
       )}
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]">
-        <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
+        <Input type="text" input="chat" placeholder={placeholder}
         value={inputText} onChange={handleInputChange} />
         <div className="absolute z-30 top-3 right-3">
           <Button type="submit" height={8} width="2rem" background="white"
