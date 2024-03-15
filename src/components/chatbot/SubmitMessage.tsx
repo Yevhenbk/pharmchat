@@ -3,6 +3,7 @@
 import { FC, useState, ChangeEvent } from "react"
 import Input from "../Input"
 import Button from "../Button"
+import { useModalState } from "../hooks/useModalState"
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
 
 interface SubmitMessageProps {
@@ -15,6 +16,7 @@ interface SubmitMessageProps {
 const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
   const [inputText, setInputText] = useState<string>("")
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
+  const [modal, setModal] = useModalState()
 
   const handleSendClick = (e: any) => {
     e.preventDefault()
@@ -28,7 +30,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit }) => {
       setIsButtonDisabled(true)
     } else {
       console.log("Please enter a non-empty input.")
-      // Display a message to the user indicating to enter a non-empty input
+      setModal(true)
     }
   }
 
