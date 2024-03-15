@@ -1,17 +1,19 @@
 "use client"
 
 import { useChat } from "ai/react"
-import { FC, FormEvent } from "react"
+import { FC, FormEvent, useState, ChangeEvent } from "react"
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
 import ChatWindow from "@/components/chatbot/ChatWindow"
 import LogoNav from "@/components/LogoNav"
 import Input from "@/components/Input"
 import Button from "@/components/Button"
 import symptomsKeywords from "@/utils/symptomsKeywords"
+import Caption from "@/components/Caption"
 import logo from "../../../public/logo.svg"
  
 const Page: FC = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat()
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
 
   const isHealthRelated = (input: string) => {
     const lowercasedInput = input.toLowerCase()
@@ -28,6 +30,12 @@ const Page: FC = () => {
     }
   }
 
+  const handleInputChangeAndCheck = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = e.currentTarget.value
+    handleInputChange(e)
+    setIsButtonDisabled(!isHealthRelated(inputValue))
+  }
+
   return (
     <div className="bg-black h-[100dvh] w-full flex flex-col justify-between
     items-center">
@@ -36,19 +44,16 @@ const Page: FC = () => {
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]" onSubmit={handleHealthSubmit}>
         <Input type="text" input="chat" placeholder="Ex. Ibuprofen, purpose..."
-        value={input} onChange={handleInputChange} />
+        value={input} onChange={handleInputChangeAndCheck} />
         <div className="absolute z-30 top-3 right-3">
-          <Button type="submit" height={8} width="2rem" background="white"
+          <Button type="submit" height={8} width="2rem" background="white" disabled={isButtonDisabled}
           ariaLabel="Submit Message">
             <MdOutlineSubdirectoryArrowLeft  className="text-lg" />
           </Button>
         </div>
       </form>
-      <div className="absolute bottom-4 w-full flex justify-center items-center">
-      <p className="text-xs text-teritaryGray md:w-full w-[60vw] text-center">
-        Open Assistant AI - This chat won't be saved
-      </p>
-    </div>
+      <Caption link="https://github.com/LAION-AI/Open-Assistant" linkText="Open Assistant AI"
+      text="This chat won't be saved - " />
     </div>
   )
 }

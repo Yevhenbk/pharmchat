@@ -38,7 +38,8 @@ const Page: NextPage<PageProps> = async ({ params }) => {
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} />
       <SubmitMessage id={id} handleSubmit={getMedication} />
-      <Caption />
+      <Caption text="Medication information from the"
+      linkText="FDA drug label API" link="https://open.fda.gov/apis/" />
     </div>
   )
 }
