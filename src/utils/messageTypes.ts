@@ -1,4 +1,4 @@
-export interface MessageData {
+export interface MessageTypes {
   id?: number
   kindeAuthId?: string
   question: string | false
