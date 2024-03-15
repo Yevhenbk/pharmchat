@@ -8,7 +8,7 @@ interface AIResponseProps {
   message: Message
 }
 
-const AIResponse: FC<AIResponseProps> = ({message}) => {
+const AIResponse: FC<AIResponseProps> = ({ message }) => {
   const { user } = useKindeBrowserClient()
 
   return (
