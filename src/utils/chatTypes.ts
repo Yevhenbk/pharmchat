@@ -1,4 +1,4 @@
-export interface ChatData {
+export interface ChatTypes {
   id: number 
   chatTitle: string
 }
