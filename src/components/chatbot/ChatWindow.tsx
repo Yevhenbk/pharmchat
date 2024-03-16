@@ -39,7 +39,7 @@ const ChatWindow: FC<ChatWindowProps> = ({ messages }) => {
         } else {
           const aiMessage = message as MessageAIData
           return (
-            <AIResponse message={aiMessage} />
+            <AIResponse key={aiMessage.id} message={aiMessage} />
           )
         }
       })}
