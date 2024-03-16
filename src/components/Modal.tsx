@@ -6,7 +6,7 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ children }) => {
   return (
-    <div className="flex flex-col gap-2 rounded-lg border border-teritaryGray 
+    <div className="flex flex-col gap-2 rounded-lg border border-secondaryGray 
     bg-background p-8">
       {children}
     </div>
