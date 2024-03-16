@@ -9,8 +9,6 @@ import SubmitMessage from "@/components/chatbot/SubmitMessage"
 import Caption from "@/components/Caption"
 import logo from "../../../../public/pharmchat.svg"
 
-export const dynamic = "force-dynamic"
-
 interface PageProps {
   params: {
     id: string
