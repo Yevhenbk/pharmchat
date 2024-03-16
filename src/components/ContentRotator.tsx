@@ -18,7 +18,7 @@ const ContentRotator: FC = () => {
     }, 10000)
 
     return () => clearInterval(intervalId)
-  }, [])
+  }, [contents.length])
 
   return <StreamingContent content={[contents[currentContentIndex]]} loop={false} speed={30} />
 }
