@@ -6,6 +6,8 @@ import ChatView from "@/components/ChatView"
 import ChatList from "@/components/chatbot/ChatList"
 import { NextPage } from "next"
 
+export const dynamic = "force-dynamic"
+
 const Page: NextPage = async () => {
   const { isAuthenticated, getUser } = getKindeServerSession()
   const isLoggedIn = await isAuthenticated()
