@@ -40,7 +40,10 @@ const Page: FC = () => {
     <div className="bg-black h-[100dvh] w-full flex flex-col justify-between
     items-center">
       <LogoNav logo={logo} />
-      <ChatWindow messages={messages} />
+      <ChatWindow messages={messages} modalTitle="Welcome to Pharmchat Chatbot!"
+      modalDescription="This is an Open Assistant model that only responds to health-related 
+      questions. If you will, ask anything spacifying the symptoms or the sickness itself as 
+      follows:" modalResponse="How can I treat myself during fever?" />
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]" onSubmit={handleHealthSubmit}>
         <Input type="text" input="chat" placeholder="Your health-related question.."

@@ -36,7 +36,13 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     <div className="bg-black h-[100dvh] w-full flex flex-col justify-between
     items-center">
       <LogoNav logo={logo} />
-      <ChatWindow messages={messages} />
+      <ChatWindow messages={messages} modalDescription="This is a chatbot using FDA drug label API 
+      to interact and provide reasonable response on the request over desired medication. In order to 
+      get the information you need to provide a medication name followed by requested result." 
+      modalResponse="The list of possible requested results is: purpose, keep out of reach of children, 
+      warnings, questions, spl product data elements, version, dosage and administration, pregnancy or breast feeding, 
+      stop use, storage and handling, do not use, package label principal display panel, active ingredient, indications 
+      and usage; if not specified, returns purpose as a default property." modalTitle="Welcome to Pharmchat Chatbot!" />
       <SubmitMessage id={id} handleSubmit={getMedication} placeholder="Ex. Ibuprofen, purpose..." />
       <Caption text="Medication information from the"
       linkText="FDA drug label API" link="https://open.fda.gov/apis/" />
