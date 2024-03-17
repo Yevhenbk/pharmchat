@@ -48,9 +48,17 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit, placeholder }
   return (
     <>
       {modal &&  (
-        <Modal>
-          Hello
-        </Modal>
+        <div className="relative bottom-[8.5rem] w-[80vw] md:w-[45rem]">
+          <Modal>
+            <p className="text-teritaryGray text-xs md:text-base font-medium mb-2">
+              Please, provide information in the following format: <span className="italic">
+              Medication name, requested result</span>
+            </p>
+            <Button height={8} background="transparent" ariaLabel="Close Button" onClick={() => setModal(!modal)}>
+              <span className="text-white">Understood</span>
+            </Button>
+          </Modal>
+        </div>
       )}
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]">
