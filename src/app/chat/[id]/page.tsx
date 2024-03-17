@@ -37,7 +37,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     items-center">
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} modalDescription="This is a chatbot using FDA drug label API 
-      to interact and provide reasonable response on the request over desired medication. In order to 
+      that provides reasonable response on the request over desired medication. In order to 
       get the information you need to provide a medication name followed by requested result." 
       modalResponse="The list of possible requested results is: purpose, keep out of reach of children, 
       warnings, questions, spl product data elements, version, dosage and administration, pregnancy or breast feeding, 

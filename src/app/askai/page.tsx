@@ -42,8 +42,10 @@ const Page: FC = () => {
       <LogoNav logo={logo} />
       <ChatWindow messages={messages} modalTitle="Welcome to Pharmchat Chatbot!"
       modalDescription="This is an Open Assistant model that only responds to health-related 
-      questions. If you will, ask anything spacifying the symptoms or the sickness itself as 
-      follows:" modalResponse="How can I treat myself during fever?" />
+      questions. If you will, ask anything spacifying the symptoms or the sickness itself (ex. 
+      How can I reduce fever at home?)" modalResponse="Be careful: this code runs on the client 
+      side and won't be saved to the database; there is no guarantee that you'll get the same 
+      response upon asking the same question twice." />
       <form className="absolute bottom-[3rem] flex flex-row text-white
       justify-between gap-0 w-[80vw] md:w-[50rem]" onSubmit={handleHealthSubmit}>
         <Input type="text" input="chat" placeholder="Your health-related question.."
