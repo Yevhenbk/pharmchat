@@ -28,6 +28,6 @@ Pharmchat includes a separate chat feature called "Ask AI," which is always pres
 > To start the app run this command inside the project
 
 ```bash
-npm install #install all the dependencies
+npm install #install the dependencies
 npm run dev #runs the app in the development mode
 ```
