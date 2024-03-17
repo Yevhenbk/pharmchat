@@ -40,7 +40,7 @@ npx prisma generate #generate prisma client
 
 ## Project Preview
 
-### Homw View
+### Home View
 ![Home View](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/homeview.png)
 ### Chat List
 ![Chat List](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/chatlist.png)
