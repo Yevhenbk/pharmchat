@@ -16,7 +16,7 @@ import logo from "../../../public/pharmchat.svg"
 const Page: FC = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat()
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
-  const { isAuthenticated, isLoading } = useKindeBrowserClient()
+  const { isAuthenticated } = useKindeBrowserClient()
 
   const isHealthRelated = (input: string) => {
     const lowercasedInput = input.toLowerCase()
