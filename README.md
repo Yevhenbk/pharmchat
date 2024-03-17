@@ -9,7 +9,7 @@ Pharmchat is a Next.js project designed to facilitate communication between user
 - Kinde: Authentication middleware.
 - FDA Drugs API: Provides access to information about pharmaceutical drugs.
 - Open Assistant AI: An AI model used for health-related queries within the "Ask AI" feature.
-- 
+
 ## Features
 ### Authentication
 Pharmchat implements user authentication using Kinde, ensuring secure access to chat functionalities:
