@@ -41,7 +41,8 @@ const ChatWindow: FC<ChatWindowProps> = ({
           if ("question" in message) {
             const apiMessage = message as MessageAPIData
             return (
-              <Message key={apiMessage.id} response={apiMessage.response} question={apiMessage.question} />
+              <Message key={apiMessage.id} response={apiMessage.response} 
+              question={apiMessage.question} />
             )
           } else {
             const aiMessage = message as MessageAIData
@@ -52,13 +53,15 @@ const ChatWindow: FC<ChatWindowProps> = ({
         }) :
         <Modal>
           <div className="flex w-full flex-col gap-4">
-            <h4 className="font-bold text-lg text-white">
+            <h4 className="font-bold text-md md:text-lg text-white">
               {modalTitle}
             </h4>
-            <p className="font-medium text-teritaryGray text-md">
+            <p className="font-medium text-teritaryGray text-xs 
+            md:text-md">
               {modalDescription}
             </p>
-            <p className="font-medium text-teritaryGray text-md">
+            <p className="font-medium text-teritaryGray text-xs 
+            md:text-md">
               {modalResponse}
             </p>
           </div>
