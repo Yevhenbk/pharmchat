@@ -26,6 +26,8 @@ The application enables users to request information about pharmaceutical drugs 
 ### Ask AI
 Pharmchat includes a separate chat feature called "Ask AI," which is always present and runs exclusively on the client-side. This feature utilizes the Open Assistant AI model to answer health-related questions posed by users. The conversations in this mode are not saved, ensuring privacy and data security.
 
+## Setup Instructions
+
 > To start the app run this command inside the project
 
 ```bash
