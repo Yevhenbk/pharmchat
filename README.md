@@ -30,6 +30,4 @@ Pharmchat includes a separate chat feature called "Ask AI," which is always pres
 ```bash
 npm install #install all the dependencies
 npm run dev #runs the app in the development mode
-npm run build #builds app
-npm run start #runs build locally
 ```
