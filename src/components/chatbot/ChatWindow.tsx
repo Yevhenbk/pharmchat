@@ -53,15 +53,15 @@ const ChatWindow: FC<ChatWindowProps> = ({
         }) :
         <Modal>
           <div className="flex w-full flex-col gap-4">
-            <h4 className="font-bold text-md md:text-lg text-white">
+            <h4 className="font-bold text-base md:text-lg text-white">
               {modalTitle}
             </h4>
             <p className="font-medium text-teritaryGray text-xs 
-            md:text-md">
+            md:text-base">
               {modalDescription}
             </p>
             <p className="font-medium text-teritaryGray text-xs 
-            md:text-md">
+            md:text-base">
               {modalResponse}
             </p>
           </div>
