@@ -37,3 +37,11 @@ npm run dev #runs the app in the development mode
 npx prisma migrate dev #create and apply migrations
 npx prisma generate #generate prisma client
 ```
+
+## Project Preview
+
+![Home View](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/homeview.png)
+![Chat List](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/chatlist.png)
+![Chat](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/chat.png)
+![Ask AI](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/askai.png)
+![Warning](https://github.com/Yevhenbk/pharmchat/blob/master/public/img/warning.png)
