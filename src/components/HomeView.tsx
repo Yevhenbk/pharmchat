@@ -17,7 +17,7 @@ const HomeView: FC<HomeViewProps> = ({ children }) => {
         </h2>
         <p className="text-center text-sm leading-[1.2] md:text-md md:leading-4 text-teritaryGray font-medium
         mb-4 w-[80%]">
-          This is an open source AI chatbot app template built with Next.js, Open Assistant AI, and Prisma.
+          This is a chatbot app template built by Yevhenbk with Next.js, Open Assistant AI, FDA drugs API and Prisma.
         </p>
         <div className="mt-2 w-full max-w-[440px]">
           <div className="grid gap-x-3 gap-y-2 sm:grid-cols-2 sm:gap-y-0">
