@@ -31,4 +31,7 @@ Pharmchat includes a separate chat feature called "Ask AI," which is always pres
 ```bash
 npm install #install the dependencies
 npm run dev #runs the app in the development mode
+
+npx prisma migrate dev #create and apply migrations
+npx prisma generate #generate prisma client
 ```
