@@ -3,6 +3,8 @@
 import { useChat } from "ai/react"
 import { FC, FormEvent, useState, ChangeEvent } from "react"
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md"
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components"
 import ChatWindow from "@/components/chatbot/ChatWindow"
 import LogoNav from "@/components/LogoNav"
 import Input from "@/components/Input"
@@ -14,6 +16,7 @@ import logo from "../../../public/pharmchat.svg"
 const Page: FC = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat()
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
+  const { isAuthenticated, isLoading } = useKindeBrowserClient()
 
   const isHealthRelated = (input: string) => {
     const lowercasedInput = input.toLowerCase()
@@ -36,7 +39,7 @@ const Page: FC = () => {
     setIsButtonDisabled(!isHealthRelated(inputValue))
   }
 
-  return (
+  return isAuthenticated ? (
     <div className="bg-black h-[100dvh] w-full flex flex-col justify-between
     items-center">
       <LogoNav logo={logo} />
@@ -59,6 +62,10 @@ const Page: FC = () => {
       </form>
       <Caption link="https://github.com/LAION-AI/Open-Assistant" linkText="Open Assistant AI"
       text="This chat won't be saved::  " />
+    </div>
+  ) : (
+    <div>
+      You have to <LoginLink>Login</LoginLink> to see this page
     </div>
   )
 }
