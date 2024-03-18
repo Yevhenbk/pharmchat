@@ -4,11 +4,11 @@
 Pharmchat is a Next.js project designed to facilitate communication between users and a chatbot-like system aimed at providing information about pharmaceutical drugs. The project incorporates features such as authentication using Kinde, creating and deleting different chat sessions, querying information from the FDA drugs API, and an AI-powered chat feature called "Ask AI" which runs solely on the client-side.
 
 ## Technologies Used
-- Next 14: A React framework for building server-side rendered (SSR) applications.
-- Prisma: A modern database toolkit for Node.js and TypeScript.
-- Kinde: Authentication middleware.
-- FDA Drugs API: Provides access to information about pharmaceutical drugs.
-- Open Assistant AI: An AI model used for health-related queries within the "Ask AI" feature.
+- Next 14: A React framework for building server-side rendered (SSR) applications
+- Prisma: A modern database toolkit for Node.js and TypeScript
+- Kinde: Authentication middleware
+- FDA Drugs API: Provides access to information about pharmaceutical drugs
+- Open Assistant AI: An AI model used for health-related queries within the "Ask AI" feature
 
 ## Features
 ### Authentication
