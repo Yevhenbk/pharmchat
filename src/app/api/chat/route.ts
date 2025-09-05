@@ -1,30 +1,36 @@
+
 import { HfInference } from "@huggingface/inference"
-import { HuggingFaceStream, StreamingTextResponse } from "ai"
-import { experimental_buildOpenAssistantPrompt } from "ai/prompts"
- 
-const Hf = new HfInference(process.env.HUGGINGFACE_API_KEY)
- 
+
+const Hf = new HfInference(process.env.NEXT_HUGGINGFACE_API_KEY || "")
+
 export const runtime = "edge"
  
 export async function POST(req: Request) {
-  const { messages } = await req.json()
- 
-  const response = Hf.textGenerationStream({
-    model: "OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5",
-    inputs: experimental_buildOpenAssistantPrompt(messages),
-    parameters: {
-      max_new_tokens: 200,
-      // @ts-ignore (this is a valid parameter specifically in OpenAssistant models)
-      typical_p: 0.2,
-      repetition_penalty: 1,
-      truncate: 1000,
-      return_full_text: false,
-    },
-  })
+  try {
+    const { messages } = await req.json()
 
-  const stream = HuggingFaceStream(response);
-  
-  return new StreamingTextResponse(stream, {
-    headers: { "X-RATE-LIMIT": "lol" },
-  })
+    const prompt = messages && messages.length > 0 ? messages[messages.length - 1].content : "";
+
+    const result = await Hf.textGeneration({
+      model: "gpt2",
+      inputs: prompt,
+      parameters: {
+        max_new_tokens: 100,
+        repetition_penalty: 1,
+        truncate: 1000,
+        return_full_text: false,
+      },
+    });
+
+    return new Response(JSON.stringify(result), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error: any) {
+    console.error("/api/chat error:", error);
+    return new Response(
+      JSON.stringify({ error: error?.message || "Unknown error" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 }

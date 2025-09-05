@@ -27,16 +27,20 @@ const SubmitMessage: FC<SubmitMessageProps> = ({ id, handleSubmit, placeholder }
       const medicationPurpose = splitInput[1]?.trim() || "purpose"
 
       try {
-        await handleSubmit?.(id, medicationName, medicationPurpose)
-        setInputText("")
-        setIsButtonDisabled(true)
-        setModal(false)
+          await handleSubmit?.(id, medicationName, medicationPurpose)
+          setInputText("")
+          setIsButtonDisabled(true)
+          setModal(false)
       } catch (error) {
-        console.error("Error sending message:", error)
-        setModal(true)
+          if (
+            error instanceof Error &&
+            (error.message === "INVALID_MEDICATION" || error.message === "INVALID_PROPERTY")
+          ) {
+            setModal(true)
+          } else {
+            console.error("Error sending message:", error)
+        }
       }
-    } else {
-      console.log("Please enter a non-empty input.")
     }
   }
 
