@@ -64,7 +64,7 @@ const Page: FC = () => {
         messages={messages}
         modalTitle="Welcome to Pharmchat Chatbot!"
         modalDescription="This is an AI model (GPT-2) that only responds to health-related questions. Please specify symptoms or the sickness itself (e.g., How can I reduce fever at home?)."
-        modalResponse="Note: Due to recent changes in Hugging Face's hosting and plan requirements, this AI model may not work or respond as expected unless you have a paid Inference Endpoint or the model is available for free API inference. This limitation is outside of our control. Answers, if generated, are from a general-purpose AI model and are not medical advice."
+        modalResponse="Note: Due to recent changes in Hugging Face's hosting and plan requirements, this AI model may not work or respond as expected unless you have a paid Inference Endpoint or the model is available for free API inference. This limitation is outside of our control. We apologize for any inconvenience this may cause."
       />
       <form
         className="absolute bottom-[3rem] flex flex-row text-white justify-between gap-0 w-[80vw] md:w-[50rem]"
