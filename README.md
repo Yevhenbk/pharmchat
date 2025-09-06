@@ -1,7 +1,7 @@
 # Pharmchat
 
 ## Overview
-Pharmchat is a Next.js project designed to facilitate communication between users and a chatbot-like system aimed at providing information about pharmaceutical drugs. The project incorporates features such as authentication using Kinde, creating and deleting different chat sessions, querying information from the FDA drugs API, and an AI-powered chat feature called "Ask AI" which runs solely on the client-side.
+Pharmchat is a Next.js project designed to facilitate communication between users and a chatbot-like system aimed at providing information about pharmaceutical drugs. The project incorporates features such as authentication using Kinde, creating and deleting different chat sessions, querying information from the FDA drugs API, and an AI-powered chat feature called "Ask AI" which runs solely on the client-side. (Due to recent changes in Hugging Face's hosting and plan requirements, I switched from Open Assistant AI model to GPT2, that may not work or respond as expected unless you have a paid Inference Endpoint or the model is available for free API inference. This limitation is outside of my control =)
 
 ## Technologies Used
 - Next 14: A React framework for building server-side rendered (SSR) applications
