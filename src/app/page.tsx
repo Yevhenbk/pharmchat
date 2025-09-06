@@ -1,19 +1,20 @@
-import { NextPage } from "next"
-import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components"
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
-import { redirect } from "next/navigation"
-import ViewWrapper from "@/components/ViewWrapper"
-import HomeView from "@/components/HomeView"
+import { NextPage } from "next";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
+import ViewWrapper from "@/components/ViewWrapper";
+import HomeView from "@/components/HomeView";
+import { authLink } from "@/utils/authLinkStyles";
 
-const Page: NextPage = async () => {  
-  const { isAuthenticated } = getKindeServerSession()
-  const isLoggedIn = await isAuthenticated()
+const Page: NextPage = async () => {
+  const { isAuthenticated } = getKindeServerSession();
+  const isLoggedIn = await isAuthenticated();
   if (isLoggedIn) {
-    redirect("/chat")
+    redirect("/chat");
   }
-
-  const authLink = `relative flex items-center justify-center rounded-md text-center 
-  h-12 text-base bg-[#ffffff] text-black hover:bg-[#bbbbbb] disabled:bg-zinc-50 font-medium`
 
   return (
     <ViewWrapper>
@@ -22,7 +23,7 @@ const Page: NextPage = async () => {
         <LoginLink className={authLink}>Sign In</LoginLink>
       </HomeView>
     </ViewWrapper>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

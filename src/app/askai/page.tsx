@@ -12,6 +12,7 @@ import Button from "@/components/Button"
 import symptomsKeywords from "@/utils/symptomsKeywords"
 import Caption from "@/components/Caption"
 import logo from "../../../public/pharmchat.svg"
+import Spinner from "@/components/Spinner"
  
 
 
@@ -19,7 +20,7 @@ const Page: FC = () => {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [error, setError] = useState("");
-  const { isAuthenticated } = useKindeBrowserClient();
+  const { isAuthenticated, isLoading } = useKindeBrowserClient();
 
   const isHealthRelated = (text: string) =>
     symptomsKeywords.some(keyword => text.toLowerCase().includes(keyword));
@@ -42,6 +43,11 @@ const Page: FC = () => {
     setIsButtonDisabled(!isHealthRelated(value));
     if (error) setError("");
   };
+
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   if (!isAuthenticated) {
     return (
