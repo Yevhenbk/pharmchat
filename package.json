@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@huggingface/inference": "^2.6.4",
+    "@huggingface/inference": "^4.7.1",
     "@kinde-oss/kinde-auth-nextjs": "^2.1.15",
     "@prisma/client": "^5.10.2",
     "ai": "^2.2.29",
