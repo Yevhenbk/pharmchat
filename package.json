@@ -13,7 +13,7 @@
     "@huggingface/inference": "^2.6.4",
     "@kinde-oss/kinde-auth-nextjs": "^2.1.15",
     "@prisma/client": "^5.10.2",
-    "ai": "^2.2.29",
+    "ai": "^5.0.37",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "next": "14.2.32",
