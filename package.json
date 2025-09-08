@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@huggingface/inference": "^4.7.1",
-    "@kinde-oss/kinde-auth-nextjs": "^2.1.15",
+    "@kinde-oss/kinde-auth-nextjs": "^2.9.0",
     "@prisma/client": "^5.10.2",
     "ai": "^5.0.37",
     "classnames": "^2.5.1",
