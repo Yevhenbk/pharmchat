@@ -73,9 +73,15 @@
 .todays-pos-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 8px 6px;
   border-radius: 8px;
+  flex-wrap: wrap;
+
+  @media (width >= 480px) {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
 }
 
 .todays-pos-icon {

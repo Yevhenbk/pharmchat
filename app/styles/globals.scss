@@ -141,6 +141,13 @@
   --sidebar-expanded-width: 200px;
 }
 
+@media (width < 1024px) {
+  :root {
+    --sidebar-collapsed-width: 0px;
+    --sidebar-expanded-width: 0px;
+  }
+}
+
 /* Tailwind reads from :root — no values duplicated */
 
 @theme inline {

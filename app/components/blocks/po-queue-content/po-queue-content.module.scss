@@ -11,12 +11,16 @@
 .scrollArea {
   display: flex;
   flex-direction: column;
-  padding: 28px 24px 20px;
+  padding: 16px 14px 16px;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   scrollbar-width: none;
   transition: filter var(--transition-extra-fast);
+
+  @media (width >= 640px) {
+    padding: 28px 24px 20px;
+  }
 }
 
 .staggerContent {
@@ -44,11 +48,15 @@
 
 .vendorName {
   font-family: var(--font-sans);
-  font-size: var(--text-3xl);
+  font-size: var(--text-xl);
   font-weight: 400;
   font-style: normal;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
+
+  @media (width >= 640px) {
+    font-size: var(--text-3xl);
+  }
 }
 
 .divider {
@@ -58,8 +66,14 @@
 
 .signalsRow {
   display: flex;
-  gap: 90px;
+  flex-direction: column;
+  gap: 16px;
   align-items: flex-start;
+
+  @media (width >= 768px) {
+    flex-direction: row;
+    gap: 90px;
+  }
 }
 
 .tableSection {
@@ -68,4 +82,5 @@
   gap: 12px;
   flex: 1;
   min-height: 0;
+  overflow-x: auto;
 }

@@ -1,11 +1,14 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { useSession, signOut, signIn } from "next-auth/react";
 
 import { cn } from "@utilities/tailwind";
 import { StackLayersIcon } from "@components/icons/stack-layers";
 import { ProcurementRunIcon } from "@components/icons/procurement-run-icon";
+import { MiraBulbMini } from "@components/icons/mira-bulb-mini";
+import { useDashboardStore } from "@providers/store-provider";
 
 import styles from "./sidebar.module.scss";
 
@@ -28,7 +31,7 @@ function NavItem({
       className={cn(styles.navItem, active && styles.navItemActive)}
     >
       <span className={styles.navIcon}>{icon}</span>
-      {label}
+      <span className={styles.navLabel}>{label}</span>
     </button>
   );
 }
@@ -42,11 +45,14 @@ function UserAvatar({
 }) {
   if (src) {
     return (
-      <img
+      <Image
         src={src}
         alt={name ?? "User"}
+        width={30}
+        height={30}
         className={styles.avatarImg}
         referrerPolicy="no-referrer"
+        unoptimized
       />
     );
   }
@@ -65,6 +71,14 @@ function UserAvatar({
 export function Sidebar({ className }: Props) {
   const { data: session } = useSession();
   const user = session?.user;
+  const openChat = useDashboardStore((state) => state.openChat);
+  const askMiraRef = useRef<HTMLButtonElement>(null);
+
+  const handleAskMiraClick = () => {
+    if (askMiraRef.current) {
+      openChat(askMiraRef.current.getBoundingClientRect());
+    }
+  };
 
   return (
     <aside className={cn(styles.sidebar, className)} data-sidebar>
@@ -91,6 +105,16 @@ export function Sidebar({ className }: Props) {
           icon={<ProcurementRunIcon className="size-full" />}
           label="Order Run"
         />
+        <button
+          ref={askMiraRef}
+          type="button"
+          className={styles.askMiraBtn}
+          onClick={handleAskMiraClick}
+          aria-label="Ask Mira"
+        >
+          <MiraBulbMini className={styles.askMiraBulb} />
+          <span className={styles.navLabel}>Ask Mira</span>
+        </button>
       </nav>
 
       <div className={styles.spacer} />
@@ -112,7 +136,7 @@ export function Sidebar({ className }: Props) {
               strokeLinecap="round"
             />
           </svg>
-          Settings
+          <span className={styles.footerBtnLabel}>Settings</span>
         </button>
 
         <button type="button" className={styles.footerBtn}>
@@ -129,7 +153,7 @@ export function Sidebar({ className }: Props) {
               strokeLinejoin="round"
             />
           </svg>
-          Contact
+          <span className={styles.footerBtnLabel}>Contact</span>
         </button>
 
         <div className={styles.divider} />

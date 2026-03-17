@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { cn } from "@utilities/tailwind";
 import { ChatTextIcon } from "@components/icons/chat-text-icon";
-import { AskMiraMicIcon } from "@components/icons/ask-mira-mic-icon";
 import { AskMiraBulbIcon } from "@components/icons/ask-mira-bulb-icon";
 import styles from "./ask-mira-widget.module.scss";
 
@@ -14,7 +13,6 @@ interface Props {
 
 export function AskMiraWidget({ className, onClick }: Props) {
   const widgetRef = useRef<HTMLDivElement>(null);
-  const [isListening, setIsListening] = useState(false);
 
   const handleChatClick = () => {
     if (!onClick || !widgetRef.current) {
@@ -24,40 +22,22 @@ export function AskMiraWidget({ className, onClick }: Props) {
     onClick(widgetRef.current.getBoundingClientRect());
   };
 
-  const handleMicClick = () => {
-    setIsListening((previous) => !previous);
-  };
-
   return (
-    <div ref={widgetRef} className={cn(styles.widget, className)}>
+    <div ref={widgetRef} className={cn(styles.widget, className)} onClick={handleChatClick}>
       <header className={styles.header}>
-        <span className={styles.title}>Ask Mira</span>
-
-        <div className={styles.controls}>
-          <button
-            type="button"
-            className={styles.controlButton}
-            aria-label="Chat"
-            onClick={handleChatClick}
-          >
-            <ChatTextIcon className={styles.controlIcon} />
-          </button>
-
-          <button
-            type="button"
-            className={styles.controlButton}
-            aria-label="Microphone"
-            onClick={handleMicClick}
-          >
-            <AskMiraMicIcon className={styles.controlIcon} />
-          </button>
-        </div>
+        <button
+          type="button"
+          className={styles.controlButton}
+          aria-label="Chat"
+          onClick={handleChatClick}
+        >
+          <ChatTextIcon className={styles.controlIcon} />
+          <span className={styles.title}>Ask Mira</span>
+        </button>
       </header>
 
       <div className={styles.canvas}>
-        <AskMiraBulbIcon
-          className={cn(styles.bulb, isListening && styles.bulbListening)}
-        />
+        <AskMiraBulbIcon className={styles.bulb} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@
   overflow: clip;
   flex: 1;
   min-height: 0;
+  min-width: 560px;
 }
 
 .tableScrollArea {
@@ -23,7 +24,11 @@
   display: grid;
   grid-template-columns: var(--grid-columns);
   gap: 16px;
-  padding: 10px 32px;
+  padding: 10px 16px;
+
+  @media (width >= 768px) {
+    padding: 10px 32px;
+  }
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 0.03) 0%,
@@ -71,7 +76,11 @@
   display: grid;
   grid-template-columns: var(--grid-columns);
   gap: 16px;
-  padding: 18px 32px;
+  padding: 14px 16px;
+
+  @media (width >= 768px) {
+    padding: 18px 32px;
+  }
   align-items: center;
   transition: background-color var(--transition-fast);
 
@@ -175,7 +184,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 12px 16px;
+
+  @media (width >= 768px) {
+    padding: 16px 32px;
+  }
   flex-shrink: 0;
   background: var(--color-card-bg);
   border-top: 1px solid var(--color-border-subtle);
@@ -207,7 +220,11 @@
   align-items: center;
   justify-content: center;
   height: 44px;
-  padding: 0 32px;
+  padding: 0 20px;
+
+  @media (width >= 768px) {
+    padding: 0 32px;
+  }
   border-radius: var(--radius-md);
   background: var(--color-mira-olive);
   color: #fff;

@@ -51,20 +51,20 @@ export function DashboardContent() {
     <div className="flex h-screen overflow-hidden bg-page-bg">
       <Sidebar />
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col overflow-y-auto pb-16 lg:overflow-hidden lg:pb-0">
         <PageHeader />
 
-        <main className="flex min-h-0 flex-1 flex-wrap gap-4 overflow-hidden px-[30px] py-6 lg:flex-nowrap">
-          <div className="order-first flex w-full shrink-0 flex-row gap-3 lg:order-last lg:w-auto lg:shrink lg:flex-col">
-            <StatsPanel className="min-h-0 flex-1 lg:flex-1" />
+        <main className="flex flex-col gap-3 px-3 py-3 sm:px-5 sm:py-4 md:px-6 lg:min-h-0 lg:flex-1 lg:flex-row lg:flex-nowrap lg:gap-4 lg:overflow-hidden lg:px-[30px] lg:py-6">
+          <div className="flex w-full shrink-0 flex-col gap-3 sm:flex-row lg:order-last lg:w-auto lg:shrink lg:flex-col lg:min-h-0">
+            <StatsPanel className="min-h-0 sm:flex-1 lg:flex-1" />
             <AskMiraWidget
-              className="flex-[0.4] opacity-0 animate-[fade-in_1000ms_ease_1200ms_forwards] lg:flex-none"
+              className="sm:flex-[0.4] sm:opacity-0 sm:animate-[fade-in_1000ms_ease_1200ms_forwards] lg:flex-1 lg:min-h-0"
               onClick={(rect) => openChat(rect)}
             />
           </div>
 
           <ActionPanel
-            className="min-h-0 flex-1 overflow-y-auto"
+            className="lg:min-h-0 lg:flex-1 lg:overflow-y-auto"
             poCount={remainingVendors.length}
             onOpenPOQueue={handleOpenPOQueue}
             onOpenAction={handleOpenAction}

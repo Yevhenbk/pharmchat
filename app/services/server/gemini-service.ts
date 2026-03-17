@@ -334,6 +334,7 @@ export class GeminiService {
     const results: Array<VendorOrder | null> = [];
 
     for (const email of supplierEmails) {
+      // eslint-disable-next-line no-await-in-loop
       const vendor = await parseWithRetry({ client, email });
 
       if (vendor === "rate-limited") {
@@ -389,12 +390,9 @@ export class GeminiService {
     const client = new Groq({ apiKey });
     const analyses: Record<string, LiveEmailAnalysis> = {};
 
-    // eslint-disable-next-line no-await-in-loop
     for (const email of targetEmails) {
-      // eslint-disable-next-line no-restricted-syntax
       let succeeded = false;
 
-      // eslint-disable-next-line no-restricted-syntax, no-await-in-loop
       for (let attempt = 1; attempt <= ANALYSIS_MAX_RETRIES; attempt += 1) {
         try {
           // eslint-disable-next-line no-await-in-loop

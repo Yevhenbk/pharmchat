@@ -31,7 +31,7 @@ function ActivityCardSkeleton() {
       <div className="skeleton-shimmer h-9 w-9 shrink-0 rounded-md" />
 
       <div className="flex min-w-0 flex-1 items-center justify-between gap-8">
-        <div className="min-w-[400px]">
+        <div className="min-w-0 flex-1">
           <div className="skeleton-shimmer h-3.5 w-3/4 rounded" />
           <div className="skeleton-shimmer mt-1.5 h-3 w-1/2 rounded" />
         </div>

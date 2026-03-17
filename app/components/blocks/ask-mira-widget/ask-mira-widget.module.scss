@@ -8,14 +8,30 @@ $icon-size: 22px;
 .widget {
   @include mira-surface.mira-surface;
 
-  position: relative;
-  width: 280px;
-  border-radius: 12px;
-  border: 1px solid var(--color-border-subtle);
+  /* Mobile: hidden — Ask Mira is in the bottom nav bar */
+  display: none;
+
+  @media (width >= 640px) {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: auto;
+    box-shadow: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: linear-gradient(154deg, #eef2e6 10%, #e6eedd 54%, #dce8cc 98%);
+    }
+  }
 
   @media (width >= 1024px) {
-    height: 365px;
-    flex: 0 0 auto;
+    width: 280px;
   }
 
   @media (width >= 1536px) {
@@ -33,39 +49,25 @@ $icon-size: 22px;
 }
 
 .header {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 12px 8px 16px;
-  flex-shrink: 0;
-}
+  display: none;
 
-.title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: $title-font-size;
-  line-height: 100%;
-  text-align: center;
-  color: var(--color-icon-stats);
-}
-
-/* Separate circular buttons, side by side */
-.controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+  @media (width >= 640px) {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    padding: 12px 12px 8px 12px;
+    flex-shrink: 0;
+  }
 }
 
 .controlButton {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 7px;
+  gap: 8px;
+  padding: 6px 10px 6px 8px;
   border: none;
-  border-radius: 50%;
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -82,14 +84,14 @@ $icon-size: 22px;
     color 0.2s ease,
     box-shadow 0.2s ease;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.45);
-    box-shadow:
-      inset 0 0.5px 0 0 rgba(255, 255, 255, 0.7),
-      inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.15),
-      0 2px 6px rgba(0, 0, 0, 0.08);
-    color: var(--color-text-primary);
-  }
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: $title-font-size;
+  line-height: 100%;
+  color: var(--color-icon-stats);
 }
 
 .controlButton:focus-visible {
@@ -112,8 +114,16 @@ $icon-size: 22px;
   align-items: center;
   justify-content: center;
   min-height: 0;
-  padding: 0 11px;
-  pointer-events: none;
+  padding: 6px;
+
+  @media (width >= 640px) {
+    padding: 0 11px;
+    max-height: 220px;
+  }
+
+  @media (width >= 1024px) {
+    max-height: none;
+  }
 }
 
 /* Idle: fade in on load, then static */

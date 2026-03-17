@@ -14,15 +14,15 @@ $short-screen-height: 940px;
 
 .panel {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 12px;
   flex-shrink: 0;
   background-color: var(--color-card-bg);
   animation: none;
 
   @media (width >= 1024px) {
-    flex-direction: column;
     width: 280px;
+    height: 100%;
   }
 
   @media (width >= 1536px) {
@@ -46,30 +46,22 @@ $short-screen-height: 940px;
 }
 
 .statsSectionFirst {
-  flex: 0.7 0 0;
+  flex: 0 0 auto;
   opacity: 0;
   animation: panel-fade-in 1000ms ease-out 800ms forwards;
 
   @media (width >= 1024px) {
-    flex: 0 0 auto;
-  }
-
-  @media (height < $short-screen-height) {
-    flex: 1 1 auto;
+    display: none;
   }
 }
 
 .statsSectionSecond {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-height: 0;
   opacity: 0;
   animation: panel-fade-in 1000ms ease-out 1000ms forwards;
 
-  @media (width >= 1024px) {
-    flex: 1 1 auto;
-  }
-
-  @media (height < $short-screen-height) {
+  @media (width < 1024px) {
     display: none;
   }
 }

@@ -5,6 +5,16 @@
   overflow: hidden;
   position: relative;
   border: 1px solid #eaede3;
+  width: 100%;
+
+  @media (width >= 1024px) {
+    width: 320px;
+    flex-shrink: 0;
+  }
+
+  @media (width >= 1536px) {
+    width: 380px;
+  }
 }
 
 .scrollArea {
@@ -12,11 +22,15 @@
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  padding: 24px 28px;
+  padding: 16px 16px;
   scrollbar-width: none;
   mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 100%);
   background-color: #ffffff;
   height: 100%;
+
+  @media (width >= 1024px) {
+    padding: 24px 28px;
+  }
 }
 
 .header {
@@ -33,14 +47,20 @@
 
 .topBar {
   position: sticky;
-  top: -24px;
+  top: -16px;
   z-index: 1;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin: -24px -28px 0;
-  padding: 24px 28px 14px;
+  margin: -16px -16px 0;
+  padding: 16px 16px 14px;
+
+  @media (width >= 1024px) {
+    top: -24px;
+    margin: -24px -28px 0;
+    padding: 24px 28px 14px;
+  }
 }
 
 .list {

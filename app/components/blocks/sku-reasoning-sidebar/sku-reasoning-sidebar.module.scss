@@ -10,9 +10,17 @@
 
 .cardInner {
   flex: 0 0 auto;
-  width: 413px;
+  width: calc(100vw - 40px);
   min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  @media (width >= 640px) {
+    width: 380px;
+  }
+
+  @media (width >= 1024px) {
+    width: 413px;
+  }
 }

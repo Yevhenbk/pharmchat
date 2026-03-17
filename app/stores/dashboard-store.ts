@@ -430,18 +430,23 @@ export function createDashboardStore(repositories: Repositories) {
         fetchParsedProcurement(),
       ]);
 
+      const uniqueParsedVendors = parsedVendors.filter(
+        (vendor, index, array) =>
+          array.findIndex((v) => v.id === vendor.id) === index,
+      );
+
       const procurementData =
-        parsedVendors.length > 0
+        uniqueParsedVendors.length > 0
           ? {
-              vendors: parsedVendors,
+              vendors: uniqueParsedVendors,
               stats: {
-                purchaseOrderCount: parsedVendors.length,
-                supplierCount: parsedVendors.length,
-                proposedSpend: parsedVendors.reduce(
+                purchaseOrderCount: uniqueParsedVendors.length,
+                supplierCount: uniqueParsedVendors.length,
+                proposedSpend: uniqueParsedVendors.reduce(
                   (sum, v) => sum + v.value,
                   0,
                 ),
-                stockOutsAtRisk: parsedVendors.reduce(
+                stockOutsAtRisk: uniqueParsedVendors.reduce(
                   (count, v) =>
                     count +
                     v.lineItems.filter(
@@ -481,14 +486,14 @@ export function createDashboardStore(repositories: Repositories) {
         nationalShortages,
       });
 
-      if (parsedVendors.length > 0) {
-        const count = parsedVendors.length;
+      if (uniqueParsedVendors.length > 0) {
+        const count = uniqueParsedVendors.length;
 
         get().logActivity({
           title: `${count} supplier order${count === 1 ? "" : "s"} extracted`,
           description: "Mira processed incoming supplier emails",
           icon: "email",
-          poNumber: parsedVendors[0].poSummary.poNumber.replace(/^PO-/i, ""),
+          poNumber: uniqueParsedVendors[0].poSummary.poNumber.replace(/^PO-/i, ""),
         });
       }
 

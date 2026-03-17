@@ -24,8 +24,18 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  padding: 24px 30px;
-  gap: 16px;
+  padding: 14px 16px;
+  gap: 12px;
+
+  @media (width >= 640px) {
+    padding: 20px 24px;
+    gap: 14px;
+  }
+
+  @media (width >= 1024px) {
+    padding: 24px 30px;
+    gap: 16px;
+  }
 }
 
 @property --card-border-angle {
