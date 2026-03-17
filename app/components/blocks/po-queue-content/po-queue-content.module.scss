@@ -1,0 +1,71 @@
+.container {
+  --demand-summary-max-width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrollArea {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 20px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  transition: filter var(--transition-extra-fast);
+}
+
+.staggerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+.scrollAreaBlurred {
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.deleteModalWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-modal-blur-wrapper-bg);
+}
+
+.vendorName {
+  font-family: var(--font-sans);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+.signalsRow {
+  display: flex;
+  gap: 90px;
+  align-items: flex-start;
+}
+
+.tableSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}

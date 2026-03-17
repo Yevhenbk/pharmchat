@@ -1,0 +1,187 @@
+@use "@styles/mira-surface";
+
+$title-font-size: var(--text-lg);
+$button-size: 32px;
+$icon-size: 22px;
+
+/* Outer card — layered: gradient base + noise + white overlay */
+.widget {
+  @include mira-surface.mira-surface;
+
+  position: relative;
+  width: 280px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-subtle);
+
+  @media (width >= 1024px) {
+    height: 365px;
+    flex: 0 0 auto;
+  }
+
+  @media (width >= 1536px) {
+    width: 340px;
+  }
+
+  &::before {
+    z-index: 1;
+  }
+
+  &::after {
+    z-index: 2;
+    border-radius: 12px;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 8px 16px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: $title-font-size;
+  line-height: 100%;
+  text-align: center;
+  color: var(--color-icon-stats);
+}
+
+/* Separate circular buttons, side by side */
+.controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  color: var(--color-text-muted-secondary);
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow:
+      inset 0 0.5px 0 0 rgba(255, 255, 255, 0.7),
+      inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.08);
+    color: var(--color-text-primary);
+  }
+}
+
+.controlButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-info) 40%, transparent);
+  outline-offset: 1px;
+}
+
+.controlIcon {
+  display: block;
+  width: $icon-size;
+  height: $icon-size;
+}
+
+/* Canvas: bulb centered in the card */
+.canvas {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 0 11px;
+  pointer-events: none;
+}
+
+/* Idle: fade in on load, then static */
+.bulb {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  opacity: 0;
+  scale: 0.9;
+  animation: mira-enter 1.2s ease-out 0.6s forwards;
+  transition:
+    opacity 0.6s ease,
+    scale 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* Listening: boosted opacity + active animation */
+.bulbListening {
+  opacity: 1;
+  animation:
+    mira-enter 1.2s ease-out 0.6s forwards,
+    mira-listen-pulse 2s ease-in-out infinite,
+    mira-listen-rotate 8s linear infinite;
+  filter: drop-shadow(0 0 16px rgba(236, 193, 183, 0.5));
+}
+
+@keyframes mira-enter {
+  0% {
+    opacity: 0;
+    scale: 0.9;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes mira-listen-pulse {
+  0%,
+  100% {
+    scale: 0.96;
+  }
+
+  50% {
+    scale: 1.06;
+  }
+}
+
+@keyframes mira-listen-rotate {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bulb,
+  .bulbListening {
+    animation: none;
+    opacity: 1;
+    scale: 1;
+  }
+}

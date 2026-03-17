@@ -1,0 +1,288 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 28px 20px;
+  height: 100%;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ── Email card ──────────────────────────────────────────── */
+
+.emailCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  background: var(--color-card-bg);
+  overflow: hidden;
+}
+
+.emailMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.metaRow {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 5px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+}
+
+.metaLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  width: 52px;
+}
+
+.metaValue {
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.metaValueSubject {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.emailFrame {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.emailBody {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.emailLine {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* ── Shared placeholder card shell ───────────────────────── */
+
+.placeholderCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 18px 20px;
+  background: var(--color-card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.placeholderLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Parsed data grid ────────────────────────────────────── */
+
+.placeholderGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 24px;
+}
+
+.placeholderField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.placeholderFieldLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.placeholderFieldValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted-secondary);
+  font-style: italic;
+}
+
+.fieldValue {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* ── Impact chips ────────────────────────────────────────── */
+
+.impactChips {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.impactChip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 100px;
+  padding: 10px 14px;
+  border-radius: var(--radius-xl);
+  background: rgba(0, 0, 0, 0.025);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.impactChipLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.impactChipValue {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted-secondary);
+  font-style: italic;
+}
+
+/* ── Recommended actions list ────────────────────────────── */
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actionItem {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.actionNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-mira-olive);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.actionLabel {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* ── Consequence panels ──────────────────────────────────── */
+
+.consequenceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.consequenceIgnored {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 100px;
+  background: var(--color-order-card-bg);
+}
+
+.consequenceActioned {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 100px;
+  background: linear-gradient(
+    159.86deg,
+    #f8f8f6 9.98%,
+    #f4f4f1 53.76%,
+    #eeede9 97.69%
+  );
+}
+
+.consequenceLabel {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.consequencePlaceholder {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted-secondary);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.consequenceText {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}

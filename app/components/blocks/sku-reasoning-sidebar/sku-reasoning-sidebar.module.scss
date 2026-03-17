@@ -1,0 +1,18 @@
+.cardPlaceholder {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  padding: 20px;
+  z-index: 21;
+}
+
+.cardInner {
+  flex: 0 0 auto;
+  width: 413px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

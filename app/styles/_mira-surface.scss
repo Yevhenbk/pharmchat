@@ -1,0 +1,26 @@
+/// Shared Mira surface treatment: warm gradient + noise texture + subtle tint.
+/// Use on any element that needs the premium clinical card look.
+
+@mixin mira-surface {
+  background: linear-gradient(154deg, #f8f8f6 10%, #f4f4f1 54%, #eeede9 98%);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/noise-texture.png");
+    background-size: 75px 107px;
+    background-position: top left;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+}

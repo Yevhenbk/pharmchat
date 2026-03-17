@@ -1,0 +1,243 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionLabelLarge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 21px;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+
+  &::after {
+    content: "";
+    width: 100%;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.scheduleCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  background: transparent;
+  min-height: 265px;
+}
+
+.scheduleHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.scheduleTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.earlyBadge {
+  font-family: var(--font-sans);
+  font-size: var(--text-chip);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-success-subtle);
+  color: var(--color-success);
+  letter-spacing: 0.03em;
+}
+
+.scheduleFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scheduleField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scheduleLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.scheduleValue {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-success);
+}
+
+.scheduleValueStrikethrough {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.actionsCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.actionsTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.actionCheckbox {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  accent-color: var(--color-mira-olive);
+  flex-shrink: 0;
+}
+
+.actionLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.itemsTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemsHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+
+  > span {
+    flex: 1;
+  }
+}
+
+.itemsHeaderCenter {
+  text-align: center;
+}
+
+.itemsHeaderRight {
+  text-align: right;
+}
+
+.itemRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > * {
+    flex: 1;
+  }
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemSku {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 500;
+  color: var(--color-mira-purple);
+}
+
+.itemName {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.itemQty {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.itemSubtotal {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  text-align: right;
+}
+
+.itemsTotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0 0;
+  margin-top: 4px;
+}
+
+.itemsTotalLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-total-label);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.itemsTotalValue {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,249 @@
+.shortageAlert {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    159.86deg,
+    #f8f8f6 9.98%,
+    #f4f4f1 53.76%,
+    #eeede9 97.69%
+  );
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shortageAlertTitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-mira-olive);
+}
+
+.shortageAlertText {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+.clinicalAlert {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    159.86deg,
+    #faf8f7 9.98%,
+    #f5efed 53.76%,
+    #ede7e4 97.69%
+  );
+  padding: 14px 18px;
+}
+
+.clinicalAlertText {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-critical);
+  line-height: 1.6;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.comparisonCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  height: 348px;
+  padding: 16px 20px;
+  background: var(--color-order-card-bg);
+}
+
+.comparisonCardHighlight {
+  border: 1.5px solid var(--color-mira-purple);
+  border-radius: var(--radius-2xl);
+  height: 348px;
+  padding: 16px 20px;
+  background: var(--color-card-bg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.comparisonLabel {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.04);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.comparisonVendor {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.comparisonFields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  height: 100%;
+  padding-bottom: 70px;
+}
+
+.comparisonRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.comparisonFieldLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.comparisonFieldValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  font-style: normal;
+  color: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
+}
+
+.comparisonFieldValueSku {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  font-style: normal;
+  color: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
+}
+
+.comparisonCardHighlight .comparisonLabel {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-mira-olive);
+}
+
+.comparisonCardHighlight .comparisonVendor {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+
+.comparisonCardHighlight .comparisonFieldLabel {
+  color: var(--color-text-primary);
+}
+
+.comparisonCardHighlight .comparisonFieldValue,
+.comparisonCardHighlight .comparisonFieldValueSku {
+  color: var(--color-text-primary);
+}
+
+.comparisonCardHighlight .deltaPositive {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-critical);
+}
+
+.deltaPositive {
+  color: var(--color-critical);
+  font-size: var(--text-2xs);
+}
+
+.consequenceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.consequenceRejected {
+  border: none;
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 126px;
+  background: var(--color-order-card-bg);
+}
+
+.consequenceApproved {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 126px;
+  background: linear-gradient(
+    159.86deg,
+    #f8f8f6 9.98%,
+    #f4f4f1 53.76%,
+    #eeede9 97.69%
+  );
+}
+
+.consequenceLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.consequenceItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.consequenceTag {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-style: normal;
+  padding: 3px 8px;
+  border-radius: var(--radius-md);
+  background: rgba(122, 61, 61, 0.07);
+  color: var(--color-critical-label);
+}
+
+.consequenceApproved .consequenceTag {
+  background: rgba(107, 122, 61, 0.08);
+  color: var(--color-mira-olive);
+}
+
+.consequenceText {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}

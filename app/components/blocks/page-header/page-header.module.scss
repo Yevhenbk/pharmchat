@@ -1,0 +1,65 @@
+/* ── Animations ─────────────────────────────────────────── */
+
+@keyframes slide-in-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-header-text {
+  opacity: 0;
+  animation: slide-in-from-left 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms
+    forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ── Layout ────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 30px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  overflow: visible;
+  margin-bottom: 20px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.header-title {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+}
+
+.header-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.divider {
+  height: 1px;
+  background: #eaede3;
+}

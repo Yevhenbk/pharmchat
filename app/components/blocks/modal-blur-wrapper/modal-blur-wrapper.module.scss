@@ -1,0 +1,8 @@
+.wrapper {
+  background: var(--color-modal-blur-wrapper-bg);
+  padding: 20px;
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(4px);
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+}

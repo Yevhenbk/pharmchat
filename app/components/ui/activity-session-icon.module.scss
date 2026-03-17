@@ -1,0 +1,48 @@
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.travelingBorder {
+  position: relative;
+  border-radius: 14px;
+  isolation: isolate;
+  box-shadow: 0 0 10px 1px color-mix(in srgb, var(--travel-color) 30%, transparent);
+}
+
+.travelingBorder::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  background: conic-gradient(
+    from var(--border-angle),
+    var(--travel-color-0) 0deg,
+    var(--travel-color) 60deg,
+    var(--travel-color-0) 120deg,
+    var(--travel-color-0) 360deg
+  );
+  background-origin: border-box;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-border 3s linear infinite;
+}
+
+.travelingBorder > * {
+  position: relative;
+}
+
+@keyframes rotate-border {
+  to {
+    --border-angle: 360deg;
+  }
+}

@@ -1,0 +1,373 @@
+@use "tailwindcss";
+
+/*
+ * Single source of truth for all design tokens.
+ * :root makes them available to SCSS modules at runtime.
+ * @theme inline tells Tailwind to generate utilities that reference these vars.
+ */
+
+:root {
+  /* ── Fonts ──────────────────────────────────────────────── */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-display: var(--font-sans);
+  --font-label: var(--font-sans);
+  --font-mono: var(--font-sans);
+
+  /* ── Colors ─────────────────────────────────────────────── */
+  --color-page-bg: #ffffff;
+  --color-card-bg: #ffffff;
+  --color-input-bg: #f8f8f8;
+  --color-sidebar-bg: #ffffff;
+
+  --color-text-primary: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-muted-secondary: #94a3b8;
+  --color-info-icon-border: #94a3b8;
+  --color-modal-blur-wrapper-bg: #d5d5d54a;
+  --color-icon-stats: #0f172a;
+
+  --color-brand-green: #142f08;
+
+  --color-border-subtle: #d6dace;
+  --color-call-live-border: #69c23ead;
+  --color-email: #0f172a;
+  --color-email-live-border: rgba(15, 23, 42, 0.64);
+
+  --color-border: #94a3b8;
+  --color-border-strong: #0f172a;
+
+  --color-delete: #b85c5c;
+  --color-success-subtle: rgba(107, 122, 61, 0.07);
+  --color-approved-bg: rgba(107, 122, 61, 0.06);
+  --color-approved-badge-bg: rgba(107, 122, 61, 0.12);
+  --color-text-dimmed: rgba(15, 23, 42, 0.65);
+  --color-text-faded: #94a3b8;
+  --color-critical: #7a3d3d;
+  --color-critical-label: #9e4545;
+  --color-warning: #d97706;
+  --color-warning-dark: #b45309;
+  --color-info: #334155;
+  --color-success: #6b7a3d;
+  --color-live: #9e4545;
+  --color-fyi: #2d6913;
+
+  /* Stats panel */
+  --color-stats-border: #28282a;
+  --color-stats-glance-right: #f6eef4;
+  --color-stats-glance-left: #edecef;
+
+  /* Mira AI brand */
+  --color-mira-olive: #6b7a3d;
+  --color-mira-purple: #6b7a3d;
+  --color-mira-secondary: #546c9a;
+
+  /* Chat input */
+  --color-chat-input-bg: rgba(238, 240, 235, 0.75);
+
+  /* Ask Mira chat */
+  --color-chat-gradient-start: #ecdfda;
+  --color-chat-gradient-end: #c8c9c5;
+  --color-chat-input-glow: rgba(236, 193, 183, 0.55);
+
+  /* Ask Mira widget */
+  --color-ask-mira-bg: linear-gradient(159.86deg, #f8f8f6 9.98%, #f4f4f1 53.76%, #eeede9 97.69%);
+  --color-ask-mira-inner: rgba(255, 255, 255, 0.07);
+
+  /* Why Order Card — icon colors */
+  --color-why-order-star-halo: #dcccff;
+  --color-why-order-demand: #334155;
+  --color-why-order-inventory: #64748b;
+  --color-why-order-lead-time: #f59e0b;
+  --color-why-order-lead-time-accent: #fbbf24;
+  --color-why-order-delivery: #8b5cf6;
+
+  /* Order cancelled — original order card */
+  --color-order-card-bg: #f9f9f9;
+  --color-order-card-border: #d6dace;
+
+  /* Why Order Card — icon wrapper backgrounds */
+  --color-why-order-demand-bg: #f1f3f0;
+  --color-why-order-inventory-bg: #f1f3f0;
+  --color-why-order-lead-time-bg: #fffbeb;
+  --color-why-order-shield-bg: #f0fdf4;
+  --color-why-order-delivery-bg: #f5f3ff;
+
+  /* ── Font Sizes (smallest → largest) ────────────────────── */
+  --text-3xs: 7.5px;
+  --text-qty-delta: 8px;
+  --text-chip: 11px;
+  --text-2xs: 12px;
+  --text-xs: 14px;
+  --text-sm: 15px;
+  --text-table: 15px;
+  --text-base: 16px;
+  --text-mono-body: 17px;
+  --text-md: 18px;
+  --text-lg: 18px;
+  --text-total: 19px;
+  --text-xl: 22px;
+  --text-total-label: 23px;
+  --text-2xl: 26px;
+  --text-3xl: 34px;
+  --text-4xl: 36px;
+
+  /* ── Border Radii ───────────────────────────────────────── */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 5px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-full: 20px;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-card: 1px 1px 20px 2px #eef0eb;
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms ease;
+  --transition-extra-fast: 200ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ── Root-only tokens (no Tailwind utilities needed) ────── */
+  --color-shimmer-edge: rgba(236, 223, 218, 0.15);
+  --color-critical-icon: #9e4545;
+  --color-critical-icon-bg: rgba(122, 61, 61, 0.05);
+  --color-icon-warning-bg: rgba(255, 251, 235, 0.6);
+  --color-icon-success-bg: rgba(107, 122, 61, 0.06);
+
+  --sidebar-collapsed-width: 200px;
+  --sidebar-expanded-width: 200px;
+}
+
+/* Tailwind reads from :root — no values duplicated */
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --font-label: var(--font-label);
+  --font-mono: var(--font-mono);
+
+  --color-page-bg: var(--color-page-bg);
+  --color-card-bg: var(--color-card-bg);
+  --color-input-bg: var(--color-input-bg);
+  --color-sidebar-bg: var(--color-sidebar-bg);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-muted-secondary: var(--color-text-muted-secondary);
+  --color-info-icon-border: var(--color-info-icon-border);
+  --color-modal-blur-wrapper-bg: var(--color-modal-blur-wrapper-bg);
+  --color-icon-stats: var(--color-icon-stats);
+  --color-brand-green: var(--color-brand-green);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-call-live-border: var(--color-call-live-border);
+  --color-email: var(--color-email);
+  --color-email-live-border: var(--color-email-live-border);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-delete: var(--color-delete);
+  --color-success-subtle: var(--color-success-subtle);
+  --color-approved-bg: var(--color-approved-bg);
+  --color-approved-badge-bg: var(--color-approved-badge-bg);
+  --color-text-dimmed: var(--color-text-dimmed);
+  --color-text-faded: var(--color-text-faded);
+  --color-critical: var(--color-critical);
+  --color-critical-label: var(--color-critical-label);
+  --color-warning: var(--color-warning);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-info: var(--color-info);
+  --color-success: var(--color-success);
+  --color-live: var(--color-live);
+  --color-fyi: var(--color-fyi);
+  --color-stats-border: var(--color-stats-border);
+  --color-stats-glance-right: var(--color-stats-glance-right);
+  --color-stats-glance-left: var(--color-stats-glance-left);
+  --color-mira-olive: var(--color-mira-olive);
+  --color-mira-purple: var(--color-mira-purple);
+  --color-mira-secondary: var(--color-mira-secondary);
+  --color-chat-input-bg: var(--color-chat-input-bg);
+  --color-chat-gradient-start: var(--color-chat-gradient-start);
+  --color-chat-gradient-end: var(--color-chat-gradient-end);
+  --color-chat-input-glow: var(--color-chat-input-glow);
+  --color-ask-mira-bg: var(--color-ask-mira-bg);
+  --color-ask-mira-inner: var(--color-ask-mira-inner);
+  --color-why-order-star-halo: var(--color-why-order-star-halo);
+  --color-why-order-demand: var(--color-why-order-demand);
+  --color-why-order-inventory: var(--color-why-order-inventory);
+  --color-why-order-lead-time: var(--color-why-order-lead-time);
+  --color-why-order-lead-time-accent: var(--color-why-order-lead-time-accent);
+  --color-why-order-delivery: var(--color-why-order-delivery);
+  --color-order-card-bg: var(--color-order-card-bg);
+  --color-order-card-border: var(--color-order-card-border);
+  --color-why-order-demand-bg: var(--color-why-order-demand-bg);
+  --color-why-order-inventory-bg: var(--color-why-order-inventory-bg);
+  --color-why-order-lead-time-bg: var(--color-why-order-lead-time-bg);
+  --color-why-order-shield-bg: var(--color-why-order-shield-bg);
+  --color-why-order-delivery-bg: var(--color-why-order-delivery-bg);
+
+  --text-2xs: var(--text-2xs);
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+  --text-3xs: var(--text-3xs);
+  --text-chip: var(--text-chip);
+  --text-md: var(--text-md);
+  --text-mono-body: var(--text-mono-body);
+  --text-table: var(--text-table);
+  --text-total: var(--text-total);
+  --text-total-label: var(--text-total-label);
+  --text-qty-delta: var(--text-qty-delta);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  --shadow-card: var(--shadow-card);
+
+  --transition-fast: var(--transition-fast);
+  --transition-extra-fast: var(--transition-extra-fast);
+  --transition-base: var(--transition-base);
+  --transition-slow: var(--transition-slow);
+
+  --animate-fade-in: fade-in var(--transition-base) both;
+  --animate-slide-in-right: slide-in-right var(--transition-slow) both;
+  --animate-slide-up: slide-up var(--transition-base) both;
+  --animate-pulse-live: pulse-live 2s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.5s ease-in-out infinite;
+  --animate-modal-open: modal-open 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-modal-close: modal-close 350ms cubic-bezier(0.4, 0, 1, 1) both;
+
+  --sidebar-collapsed-width: var(--sidebar-collapsed-width);
+  --sidebar-expanded-width: var(--sidebar-expanded-width);
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-live {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes modal-open {
+  from {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-close {
+  from {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(4px) scale(0.98);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ── Reset & Base ───────────────────────────────────────── */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Hide scrollbars on scrollable panels (not globally) ── */
+.hide-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Shared Utilities ───────────────────────────────────── */
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-shimmer-edge) 25%,
+    var(--color-card-bg) 50%,
+    var(--color-shimmer-edge) 75%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: var(--radius-md);
+}

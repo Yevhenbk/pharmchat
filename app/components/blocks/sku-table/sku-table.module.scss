@@ -1,0 +1,225 @@
+.wrapper {
+  --grid-columns: 2.5fr 1fr 1fr 1fr 1fr 0.5fr;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: clip;
+  flex: 1;
+  min-height: 0;
+}
+
+.tableScrollArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: 16px;
+  padding: 10px 32px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.03) 0%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
+}
+
+.headerCell {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+
+  &:nth-child(1) {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  &:nth-child(2),
+  &:nth-child(3),
+  &:nth-child(4),
+  &:nth-child(5) {
+    justify-content: center;
+    text-align: center;
+  }
+
+  &:nth-child(6) {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: 16px;
+  padding: 18px 32px;
+  align-items: center;
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  & + & {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+}
+
+.cellSku {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.skuStack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.skuCodeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skuCode {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-mira-purple);
+}
+
+.skuName {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.iconButtonDelete {
+  width: 16px;
+  height: 16px;
+  color: var(--color-info-icon-border);
+
+  &:hover {
+    color: var(--color-critical);
+  }
+}
+
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  flex-shrink: 0;
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.tableFooterLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tableFooterCount {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+.tableFooterTotal {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tableFooterConfirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 32px;
+  border-radius: var(--radius-md);
+  background: var(--color-mira-olive);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+  letter-spacing: 0.01em;
+
+  &:hover {
+    opacity: 0.88;
+  }
+}

@@ -1,0 +1,38 @@
+.bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+.itemValue {
+  font-family: var(--font-sans);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.itemSub {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text-muted);
+}

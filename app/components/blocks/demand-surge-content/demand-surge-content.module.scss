@@ -1,0 +1,265 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tableGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.tableCard {
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  background: var(--color-order-card-bg);
+
+  .tableLabel {
+    background: var(--color-card-bg);
+    color: var(--color-text-primary);
+  }
+
+  .skuCode {
+    color: var(--color-text-dimmed);
+  }
+
+  .skuName {
+    color: var(--color-text-faded);
+  }
+
+  .qtyCell,
+  .subtotalCell {
+    color: var(--color-text-dimmed);
+  }
+}
+
+.tableCardHighlight {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  background: var(--color-order-card-bg);
+
+  .tableLabel {
+    background: rgba(107, 122, 61, 0.08);
+    color: var(--color-mira-olive);
+  }
+
+  .skuCode {
+    color: var(--color-text-primary);
+  }
+
+  .skuName {
+    color: var(--color-border);
+  }
+
+  .qtyCell,
+  .subtotalCell {
+    color: var(--color-text-primary);
+  }
+}
+
+.tableLabel {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.tableVendor {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.tableHeaderRight {
+  text-align: right;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.skuCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.skuCode {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 500;
+}
+
+.skuName {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.qtyCell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+}
+
+.qtyDelta {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--color-success);
+  background: var(--color-success-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1px 4px;
+}
+
+.subtotalCell {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  text-align: right;
+  min-width: 80px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0 0;
+  margin-top: 4px;
+}
+
+.totalLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-total-label);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.totalValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-total);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.totalDelta {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-delete);
+}
+
+.coverageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.coverageRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-2xl);
+  background: var(--color-order-card-bg);
+}
+
+.coverageRowApproved {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(
+    159.86deg,
+    #f8f8f6 9.98%,
+    #f4f4f1 53.76%,
+    #eeede9 97.69%
+  );
+}
+
+.coverageStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.coverageLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.coverageValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.coverageValueWarning {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-delete);
+}
+
+.coverageValueSuccess {
+  font-family: var(--font-mono);
+  font-size: var(--text-table);
+  font-weight: 400;
+  color: var(--color-success);
+}
+
+.coverageBadge {
+  font-family: var(--font-sans);
+  font-size: var(--text-chip);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-card-bg);
+  color: var(--color-text-primary);
+  margin-left: auto;
+}
+
+.coverageBadgeApproved {
+  font-family: var(--font-sans);
+  font-size: var(--text-chip);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(107, 122, 61, 0.12);
+  color: var(--color-mira-olive);
+  margin-left: auto;
+}

@@ -1,0 +1,21 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--color-border-subtle);
+  overflow-y: auto;
+  scrollbar-width: none;
+  transition: filter var(--transition-extra-fast), background var(--transition-extra-fast);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    transparent 100%
+  );
+}
+
+.sidebarBlurred {
+  filter: blur(3px);
+  background: var(--color-modal-blur-wrapper-bg);
+  pointer-events: none;
+}

@@ -1,0 +1,209 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contentCard {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 20px 24px;
+  background: var(--color-card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vendorRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.vendorName {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.backorderEta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.skuList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.skuRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.skuHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.skuCode {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-mira-purple);
+}
+
+.skuName {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+.fillStats {
+  display: flex;
+  gap: 40px;
+}
+
+.fillStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fillStatLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.fillStatValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.fillStatValueWarning {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-delete);
+}
+
+.fillStatValueMuted {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.stockoutRow {
+  display: flex;
+  gap: 32px;
+}
+
+.stockoutStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stockoutLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.stockoutValue {
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-critical);
+}
+
+.stockoutValueSafe {
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-success);
+}
+
+.consequenceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.consequenceRejected {
+  border: none;
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 100px;
+  background: var(--color-order-card-bg);
+}
+
+.consequenceApproved {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 16px;
+  min-height: 100px;
+  background: linear-gradient(
+    159.86deg,
+    #f8f8f6 9.98%,
+    #f4f4f1 53.76%,
+    #eeede9 97.69%
+  );
+}
+
+.consequenceLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.consequenceItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.consequenceTag {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  padding: 3px 8px;
+  border-radius: var(--radius-md);
+  background: rgba(122, 61, 61, 0.07);
+  color: var(--color-critical-label);
+}
+
+.consequenceApproved .consequenceTag {
+  background: rgba(107, 122, 61, 0.08);
+  color: var(--color-mira-olive);
+}
+
+.consequenceText {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}

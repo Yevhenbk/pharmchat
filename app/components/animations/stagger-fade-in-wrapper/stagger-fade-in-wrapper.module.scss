@@ -1,0 +1,28 @@
+@keyframes stagger-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wrapper {
+  --stagger-delay-step: 120ms;
+
+  > * {
+    opacity: 0;
+    transform: translateX(12px);
+    animation: stagger-fade-in 550ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Max 15 children supported for stagger animation */
+  @for $i from 1 through 15 {
+    > *:nth-child(#{$i}) {
+      animation-delay: calc((#{$i} - 1) * var(--stagger-delay-step));
+    }
+  }
+}
