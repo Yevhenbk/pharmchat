@@ -7,6 +7,7 @@ $icon-size: 22px;
 /* Outer card — layered: gradient base + noise + white overlay */
 .widget {
   @include mira-surface.mira-surface;
+  --bulb-orbit-angle: 0deg;
 
   /* Mobile: hidden — Ask Mira is in the bottom nav bar */
   display: none;
@@ -24,11 +25,7 @@ $icon-size: 22px;
     cursor: pointer;
     z-index: auto;
     box-shadow: none;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: linear-gradient(154deg, #eef2e6 10%, #e6eedd 54%, #dce8cc 98%);
-    }
+    transition: box-shadow 0.2s ease;
   }
 
   @media (width >= 1024px) {
@@ -145,6 +142,20 @@ $icon-size: 22px;
     filter 0.6s ease;
 }
 
+.widget:hover .bulb {
+  filter: drop-shadow(0 0 12px rgba(200, 212, 160, 0.28));
+}
+
+.bulb :global(.ask-mira-bulb-outer) {
+  transform-origin: 120px 188px;
+  transform: rotate(var(--bulb-orbit-angle)) translateX(10px)
+    rotate(calc(-1 * var(--bulb-orbit-angle)));
+}
+
+.widget:hover .bulb :global(.ask-mira-bulb-inner) {
+  animation: bulb-inner-pulse 1.9s ease-in-out infinite;
+}
+
 /* Listening: boosted opacity + active animation */
 .bulbListening {
   opacity: 1;
@@ -188,11 +199,31 @@ $icon-size: 22px;
   }
 }
 
+@keyframes bulb-inner-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: 120px 188px;
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+    transform-origin: 120px 188px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bulb,
   .bulbListening {
     animation: none;
     opacity: 1;
     scale: 1;
+  }
+
+  .bulb :global(.ask-mira-bulb-outer),
+  .widget:hover .bulb :global(.ask-mira-bulb-inner) {
+    animation: none;
   }
 }

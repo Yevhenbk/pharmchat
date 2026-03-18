@@ -33,16 +33,6 @@ export function POSummaryBar({ summary }: Props) {
       </div>
 
       <div className={styles.item}>
-        <span className={styles.itemLabel}>CONFIDENCE</span>
-        <span className={styles.itemValue}>
-          {summary.confidencePercent}%
-        </span>
-        <span className={styles.itemSub}>
-          {summary.confidenceLabel} reliability
-        </span>
-      </div>
-
-      <div className={styles.item}>
         <span className={styles.itemLabel}>SKUS</span>
         <span className={styles.itemValue}>{summary.skuCount}</span>
         <span className={styles.itemSub}>{summary.skuNote}</span>

@@ -12,7 +12,7 @@ export function ContentSectionLabel({
   return (
     <p
       className={cn(
-        "text-sm font-bold tracking-wide text-text-primary",
+        "text-xs font-bold tracking-wide text-text-primary",
         className,
       )}
     >

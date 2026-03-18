@@ -8,13 +8,28 @@ interface Props {
 
 export function DemandSignalsPanel({ signal }: Props) {
   return (
-    <div className={styles.panel}>
-      <div className={styles.heading}>
-        <WhyOrderStarIcon className={styles.icon} />
-        <span className={styles.label}>DEMAND SIGNALS</span>
+    <>
+      <div className={styles.desktopPanel}>
+        <div className={styles.panel}>
+          <div className={styles.heading}>
+            <WhyOrderStarIcon className={styles.icon} />
+            <span className={styles.label}>DEMAND SIGNALS</span>
+          </div>
+
+          <p className={styles.summary}>{signal.summary}</p>
+        </div>
       </div>
 
-      <p className={styles.summary}>{signal.summary}</p>
-    </div>
+      <details className={styles.mobileAccordion}>
+        <summary className={styles.mobileSummary}>
+          <WhyOrderStarIcon className={styles.icon} />
+          <span className={styles.label}>DEMAND SIGNALS</span>
+        </summary>
+
+        <div className={styles.mobileContent}>
+          <p className={styles.summary}>{signal.summary}</p>
+        </div>
+      </details>
+    </>
   );
 }

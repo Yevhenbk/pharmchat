@@ -1,12 +1,88 @@
+.desktopPanel {
+  @media (width < 640px) {
+    display: none;
+  }
+}
+
 .panel {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.mobileAccordion {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+
+  @media (width >= 640px) {
+    display: none;
+  }
+}
+
+.mobileSummary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: "▾";
+    margin-left: auto;
+    margin-right: 4px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    transition: transform 160ms var(--ease-standard);
+  }
+}
+
+.mobileAccordion[open] .mobileSummary::after {
+  transform: rotate(180deg);
+}
+
+.mobileContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition:
+    max-height 220ms var(--ease-standard),
+    opacity 180ms var(--ease-standard),
+    transform 220ms var(--ease-standard);
+}
+
+.mobileAccordion[open] .mobileContent {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileContent .badges {
+  margin-top: 8px;
+}
+
 .label {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: 600;
   font-style: normal;
   color: var(--color-text-primary);

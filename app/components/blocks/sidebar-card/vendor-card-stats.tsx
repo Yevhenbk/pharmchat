@@ -4,11 +4,13 @@ import styles from "./sidebar-card.module.scss";
 interface Props {
   value: number;
   skuCount: number;
+  earliestStockout: string;
 }
 
 export function VendorCardStats({
   value,
   skuCount,
+  earliestStockout,
 }: Props) {
   return (
     <div className={styles.metaRow}>
@@ -22,6 +24,13 @@ export function VendorCardStats({
       <div className={styles.metaPair}>
         <span className={styles.metaLabel}>SKUS</span>
         <span className={styles.metaValue}>{skuCount}</span>
+      </div>
+
+      <div className={styles.metaPair}>
+        <span className={styles.metaLabel}>EARLIEST STOCKOUT</span>
+        <span className={styles.metaValue}>
+          {earliestStockout.toUpperCase()}
+        </span>
       </div>
     </div>
   );

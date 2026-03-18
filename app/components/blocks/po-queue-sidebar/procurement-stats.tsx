@@ -14,21 +14,30 @@ interface Props {
 function StatBlock({
   icon,
   label,
+  shortLabel,
   value,
   subtitle,
+  shortSubtitle,
   variant = "default",
 }: {
   icon: React.ReactNode;
   label: string;
+  shortLabel?: string;
   value: string;
   subtitle?: string;
+  shortSubtitle?: string;
   variant?: "default" | "danger";
 }) {
   return (
     <div className={styles.block}>
       <span className={styles.label}>
         {icon}
-        {label}
+        {shortLabel ? (
+          <>
+            <span className={styles.labelShort}>{shortLabel}</span>
+            <span className={styles.labelFull}>{label}</span>
+          </>
+        ) : label}
       </span>
 
       <span
@@ -47,7 +56,12 @@ function StatBlock({
               : styles.subtitle
           }
         >
-          {subtitle}
+          {shortSubtitle ? (
+            <>
+              <span className={styles.labelShort}>{shortSubtitle}</span>
+              <span className={styles.labelFull}>{subtitle}</span>
+            </>
+          ) : subtitle}
         </span>
       ) : null}
     </div>
@@ -60,8 +74,10 @@ export function ProcurementStats({ stats }: Props) {
       <StatBlock
         icon={<PurchaseOrdersIcon className={styles.purchaseOrdersIcon} />}
         label="PURCHASE ORDERS"
+        shortLabel="POs"
         value={String(stats.purchaseOrderCount)}
         subtitle={`Across ${stats.supplierCount} suppliers`}
+        shortSubtitle="Suppliers"
       />
 
       <div className={styles.divider} />
@@ -69,6 +85,7 @@ export function ProcurementStats({ stats }: Props) {
       <StatBlock
         icon={<ProposedSpendIcon className={styles.proposedSpendIcon} />}
         label="PROPOSED SPEND"
+        shortLabel="SPEND"
         value={FormatService.currencyWhole(stats.proposedSpend)}
       />
 
@@ -77,6 +94,7 @@ export function ProcurementStats({ stats }: Props) {
       <StatBlock
         icon={<StockOutsRiskIcon className={styles.stockOutsRiskIcon} />}
         label="STOCK-OUTS AT RISK"
+        shortLabel="RISKS"
         value={String(stats.stockOutsAtRisk)}
         subtitle="SKUs at risk"
         variant="danger"

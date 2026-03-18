@@ -88,6 +88,7 @@ export function ModalSidebar({
     <aside
       className={cn(
         styles.sidebar,
+        mode === "po-queue" && styles.sidebarNoScroll,
         "animate-fade-in",
         (isWhyOrderCardOpen || isDeleteModalOpen) && styles.sidebarBlurred,
         className,

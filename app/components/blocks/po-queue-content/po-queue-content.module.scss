@@ -11,22 +11,26 @@
 .scrollArea {
   display: flex;
   flex-direction: column;
-  padding: 16px 14px 16px;
+  padding: 10px 10px calc(12px + env(safe-area-inset-bottom));
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
   scrollbar-width: none;
   transition: filter var(--transition-extra-fast);
 
+  @media (width >= 480px) {
+    padding: 12px 12px 12px;
+  }
+
   @media (width >= 640px) {
-    padding: 28px 24px 20px;
+    padding: 16px 16px 12px;
   }
 }
 
 .staggerContent {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
   flex: 1;
   min-height: 0;
 }
@@ -48,39 +52,59 @@
 
 .vendorName {
   font-family: var(--font-sans);
-  font-size: var(--text-xl);
-  font-weight: 400;
+  font-size: var(--text-lg);
+  font-weight: 600;
   font-style: normal;
   color: var(--color-text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 
   @media (width >= 640px) {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
   }
 }
 
 .divider {
   height: 1px;
   background: var(--color-border-subtle);
+
+  @media (width < 640px) {
+    display: none;
+  }
 }
 
 .signalsRow {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
+  gap: 10px;
+  align-items: stretch;
 
-  @media (width >= 768px) {
-    flex-direction: row;
-    gap: 90px;
+  @media (width < 640px) {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  > * {
+    flex: 1 1 0;
+    min-width: 0;
+
+    @media (width < 640px) {
+      flex: 0 0 auto;
+    }
+  }
+
+  @media (width < 640px) {
+    > * + * {
+      border-top: 1px solid var(--color-border-subtle);
+      padding-top: 8px;
+      margin-top: 2px;
+    }
   }
 }
 
 .tableSection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
   min-height: 0;
-  overflow-x: auto;
+  overflow: hidden;
 }

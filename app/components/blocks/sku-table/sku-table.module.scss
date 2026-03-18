@@ -1,5 +1,5 @@
 .wrapper {
-  --grid-columns: 2.5fr 1fr 1fr 1fr 1fr 0.5fr;
+  --grid-columns: 2.2fr 0.8fr 0.9fr 0.8fr 0.9fr 0.35fr;
 
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   overflow: clip;
   flex: 1;
   min-height: 0;
-  min-width: 560px;
+  min-width: 0;
 }
 
 .tableScrollArea {
@@ -16,18 +16,18 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
   scrollbar-width: none;
 }
 
 .tableHeader {
   display: grid;
   grid-template-columns: var(--grid-columns);
-  gap: 16px;
-  padding: 10px 16px;
+  gap: 10px;
+  padding: 8px 10px;
 
   @media (width >= 768px) {
-    padding: 10px 32px;
+    padding: 8px 16px;
   }
   background: linear-gradient(
     90deg,
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--text-xs);
   font-weight: 500;
   font-style: normal;
   color: var(--color-text-muted);
@@ -75,11 +75,11 @@
 .row {
   display: grid;
   grid-template-columns: var(--grid-columns);
-  gap: 16px;
-  padding: 14px 16px;
+  gap: 10px;
+  padding: 10px;
 
   @media (width >= 768px) {
-    padding: 18px 32px;
+    padding: 12px 16px;
   }
   align-items: center;
   transition: background-color var(--transition-fast);
@@ -115,7 +115,7 @@
 
 .skuCode {
   font-family: var(--font-mono);
-  font-size: var(--text-base);
+  font-size: var(--text-xs);
   font-weight: 500;
   font-style: normal;
   color: var(--color-mira-purple);
@@ -123,7 +123,7 @@
 
 .skuName {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--text-xs);
   font-weight: 400;
   font-style: normal;
   color: var(--color-text-primary);
@@ -137,7 +137,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--text-xs);
   font-weight: 400;
   font-style: normal;
   color: var(--color-text-primary);
@@ -147,7 +147,7 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   justify-content: flex-end;
 }
 
@@ -155,8 +155,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
   transition: all var(--transition-fast);
@@ -184,10 +184,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 8px 10px;
 
   @media (width >= 768px) {
-    padding: 16px 32px;
+    padding: 10px 16px;
   }
   flex-shrink: 0;
   background: var(--color-card-bg);
@@ -202,7 +202,7 @@
 
 .tableFooterCount {
   font-family: var(--font-sans);
-  font-size: var(--text-xs);
+  font-size: var(--text-2xs);
   font-weight: 400;
   font-style: normal;
   color: var(--color-text-muted);
@@ -210,7 +210,7 @@
 
 .tableFooterTotal {
   font-family: var(--font-sans);
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text-primary);
 }
@@ -219,17 +219,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  padding: 0 20px;
+  height: 34px;
+  padding: 0 12px;
 
   @media (width >= 768px) {
-    padding: 0 32px;
+    padding: 0 20px;
   }
   border-radius: var(--radius-md);
   background: var(--color-mira-olive);
   color: #fff;
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: var(--text-xs);
   font-weight: 500;
   border: none;
   cursor: pointer;

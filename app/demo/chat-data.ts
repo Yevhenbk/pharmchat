@@ -1,12 +1,6 @@
 import type { ChatMessage, CannedResponse } from "@models/chat";
 
 export const INITIAL_MESSAGES: readonly ChatMessage[] = [
-  {
-    id: "greeting",
-    role: "assistant",
-    content:
-      "Hey Sam! Mira here. How can I help you get started today?",
-  },
 ];
 
 export const DEFAULT_CANNED_RESPONSE =

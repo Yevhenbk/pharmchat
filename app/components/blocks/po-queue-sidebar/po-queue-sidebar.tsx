@@ -7,7 +7,6 @@ import { CardList } from "@components/blocks/sidebar-card/card-list";
 import { SidebarCard } from "@components/blocks/sidebar-card/sidebar-card";
 import { VendorCardHeader } from "@components/blocks/sidebar-card/vendor-card-header";
 import { VendorCardStats } from "@components/blocks/sidebar-card/vendor-card-stats";
-import { VendorCardStockout } from "@components/blocks/sidebar-card/vendor-card-stockout";
 import { StaggerFadeInWrapper } from "@components/animations/stagger-fade-in-wrapper/stagger-fade-in-wrapper";
 
 import { ProcurementStats } from "./procurement-stats";
@@ -66,7 +65,7 @@ export function POQueueSidebar({
 
       <ProcurementStats stats={data.stats} />
 
-      <CardList>
+      <CardList className={styles.vendorList}>
         {sortedVendors.map((vendor) => (
           <SidebarCard
             key={vendor.id}
@@ -74,6 +73,7 @@ export function POQueueSidebar({
             onClick={() => onSelectVendor(vendor.id)}
             shouldDismiss={vendor.id === dismissingVendorId}
             onDismiss={onDismissComplete}
+            className={styles.vendorCard}
           >
             <VendorCardHeader
               name={vendor.vendorName}
@@ -82,8 +82,6 @@ export function POQueueSidebar({
             <VendorCardStats
               value={vendor.value}
               skuCount={vendor.skuCount}
-            />
-            <VendorCardStockout
               earliestStockout={vendor.earliestStockout}
             />
           </SidebarCard>

@@ -310,6 +310,7 @@ export function ModalContent({
         <div
           className={cn(
             styles.content,
+            styles.contentNoScroll,
             "animate-fade-in",
             isWhyOrderCardOpen && styles.contentScrollLocked,
             className

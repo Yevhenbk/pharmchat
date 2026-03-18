@@ -77,8 +77,12 @@ export function AskMiraBulbIcon(props: SVGProps<SVGSVGElement>) {
           <stop offset="1" stopColor="#a8be6c" />
         </linearGradient>
       </defs>
-      <g filter="url(#askMiraBulbBlurOuter)">
+      <g
+        className="ask-mira-bulb-outer"
+        filter="url(#askMiraBulbBlurOuter)"
+      >
         <circle
+          className="ask-mira-bulb-outer-circle"
           cx="115.52"
           cy="179.167"
           r="75.5"
@@ -87,8 +91,12 @@ export function AskMiraBulbIcon(props: SVGProps<SVGSVGElement>) {
           fillOpacity="0.6"
         />
       </g>
-      <g filter="url(#askMiraBulbBlurInner)">
+      <g
+        className="ask-mira-bulb-inner"
+        filter="url(#askMiraBulbBlurInner)"
+      >
         <circle
+          className="ask-mira-bulb-inner-circle"
           cx="120.353"
           cy="188"
           r="50"

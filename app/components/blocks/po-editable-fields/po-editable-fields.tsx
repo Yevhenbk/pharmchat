@@ -1,5 +1,6 @@
 "use client";
 
+import { WhyOrderStarIcon } from "@components/icons/why-order-star-icon";
 import styles from "./po-editable-fields.module.scss";
 
 interface Props {
@@ -31,7 +32,7 @@ export function POEditableFields({
 
   return (
     <div className={styles.wrapper}>
-      <span className={styles.miraChip}>Mira suggested</span>
+      <WhyOrderStarIcon className={styles.miraIcon} />
 
       <div className={styles.fields}>
         <div className={styles.field}>
