@@ -1,0 +1,105 @@
+
+.page {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  touch-action: none;
+}
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #e2e8d8;
+  z-index: 100;
+}
+
+.progressFill {
+  height: 100%;
+  background: #0f1a08;
+  transition: width 80ms linear;
+}
+
+
+.logoWrap {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoBox {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  width: 14px;
+  height: 14px;
+}
+
+.logoText {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.logoOnGreen {
+  .logoBox { background: #18181a; }
+  .logoImg  { filter: invert(1); }
+  .logoText { color: #ffffff; }
+}
+
+.logoOnDark {
+  .logoBox { background: #0f1a08; }
+  .logoImg  { filter: invert(1); }
+  .logoText { color: #0f1a08; }
+}
+
+.skipBtn {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 100;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  padding: 4px 8px;
+}
+
+.skipOnGreen { color: rgba(255, 255, 255, 0.7); }
+.skipOnGreen:hover { color: #ffffff; }
+
+.skipOnDark  { color: #0f1a08; }
+.skipOnDark:hover  { color: #3a5c10; }
+
+.slide {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slideGreen { background: #0f1a08; }
+.slideDark  { background: #ffffff; }

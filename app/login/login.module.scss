@@ -1,0 +1,193 @@
+/* ── Animations ── */
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bg-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 24px;
+  animation: bg-fade 600ms ease forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8d8;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  animation: card-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) 100ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ── Brand ── */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) 320ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #18181a;
+  border-radius: 11px;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  filter: invert(1);
+}
+
+.brandName {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  font-size: 13.5px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) 420ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ── Description ── */
+
+.description {
+  width: 100%;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) 540ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ── Sign-in button ── */
+
+.signInBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 20px;
+  background: #eef2e6;
+  color: #3a5c10;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #d4ddc6;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+  opacity: 0;
+  animation: fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) 680ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    animation: none;
+  }
+
+  &:hover {
+    background: #e5ecda;
+    border-color: #c5d5b4;
+  }
+
+  &:active {
+    background: #dbe6cf;
+  }
+}
+
+.googleIcon {
+  flex-shrink: 0;
+}
+
+.previewBtn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 120ms ease, background 120ms ease;
+  margin-top: -4px;
+
+  &:hover {
+    color: #475569;
+    background: #f4f6ef;
+  }
+}

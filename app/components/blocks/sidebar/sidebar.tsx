@@ -12,23 +12,30 @@ import { useDashboardStore } from "@providers/store-provider";
 
 import styles from "./sidebar.module.scss";
 
+type DashboardTab = "rx-deck" | "order-run";
+
 interface Props {
   className?: string;
+  activeTab?: DashboardTab;
+  onTabChange?: (tab: DashboardTab) => void;
 }
 
 function NavItem({
   icon,
   label,
   active,
+  onClick,
 }: {
   icon: React.ReactNode;
   label: string;
   active?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <button
       type="button"
       className={cn(styles.navItem, active && styles.navItemActive)}
+      onClick={onClick}
     >
       <span className={styles.navIcon}>{icon}</span>
       <span className={styles.navLabel}>{label}</span>
@@ -68,7 +75,7 @@ function UserAvatar({
   return <span className={styles.avatarInitials}>{initials}</span>;
 }
 
-export function Sidebar({ className }: Props) {
+export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props) {
   const { data: session } = useSession();
   const user = session?.user;
   const openChat = useDashboardStore((state) => state.openChat);
@@ -85,11 +92,12 @@ export function Sidebar({ className }: Props) {
       {/* Brand */}
       <div className={styles.brand}>
         <Image
-          src="/pharmchat-logo.png"
+          src="/logo.png"
           alt="Pharmchat"
           width={28}
           height={28}
           className={styles.brandLogo}
+          unoptimized
         />
         <span className={styles.brandName}>Pharmchat</span>
       </div>
@@ -99,11 +107,14 @@ export function Sidebar({ className }: Props) {
         <NavItem
           icon={<StackLayersIcon className="size-full" />}
           label="Rx Deck"
-          active
+          active={activeTab === "rx-deck"}
+          onClick={() => onTabChange?.("rx-deck")}
         />
         <NavItem
           icon={<ProcurementRunIcon className="size-full" />}
           label="Order Run"
+          active={activeTab === "order-run"}
+          onClick={() => onTabChange?.("order-run")}
         />
         <button
           ref={askMiraRef}

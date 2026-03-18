@@ -1,0 +1,406 @@
+/* ── Cross-line animation (Slide 4) ───────────────── */
+
+@keyframes line-in-1 {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Page shell ───────────────────────────────────── */
+
+.page {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  touch-action: none;
+}
+
+/* ── Progress bar (port of worksut ProgressBar) ───── */
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #e2e8d8;
+  z-index: 100;
+}
+
+.progressFill {
+  height: 100%;
+  background: #0f1a08;
+  transition: width 80ms linear;
+}
+
+/* ── Logo (port of worksut LogoTitle) ─────────────── */
+
+.logoWrap {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoBox {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  width: 14px;
+  height: 14px;
+}
+
+.logoText {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Logo on green slide: dark box, white text (original: white text on red) */
+.logoOnGreen {
+  .logoBox { background: #18181a; }
+  .logoImg  { filter: invert(1); }
+  .logoText { color: #ffffff; }
+}
+
+/* Logo on white slide: dark box, dark text */
+.logoOnDark {
+  .logoBox { background: #0f1a08; }
+  .logoImg  { filter: invert(1); }
+  .logoText { color: #0f1a08; }
+}
+
+/* ── Skip button (port of worksut LanguageSelector position) ── */
+
+.skipBtn {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 100;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  padding: 4px 8px;
+}
+
+.skipOnGreen { color: rgba(255, 255, 255, 0.7); }
+.skipOnGreen:hover { color: #ffffff; }
+
+.skipOnDark  { color: #0f1a08; }
+.skipOnDark:hover  { color: #3a5c10; }
+
+/* ── Slide shell ──────────────────────────────────── */
+
+.slide {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slideGreen { background: #0f1a08; }
+.slideDark  { background: #ffffff; }
+
+/* ──────────────────────────────────────────────────
+   SLIDE 2 — Brand name (port of worksut Slide2)
+   Original: huge "worksut" text, red bg, animated
+   Ours:     huge "Pharmchat" text, green bg
+────────────────────────────────────────────────── */
+
+.s2text {
+  font-size: 44px;
+  font-weight: 900;
+  font-family: inherit;
+  color: #ffffff;
+  text-align: center;
+  /* Matches worksut Slide2StyledText responsive sizes */
+  @media (min-width: 500px)  { font-size: 70px;  }
+  @media (min-width: 700px)  { font-size: 100px; }
+  @media (min-width: 1400px) { font-size: 148px; }
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 3 — Two-column manifesto (port of Slide3)
+   Original: dark bg, left/right text sliding in
+   Ours:     dark bg, procurement value prop text
+────────────────────────────────────────────────── */
+
+.s3wrap {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #ffffff;
+  color: #0f1a08;  /* dark text on white */
+  font-family: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  overflow: hidden;
+}
+
+.s3left {
+  height: min-content;
+  margin-bottom: 6vh;
+
+  @media (min-width: 700px) { margin-bottom: 10vh; }
+}
+
+.s3progress {
+  width: 100%;
+  height: 5px;
+  background: #0f1a08;
+  margin-bottom: 4px;
+
+  @media (max-width: 1200px) {
+    max-width: 50%;
+  }
+}
+
+/* Matches worksut Slide3TextLeftStyled */
+.s3textLeft {
+  margin: 2vh 0 0 7vw;
+  max-width: 85vw;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.8px;
+  transform: translateX(var(--tx));
+
+  @media (min-width: 500px) {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  @media (min-width: 700px) {
+    font-size: 32px;
+    line-height: 33px;
+  }
+  @media (min-width: 900px) {
+    line-height: 45.75px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 35vw;
+    transform: translateY(var(--ty));
+  }
+  @media (min-width: 1700px) {
+    font-size: 32px;
+  }
+}
+
+.s3right {
+  height: min-content;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: end;
+
+  @media (max-width: 699px) {
+    margin-left: 0;
+    text-align: left;
+  }
+}
+
+.s3progressRight {
+  width: 50%;
+  height: 5px;
+  background: #0f1a08;
+  margin-left: auto;
+  margin-top: 4px;
+
+  @media (max-width: 699px)  { display: none; }
+  @media (max-width: 1200px) { transform: translateX(100%); }
+}
+
+/* Matches worksut Slide3TextRightStyled */
+.s3textRight {
+  margin: 2vh 8vw 2vh 7vw;
+  text-align: left;
+  max-width: 85vw;
+
+  @media (min-width: 700px) { margin: 2vh 8vw 2vh 0; }
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18.2px;
+  transform: translateX(var(--tx));
+
+  @media (min-width: 500px) {
+    font-size: 16px;
+    line-height: 20.8px;
+  }
+  @media (min-width: 700px) {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  @media (min-width: 900px) {
+    line-height: 29px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 35vw;
+    line-height: 33px;
+    transform: translateY(var(--ty));
+  }
+}
+
+/* Matches worksut .Streesed with ::after pseudo content */
+.s3stressed {
+  color: #0f1a08;
+
+  &::after {
+    content: "Switch to Pharmchat.";
+    color: #ffffff;
+    background: #0f1a08;
+    line-height: 20.8px;
+
+    @media (min-width: 500px) { line-height: 24px; }
+    @media (min-width: 700px) { line-height: 33px; }
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 4 — Hero scale + crosslines (port of Slide4)
+   Original: red bg, "ÚNETE A LA NUEVA FORMA…" scaling
+   Ours:     green bg, "STOP MANUAL PROCUREMENT"
+────────────────────────────────────────────────── */
+
+/* Matches worksut SlideStyled4 + HeroContainer */
+.s4hero {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  max-width: 75vw;
+  font-weight: 800;
+  color: #ffffff;  /* white text on dark bg */
+
+  font-size: 30px;
+  @media (min-width: 500px)  { font-size: 44px; }
+  @media (min-width: 700px)  { font-size: 70px; }
+  @media (min-width: 900px)  { font-size: 80px; }
+  @media (min-width: 1200px) { font-size: 100px; }
+}
+
+.s4word {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Matches worksut SpanNewContainer */
+.s4emphasis {
+  position: relative;
+  margin: 0 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Matches worksut SvgStyled */
+.s4svg {
+  width: 110%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Matches worksut CrossLineStyled — responsive scale */
+.cross1 {
+  opacity: 0;
+  animation: line-in-1 0.15s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/* ──────────────────────────────────────────────────
+   SLIDE 5 — CTA / Sign-in (port of Slide5)
+   Original: dark bg, newsletter email input
+   Ours:     dark bg, Google sign-in button
+────────────────────────────────────────────────── */
+
+/* Matches worksut SlideStyled5 + DivStyled5 */
+.s5wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0 7vw;
+  width: 100%;
+
+  @media (min-width: 700px) {
+    max-width: 65vw;
+    margin: 0 auto;
+  }
+}
+
+/* Matches worksut Label — uppercase, SemiBold */
+.s5label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f1a08;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+
+  @media (min-width: 500px) { font-size: 22px; }
+  @media (min-width: 700px) { font-size: 28px; }
+  @media (min-width: 1200px) { font-size: 36px; }
+}
+
+/* Matches worksut Input / wrapper style */
+.s5btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 28px;
+
+  @media (min-width: 500px) { width: auto; }
+  background: #0f1a08;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+
+  @media (min-width: 700px) {
+    font-size: 17px;
+    padding: 18px 36px;
+  }
+
+  &:hover {
+    background: #1e3510;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    background: #2a4a18;
+    transform: none;
+  }
+}

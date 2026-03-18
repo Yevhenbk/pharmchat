@@ -1,0 +1,492 @@
+/* ── Shell ─────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-page-bg);
+}
+
+/* ── Header ────────────────────────────────────── */
+
+.header {
+  flex-shrink: 0;
+  padding: 24px 30px 18px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.headerTop {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.date {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: #f4f6ef;
+  border: 1px solid #e2e8d8;
+  font-size: 12px;
+  font-weight: 500;
+  color: #3a5c10;
+}
+
+.chipUrgent {
+  background: #fef9f0;
+  border-color: #fcd89a;
+  color: #a16207;
+}
+
+/* ── Banner ────────────────────────────────────── */
+
+.banner {
+  flex-shrink: 0;
+  padding: 10px 30px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.bannerSuccess {
+  background: #f0fdf4;
+  color: #166534;
+  border-bottom: 1px solid #bbf7d0;
+}
+
+.bannerWarn {
+  background: #fffbeb;
+  color: #92400e;
+  border-bottom: 1px solid #fde68a;
+}
+
+/* ── Table wrap ────────────────────────────────── */
+
+.tableWrap {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #e2e8d8 transparent;
+}
+
+/* ── Table ─────────────────────────────────────── */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.th {
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #fafbf8;
+  border-bottom: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &:first-child {
+    padding-left: 30px;
+  }
+
+  &:last-child {
+    padding-right: 24px;
+  }
+}
+
+.thCheck {
+  width: 56px;
+}
+
+.thStatus {
+  width: 95px;
+}
+
+.thExpand {
+  width: 48px;
+}
+
+.td {
+  padding: 13px 12px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: middle;
+
+  &:first-child {
+    padding-left: 30px;
+  }
+
+  &:last-child {
+    padding-right: 24px;
+  }
+}
+
+.row {
+  transition: background-color 100ms ease;
+
+  &:hover {
+    background: #fafbf8;
+  }
+}
+
+.rowDimmed {
+  opacity: 0.38;
+}
+
+/* ── Checkbox ──────────────────────────────────── */
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: #3a5c10;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+/* ── Vendor cell ───────────────────────────────── */
+
+.vendorCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vendorName {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.poNumber {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+}
+
+/* ── Urgency badges ────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badgeCritical {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.badgeUrgent {
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.badgeNormal {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ── Stockout ──────────────────────────────────── */
+
+.stockout {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.stockoutCritical {
+  color: #b91c1c;
+}
+
+.stockoutWarning {
+  color: #d97706;
+}
+
+/* ── Status chips ──────────────────────────────── */
+
+.statusIdle {
+  color: var(--color-text-muted-secondary);
+  font-size: 13px;
+}
+
+.statusChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.statusSending {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.statusSent {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.statusFailed {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* ── Expand button ─────────────────────────────── */
+
+.expandBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-border-subtle);
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--color-text-muted);
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    transition: transform 150ms ease;
+  }
+
+  &:hover {
+    background: #f4f6ef;
+    color: var(--color-text-primary);
+  }
+}
+
+.expandBtnOpen {
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+/* ── Expanded row ──────────────────────────────── */
+
+.expandedRow {
+  background: #fafbf8;
+}
+
+.expandedTd {
+  padding: 0 !important;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* ── Inner line items table ────────────────────── */
+
+.innerTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.innerTh {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #f4f6ef;
+  border-bottom: 1px solid #e8ede0;
+
+  &:first-child {
+    padding-left: 56px;
+  }
+
+  &:last-child {
+    padding-right: 72px;
+  }
+}
+
+.innerTd {
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid #eef0ea;
+
+  &:first-child {
+    padding-left: 56px;
+  }
+
+  &:last-child {
+    padding-right: 72px;
+  }
+
+  tr:last-child & {
+    border-bottom: none;
+  }
+}
+
+.skuCode {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── SKU status badges ─────────────────────────── */
+
+.skuBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 7px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.skuBadgeOutOfStock {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.skuBadgeUrgent {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.skuBadgeLowStock {
+  background: #fefce8;
+  color: #a16207;
+}
+
+.skuBadgeNormal {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* ── Bottom bar ────────────────────────────────── */
+
+.bottomBar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 30px;
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-page-bg);
+}
+
+.bottomBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.selectionSummary {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.totalValue {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ── Execute button ────────────────────────────── */
+
+.executeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border: none;
+  background: #3a5c10;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    opacity 120ms ease;
+
+  &:hover:not(:disabled) {
+    background: #2e4a0d;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.executeBtnRunning {
+  background: #4d7519;
+}
+
+/* ── Empty state ───────────────────────────────── */
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 60px 30px;
+}
+
+.emptyTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.emptyDesc {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 320px;
+}

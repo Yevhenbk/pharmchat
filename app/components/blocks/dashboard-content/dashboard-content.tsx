@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { useDashboard } from "@hooks/use-dashboard";
 
 import { Sidebar } from "@components/blocks/sidebar/sidebar";
@@ -15,6 +17,8 @@ import { ModalContent } from "@components/blocks/modal-content/modal-content";
 import { SKUReasoningSidebar } from "@components/blocks/sku-reasoning-sidebar/sku-reasoning-sidebar";
 
 export function DashboardContent() {
+  const [activeTab, setActiveTab] = useState<"rx-deck" | "order-run">("rx-deck");
+
   const {
     modalState,
     isOpen,
@@ -49,7 +53,7 @@ export function DashboardContent() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-page-bg">
-      <Sidebar />
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
       <div className="flex min-w-0 flex-1 flex-col overflow-y-auto pb-16 lg:overflow-hidden lg:pb-0">
         <PageHeader />
@@ -65,6 +69,7 @@ export function DashboardContent() {
 
           <ActionPanel
             className="lg:min-h-0 lg:flex-1 lg:overflow-y-auto"
+            activeTab={activeTab}
             poCount={remainingVendors.length}
             onOpenPOQueue={handleOpenPOQueue}
             onOpenAction={handleOpenAction}
