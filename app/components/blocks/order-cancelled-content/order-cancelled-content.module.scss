@@ -58,8 +58,13 @@
 
 .comparisonGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  @media (width >= 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 }
 
 .comparisonCard {
@@ -182,8 +187,13 @@
 
 .consequenceGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
+
+  @media (width >= 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
 }
 
 .consequenceRejected {

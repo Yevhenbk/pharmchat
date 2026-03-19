@@ -12,10 +12,14 @@
 }
 
 .title {
-  font-size: var(--text-3xl);
+  font-size: var(--text-xl);
   font-weight: 400;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
+
+  @media (width >= 640px) {
+    font-size: var(--text-3xl);
+  }
 }
 
 .subtitle {

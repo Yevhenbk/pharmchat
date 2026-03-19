@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useSession, signOut, signIn } from "next-auth/react";
 
@@ -75,9 +75,16 @@ function UserAvatar({
   return <span className={styles.avatarInitials}>{initials}</span>;
 }
 
+function isDemo(): boolean {
+  if (typeof document === "undefined") return false;
+  return document.cookie.split(";").some((c) => c.trim() === "pharmchat-demo=1");
+}
+
 export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props) {
   const { data: session } = useSession();
   const user = session?.user;
+  const [demo, setDemo] = useState(false);
+  useEffect(() => { setDemo(isDemo()); }, []);
   const openChat = useDashboardStore((state) => state.openChat);
   const askMiraRef = useRef<HTMLButtonElement>(null);
 
@@ -91,14 +98,16 @@ export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props
     <aside className={cn(styles.sidebar, className)} data-sidebar>
       {/* Brand */}
       <div className={styles.brand}>
-        <Image
-          src="/logo.png"
-          alt="Pharmchat"
-          width={28}
-          height={28}
-          className={styles.brandLogo}
-          unoptimized
-        />
+        <div className={styles.brandLogoWrap}>
+          <Image
+            src="/logo.png"
+            alt="Pharmchat"
+            width={22}
+            height={22}
+            className={styles.brandLogo}
+            unoptimized
+          />
+        </div>
         <span className={styles.brandName}>Pharmchat</span>
       </div>
 
@@ -183,7 +192,7 @@ export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props
               type="button"
               className={styles.signOutBtn}
               title="Sign out"
-              onClick={() => signOut()}
+              onClick={() => signOut({ callbackUrl: "/login?last=1" })}
             >
               <svg
                 viewBox="0 0 16 16"
@@ -206,6 +215,17 @@ export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props
               </svg>
             </button>
           </div>
+        ) : demo ? (
+          <button
+            type="button"
+            className={styles.signInBtn}
+            onClick={() => {
+              document.cookie = "pharmchat-demo=1; path=/; max-age=0";
+              window.location.href = "/login?last=1";
+            }}
+          >
+            Leave Demo
+          </button>
         ) : (
           <button
             type="button"

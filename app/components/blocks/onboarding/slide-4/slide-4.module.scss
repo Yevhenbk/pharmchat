@@ -25,6 +25,20 @@
   @media (min-width: 1200px) { font-size: 36px; }
 }
 
+.s5demo {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1a08;
+  text-decoration: underline;
+  cursor: pointer;
+
+  @media (min-width: 700px) { font-size: 15px; }
+}
+
 .s5btn {
   display: flex;
   align-items: center;

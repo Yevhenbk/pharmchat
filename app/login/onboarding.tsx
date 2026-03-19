@@ -17,6 +17,11 @@ export function OnboardingPresentation() {
     signIn("google", { callbackUrl: "/" });
   }
 
+  function handleEnterDemo() {
+    document.cookie = "pharmchat-demo=1; path=/; max-age=86400";
+    window.location.href = "/";
+  }
+
   const by = posMap(pos);
 
   // Green slides: Slide1 (pos 0-30) and Slide3 (pos 60-90)
@@ -26,7 +31,7 @@ export function OnboardingPresentation() {
     if (pos <= BATCH) return <Slide1 by={by} />;
     if (pos <= BATCH * 2) return <Slide2 by={by} />;
     if (pos < BATCH * 3) return <Slide3 by={by} />;
-    return <Slide4 onSignIn={handleSignIn} />;
+    return <Slide4 onSignIn={handleSignIn} onEnterDemo={handleEnterDemo} />;
   })();
 
   return (

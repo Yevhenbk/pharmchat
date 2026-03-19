@@ -4,9 +4,10 @@ import styles from "./slide-4.module.scss";
 
 interface Slide4Props {
   onSignIn: () => void;
+  onEnterDemo: () => void;
 }
 
-export function Slide4({ onSignIn }: Slide4Props) {
+export function Slide4({ onSignIn, onEnterDemo }: Slide4Props) {
   return (
     <div className={`${sharedStyles.slide} ${sharedStyles.slideDark}`}>
       <div className={styles.s5wrap}>
@@ -31,6 +32,9 @@ export function Slide4({ onSignIn }: Slide4Props) {
             />
           </svg>
           Sign in with Google
+        </button>
+        <button type="button" className={styles.s5demo} onClick={onEnterDemo}>
+          Enter Demo
         </button>
       </div>
     </div>

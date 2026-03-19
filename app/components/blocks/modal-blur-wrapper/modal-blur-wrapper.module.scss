@@ -1,8 +1,16 @@
 .wrapper {
-  background: var(--color-modal-blur-wrapper-bg);
-  padding: clamp(8px, 2.5vw, 20px);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(4px);
-  width: calc(100% - clamp(16px, 5vw, 40px));
-  height: calc(100dvh - clamp(16px, 5vw, 40px));
+  /* Mobile: full-width, no padding — modal itself is the bottom sheet */
+  width: 100%;
+  height: 93dvh;
+  background: transparent;
+  backdrop-filter: none;
+
+  @media (width >= 640px) {
+    background: var(--color-modal-blur-wrapper-bg);
+    padding: clamp(8px, 2.5vw, 20px);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(4px);
+    width: calc(100% - clamp(16px, 5vw, 40px));
+    height: calc(100dvh - clamp(16px, 5vw, 40px));
+  }
 }

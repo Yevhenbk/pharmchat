@@ -2,23 +2,33 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0 16px;
+  padding: 0 12px;
+
+  @media (width >= 640px) {
+    padding: 0 16px;
+  }
 }
 
 .title {
-  padding: 12px 0 6px;
-
-  @media (width >= 640px) {
-    padding: 20px 0 10px;
-  }
-  font-size: var(--text-xl);
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-text-primary);
   letter-spacing: -0.01em;
+  padding: 10px 0 4px;
+
+  @media (width >= 640px) {
+    font-size: var(--text-xl);
+    padding: 20px 0 10px;
+  }
 }
 
 .countRow {
-  padding: 0 0 10px;
+  display: none;
+
+  @media (width >= 640px) {
+    display: block;
+    padding: 0 0 10px;
+  }
 }
 
 .countLabel {
@@ -49,6 +59,11 @@
 }
 
 .countDivider {
-  border-top: 1px solid var(--color-border-subtle);
-  margin: 0 0 8px;
+  display: none;
+
+  @media (width >= 640px) {
+    display: block;
+    border-top: 1px solid var(--color-border-subtle);
+    margin: 0 0 8px;
+  }
 }

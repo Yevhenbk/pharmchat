@@ -5,7 +5,8 @@
   align-items: flex-start;
   gap: 4px;
   padding: 4px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   flex: 0 0 auto;
   background: linear-gradient(
@@ -14,6 +15,8 @@
     rgba(0, 0, 0, 0.02) 100%
   );
   border-radius: var(--radius-xl);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 
   @media (width >= 640px) {
     flex-direction: column;
@@ -22,6 +25,9 @@
     gap: 0;
     padding: 6px;
     flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: none;
   }
 }
 
@@ -52,16 +58,19 @@
 .cardWrapper {
   overflow: hidden;
   flex-shrink: 0;
-  width: 100%;
-  min-width: 100%;
+  width: 80vw;
+  max-width: 280px;
+  min-width: 0;
   align-self: flex-start;
   height: auto;
+  scroll-snap-align: start;
 
   @media (width >= 640px) {
     width: auto;
-    min-width: 0;
+    max-width: none;
     align-self: auto;
     flex-shrink: 0;
+    scroll-snap-align: none;
   }
 }
 

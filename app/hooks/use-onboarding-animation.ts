@@ -18,9 +18,16 @@ type OnboardingAnimationState = {
 };
 
 export function useOnboardingAnimation(): OnboardingAnimationState {
-  const [pos, setPos] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [autoPlayDone, setAutoPlayDone] = useState(false);
+  const [pos, setPos] = useState(() =>
+    new URLSearchParams(window.location.search).get("last") === "1" ? MAX : 0,
+  );
+  const [progress, setProgress] = useState(() =>
+    new URLSearchParams(window.location.search).get("last") === "1" ? 100 : 0,
+  );
+  const [autoPlayDone, setAutoPlayDone] = useState(
+    () =>
+      new URLSearchParams(window.location.search).get("last") === "1",
+  );
   const rafRef = useRef<number | null>(null);
   const touchY = useRef(0);
 
@@ -35,6 +42,8 @@ export function useOnboardingAnimation(): OnboardingAnimationState {
 
   // Auto-advance via rAF — smooth 60fps with per-slide pauses
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("last") === "1") return;
+
     const start = performance.now();
 
     const calculateNextPos = (elapsedTime: number): number => {

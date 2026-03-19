@@ -147,6 +147,8 @@ function isVendorOrder(value: unknown): value is VendorOrder {
 async function fetchParsedProcurement(): Promise<
   readonly VendorOrder[]
 > {
+  if (isDemoMode()) return [];
+
   try {
     const response = await fetch("/api/parse-supplier-emails");
 
@@ -216,7 +218,14 @@ async function fetchActionEmailAnalyses(
   }
 }
 
+function isDemoMode(): boolean {
+  if (typeof document === "undefined") return false;
+  return document.cookie.split(";").some((c) => c.trim() === "pharmchat-demo=1");
+}
+
 async function fetchGmailEmails(): Promise<readonly GmailEmail[]> {
+  if (isDemoMode()) return [];
+
   try {
     const response = await fetch("/api/emails");
 

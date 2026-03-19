@@ -64,7 +64,7 @@ export const DEMO_ACTION_ITEMS: readonly ActionItemData[] = [
     severity: "critical",
     title: "PO 1042: Delayed by 2 days",
     description:
-      "MedCore Distribution updated delivery to Jan 24. This may cause a stock-out on Metformin 1000mg by Jan 23.",
+      "MedCore Distribution updated delivery to Mar 22. Cold-chain vehicle maintenance — Insulin Glargine and Lisinopril affected.",
     actions: [{ label: "Review" }],
     timeAgo: "2 days ago",
   },
@@ -94,9 +94,9 @@ export const DEMO_ACTION_ITEMS: readonly ActionItemData[] = [
     severity: "critical",
     title: "PO 1002: SKU backordered by supplier",
     description:
-      "Insulin Glargine 100u/mL is unavailable until Feb 2 — no alternatives found. Current stock runs out Jan 28.",
+      "Insulin Glargine 100u/mL unavailable until Apr 2 — no alternatives in PharmaLink network. Current stock runs out Mar 21.",
     actions: [{ label: "Review" }],
-    timeAgo: "5mo ago",
+    timeAgo: "2 hrs ago",
   },
   {
     id: "po-1893",
@@ -104,7 +104,7 @@ export const DEMO_ACTION_ITEMS: readonly ActionItemData[] = [
     severity: "critical",
     title: "PO 1051: Not yet confirmed",
     description:
-      "No supplier confirmation after 48 hours. Delivery date at risk.",
+      "PO-1051 ($12,450) — no supplier confirmation after 48 hours. Atorvastatin, Omeprazole and Metformin delivery date at risk.",
     actions: [{ label: "Chase" }],
     timeAgo: "Yesterday",
   },
@@ -135,10 +135,10 @@ export const DEMO_ACTION_ITEMS: readonly ActionItemData[] = [
     severity: "warning",
     title: "SKU backordered by supplier",
     description:
-      "Warfarin 5mg is unavailable until Feb 2 — two therapeutic alternatives found. Current stock runs out Jan 28.",
+      "Warfarin 5mg unavailable until Apr 2 — two therapeutic alternatives confirmed. Current stock runs out Apr 2.",
     ignoreLabel: "Ignore",
     actions: [{ label: "Replace" }],
-    timeAgo: "5mo ago",
+    timeAgo: "Yesterday",
   },
   {
     id: "po-1899-price",

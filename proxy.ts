@@ -11,13 +11,14 @@ export async function proxy(request: NextRequest) {
   });
 
   const isLoginPage = pathname === "/login";
+  const isDemo = request.cookies.get("pharmchat-demo")?.value === "1";
 
-  if (!token && !isLoginPage) {
+  if (!token && !isDemo && !isLoginPage) {
     const loginUrl = new URL("/login", request.url);
     return NextResponse.redirect(loginUrl);
   }
 
-  if (token && isLoginPage) {
+  if ((token || isDemo) && isLoginPage) {
     const homeUrl = new URL("/", request.url);
     return NextResponse.redirect(homeUrl);
   }

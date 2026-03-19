@@ -7,7 +7,13 @@
 
 .fieldsGrid {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 4px;
+
+  @media (width >= 480px) {
+    flex-direction: row;
+    gap: 24px;
+  }
 }
 
 .fieldColumn {
