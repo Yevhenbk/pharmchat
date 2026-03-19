@@ -16,18 +16,25 @@ type VendorStatus = "idle" | "sending" | "sent" | "failed";
 
 // ── Helpers ────────────────────────────────────────────────────
 
-function daysUntil(dateStr: string): number {
-  const d = new Date(dateStr);
+function daysUntil(dateString: string): number {
+  const d = new Date(dateString);
+
   if (isNaN(d.getTime())) return Infinity;
+
   return Math.ceil((d.getTime() - Date.now()) / 86_400_000);
 }
 
-function formatStockout(dateStr: string): string {
-  if (!dateStr) return "—";
-  const days = daysUntil(dateStr);
+function formatStockout(dateString: string): string {
+  if (!dateString) return "—";
+
+  const days = daysUntil(dateString);
+
   if (!isFinite(days)) return "—";
+
   if (days <= 0) return "Today";
+
   if (days === 1) return "Tomorrow";
+
   return `${days}d`;
 }
 
@@ -35,20 +42,26 @@ function formatStockout(dateStr: string): string {
 
 function StatusBadge({ status }: { status: VendorStatus }) {
   if (status === "idle") return <span className={styles.statusIdle}>—</span>;
+
   if (status === "sending")
     return <span className={cn(styles.statusChip, styles.statusSending)}>Sending…</span>;
+
   if (status === "sent")
     return <span className={cn(styles.statusChip, styles.statusSent)}>Sent</span>;
+
   return <span className={cn(styles.statusChip, styles.statusFailed)}>Failed</span>;
 }
 
 function SkuStatusBadge({ status }: { status: SKUStatus }) {
   if (status === "out-of-stock")
     return <span className={cn(styles.skuBadge, styles.skuBadgeOutOfStock)}>Out of stock</span>;
+
   if (status === "urgent")
     return <span className={cn(styles.skuBadge, styles.skuBadgeUrgent)}>Urgent</span>;
+
   if (status === "low-stock")
     return <span className={cn(styles.skuBadge, styles.skuBadgeLowStock)}>Low stock</span>;
+
   return <span className={cn(styles.skuBadge, styles.skuBadgeNormal)}>Normal</span>;
 }
 
@@ -116,19 +129,23 @@ export function OrderRun({ className }: Props) {
   const allDone = runComplete && sentCount + failedCount === selectedVendors.length;
 
   const toggleSelect = (id: string) => {
-    setSelectedIds((prev) => {
-      const next = new Set(prev);
+    setSelectedIds((previous) => {
+      const next = new Set(previous);
+
       if (next.has(id)) next.delete(id);
       else next.add(id);
+
       return next;
     });
   };
 
   const toggleExpand = (id: string) => {
-    setExpandedIds((prev) => {
-      const next = new Set(prev);
+    setExpandedIds((previous) => {
+      const next = new Set(previous);
+
       if (next.has(id)) next.delete(id);
       else next.add(id);
+
       return next;
     });
   };
@@ -147,16 +164,17 @@ export function OrderRun({ className }: Props) {
     setIsRunning(true);
 
     for (const vendor of selectedVendors) {
-      setStatuses((prev) => ({ ...prev, [vendor.id]: "sending" }));
+      setStatuses((previous) => ({ ...previous, [vendor.id]: "sending" }));
 
       try {
+        // eslint-disable-next-line no-await-in-loop
         await fetch("/api/send-po", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ vendor, lineItems: vendor.lineItems }),
         });
 
-        setStatuses((prev) => ({ ...prev, [vendor.id]: "sent" }));
+        setStatuses((previous) => ({ ...previous, [vendor.id]: "sent" }));
         incrementSentPoCount();
         logActivity({
           title: `PO sent to ${vendor.vendorName}`,
@@ -165,7 +183,7 @@ export function OrderRun({ className }: Props) {
           poNumber: vendor.poSummary.poNumber.replace(/^PO-/i, ""),
         });
       } catch {
-        setStatuses((prev) => ({ ...prev, [vendor.id]: "failed" }));
+        setStatuses((previous) => ({ ...previous, [vendor.id]: "failed" }));
       }
     }
 

@@ -391,8 +391,10 @@ export class GeminiService {
     const analyses: Record<string, LiveEmailAnalysis> = {};
 
     for (const email of targetEmails) {
+      // eslint-disable-next-line no-restricted-syntax
       let succeeded = false;
 
+      // eslint-disable-next-line no-restricted-syntax
       for (let attempt = 1; attempt <= ANALYSIS_MAX_RETRIES; attempt += 1) {
         try {
           // eslint-disable-next-line no-await-in-loop

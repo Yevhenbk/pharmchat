@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import sharedStyles from "@/app/components/blocks/onboarding/shared.module.scss";
 import { useOnboardingAnimation } from "@/app/hooks/use-onboarding-animation";
 import { posMap } from "@/utilities/onboarding-timeline";
-import { BATCH, MAX } from "@/utilities/onboarding-timeline";
+import { BATCH } from "@/utilities/onboarding-timeline";
 import { Slide1 } from "@/app/components/blocks/onboarding/slide-1/slide-1";
 import { Slide2 } from "@/app/components/blocks/onboarding/slide-2/slide-2";
 import { Slide3 } from "@/app/components/blocks/onboarding/slide-3/slide-3";
@@ -29,8 +29,11 @@ export function OnboardingPresentation() {
 
   const slide = (() => {
     if (pos <= BATCH) return <Slide1 by={by} />;
+
     if (pos <= BATCH * 2) return <Slide2 by={by} />;
+
     if (pos < BATCH * 3) return <Slide3 by={by} />;
+
     return <Slide4 onSignIn={handleSignIn} onEnterDemo={handleEnterDemo} />;
   })();
 

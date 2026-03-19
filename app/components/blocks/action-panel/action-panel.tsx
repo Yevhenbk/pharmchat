@@ -44,27 +44,32 @@ function OrderRunSection() {
   const allDone = runComplete && sentCount + failedCount === selectedVendors.length;
 
   const toggleSelect = (id: string) => {
-    setSelectedIds((prev) => {
-      const next = new Set(prev);
+    setSelectedIds((previous) => {
+      const next = new Set(previous);
+
       if (next.has(id)) next.delete(id);
       else next.add(id);
+
       return next;
     });
   };
 
   const executeRun = async () => {
     if (isRunning || selectedVendors.length === 0) return;
+
     setIsRunning(true);
 
     for (const vendor of selectedVendors) {
-      setStatuses((prev) => ({ ...prev, [vendor.id]: "sending" }));
+      setStatuses((previous) => ({ ...previous, [vendor.id]: "sending" }));
+
       try {
+        // eslint-disable-next-line no-await-in-loop
         await fetch("/api/send-po", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ vendor, lineItems: vendor.lineItems }),
         });
-        setStatuses((prev) => ({ ...prev, [vendor.id]: "sent" }));
+        setStatuses((previous) => ({ ...previous, [vendor.id]: "sent" }));
         incrementSentPoCount();
         logActivity({
           title: `PO sent to ${vendor.vendorName}`,
@@ -73,7 +78,7 @@ function OrderRunSection() {
           poNumber: vendor.poSummary.poNumber.replace(/^PO-/i, ""),
         });
       } catch {
-        setStatuses((prev) => ({ ...prev, [vendor.id]: "failed" }));
+        setStatuses((previous) => ({ ...previous, [vendor.id]: "failed" }));
       }
     }
 

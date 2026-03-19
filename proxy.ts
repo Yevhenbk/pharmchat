@@ -15,11 +15,13 @@ export async function proxy(request: NextRequest) {
 
   if (!token && !isDemo && !isLoginPage) {
     const loginUrl = new URL("/login", request.url);
+
     return NextResponse.redirect(loginUrl);
   }
 
   if ((token || isDemo) && isLoginPage) {
     const homeUrl = new URL("/", request.url);
+
     return NextResponse.redirect(homeUrl);
   }
 

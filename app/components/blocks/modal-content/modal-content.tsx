@@ -76,18 +76,10 @@ function ActionContent({
   const contentEntry = actionContentMap[actionId];
 
   useEffect(() => {
-    console.log("[Modal] useEffect", {
-      actionId,
-      type: contentEntry?.type,
-      hasAnalysis: contentEntry?.type === "live-email"
-        ? Boolean(contentEntry.data.analysis)
-        : "n/a",
-    });
-
     if (contentEntry?.type === "live-email" && !contentEntry.data.analysis) {
-      console.log("[Modal] triggering analyzeActionEmail for", actionId);
       analyzeActionEmail(actionId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionId, contentEntry?.type, analyzeActionEmail]);
 
   if (!actionItem || !contentEntry) {

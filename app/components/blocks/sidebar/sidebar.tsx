@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { useSession, signOut, signIn } from "next-auth/react";
 
@@ -77,14 +77,18 @@ function UserAvatar({
 
 function isDemo(): boolean {
   if (typeof document === "undefined") return false;
+
   return document.cookie.split(";").some((c) => c.trim() === "pharmchat-demo=1");
 }
 
 export function Sidebar({ className, activeTab = "rx-deck", onTabChange }: Props) {
   const { data: session } = useSession();
   const user = session?.user;
-  const [demo, setDemo] = useState(false);
-  useEffect(() => { setDemo(isDemo()); }, []);
+  const demo = useSyncExternalStore(
+    () => () => {},
+    () => isDemo(),
+    () => false,
+  );
   const openChat = useDashboardStore((state) => state.openChat);
   const askMiraRef = useRef<HTMLButtonElement>(null);
 

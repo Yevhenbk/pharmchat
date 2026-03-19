@@ -220,6 +220,7 @@ async function fetchActionEmailAnalyses(
 
 function isDemoMode(): boolean {
   if (typeof document === "undefined") return false;
+
   return document.cookie.split(";").some((c) => c.trim() === "pharmchat-demo=1");
 }
 
