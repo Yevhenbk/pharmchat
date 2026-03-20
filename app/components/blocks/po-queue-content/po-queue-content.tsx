@@ -8,6 +8,7 @@ import { FormatService } from "@services/format";
 import { useInventoryStore } from "@stores/inventory-store";
 import { useGlanceStore } from "@stores/glance-store";
 import { useDashboardStore } from "@providers/store-provider";
+import { API_ROUTES } from "@/app/constants/api";
 import { POSummaryBar } from "@components/blocks/po-summary-bar/po-summary-bar";
 import { POEditableFields } from "@components/blocks/po-editable-fields/po-editable-fields";
 import { DemandSignalsPanel } from "@components/blocks/demand-signals-panel/demand-signals-panel";
@@ -139,7 +140,7 @@ export function POQueueContent({
       poNumber: poNumber.replace(/^PO-/i, ""),
     });
 
-    fetch("/api/send-po", {
+    fetch(API_ROUTES.SEND_PO, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ vendor: overriddenVendor, lineItems }),

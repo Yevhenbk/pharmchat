@@ -7,6 +7,7 @@ import { FormatService } from "@services/format";
 import type { VendorOrder, SKUStatus } from "@models/procurement";
 import { useDashboardStore } from "@providers/store-provider";
 import { useGlanceStore } from "@stores/glance-store";
+import { API_ROUTES } from "@/app/constants/api";
 
 import styles from "./order-run.module.scss";
 
@@ -168,7 +169,7 @@ export function OrderRun({ className }: Props) {
 
       try {
         // eslint-disable-next-line no-await-in-loop
-        await fetch("/api/send-po", {
+        await fetch(API_ROUTES.SEND_PO, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ vendor, lineItems: vendor.lineItems }),

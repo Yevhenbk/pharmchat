@@ -8,6 +8,7 @@ import { cssCustomProperties } from "@utilities/css";
 import type { ChatMessage } from "@models/chat";
 import { useDashboardStore } from "@providers/store-provider";
 import { ChatInput } from "@components/ui/chat-input";
+import { API_ROUTES } from "@/app/constants/api";
 
 import { MiraChatHeader } from "./mira-chat-header";
 import { MiraChatMessageList } from "./mira-chat-message-list";
@@ -88,7 +89,7 @@ export function MiraChat() {
 
     const userName = session?.user?.name?.trim() || undefined;
 
-    void fetch("/api/mira-chat", {
+    void fetch(API_ROUTES.MIRA_CHAT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mode: "greeting", userName }),
@@ -152,7 +153,7 @@ export function MiraChat() {
           content: message.content,
         }));
 
-      const response = await fetch("/api/mira-chat", {
+      const response = await fetch(API_ROUTES.MIRA_CHAT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: conversation }),

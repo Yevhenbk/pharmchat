@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { fn } from "storybook/test";
 import { DEMO_DEMAND_SURGE } from "@demo/action-content-data";
 import { DemandSurgeContent } from "./demand-surge-content";
 
 const meta: Meta<typeof DemandSurgeContent> = {
   title: "Blocks/DemandSurgeContent",
   component: DemandSurgeContent,
+  parameters: { layout: "centered" },
 };
 
 export default meta;
@@ -13,9 +15,11 @@ type Story = StoryObj<typeof DemandSurgeContent>;
 
 export const Default: Story = {
   args: {
-    title: "Demand Surge: PO 892",
+    title: "Demand Surge Detected: Antibiotic Uplift Recommended",
     subtitle:
-      "Real-time signal processing suggests a 24% increase in seafood demand for the upcoming weekend cycle.",
+      "Flu season trend data shows 38% above-baseline dispensing volume. Ozai recommends inventory uplift.",
     data: DEMO_DEMAND_SURGE,
+    onApprove: fn(),
+    onReject: fn(),
   },
 };

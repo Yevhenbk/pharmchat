@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import { useDashboardStore } from "@providers/store-provider";
 import { useGlanceStore } from "@stores/glance-store";
 import { FormatService } from "@services/format";
+import { API_ROUTES } from "@/app/constants/api";
 import { SectionLabel } from "@components/ui/section-label";
 import { ActionItem } from "@components/blocks/action-item/action-item";
 import { ActionButton } from "@components/ui/action-button";
@@ -64,7 +65,7 @@ function OrderRunSection() {
 
       try {
         // eslint-disable-next-line no-await-in-loop
-        await fetch("/api/send-po", {
+        await fetch(API_ROUTES.SEND_PO, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ vendor, lineItems: vendor.lineItems }),
