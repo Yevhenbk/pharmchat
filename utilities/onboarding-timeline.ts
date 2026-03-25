@@ -32,6 +32,10 @@ export const SEGMENTS: readonly TimelineSegment[] = [
 
 export const TOTAL_MS = SEGMENTS.reduce((s, seg) => s + seg.dur, 0);
 
+// Loop-only timeline: slides 1–3, restarts after the crossline pause
+export const LOOP_SEGMENTS = SEGMENTS.slice(0, 6) as TimelineSegment[];
+export const LOOP_MS = LOOP_SEGMENTS.reduce((s, seg) => s + seg.dur, 0);
+
 /**
  * Fractional position within the current slide (0→1).
  * At exact slide boundaries (pos=30,60,90) the modulo wraps to 0 —
