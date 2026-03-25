@@ -1,64 +1,122 @@
-.s5wrap {
+/* ── Outer wrapper fills the pane ──────────────────── */
+
+.authWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 24px 28px 32px;
+}
+
+/* ── Brand — identical to sidebar .brand ──────────── */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.brandLogoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0f1a08;
+  flex-shrink: 0;
+}
+
+.brandLogo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f1a08;
+  letter-spacing: -0.02em;
+}
+
+/* ── Auth content — vertically centred in remaining space */
+
+.authContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  padding: 0 7vw;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
   width: 100%;
+  max-width: 300px;
+}
 
-  @media (min-width: 700px) {
-    max-width: 65vw;
-    margin: 0 auto;
+/* ── Label ────────────────────────────────────────── */
+
+.label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f1a08;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+
+  @media (min-width: 1200px) {
+    font-size: 24px;
   }
 }
 
-.s5label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #0f1a08;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.5;
+/* ── Google sign-in button — matches sidebar .signInBtn */
 
-  @media (min-width: 500px) { font-size: 22px; }
-  @media (min-width: 700px) { font-size: 28px; }
-  @media (min-width: 1200px) { font-size: 36px; }
+.signInBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  background: #fafbf8;
+  border: 1px solid #eaede3;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+
+  &:hover {
+    background-color: #f4f6ef;
+    border-color: #d4ddc6;
+    color: #1e293b;
+  }
+
+  &:active {
+    background-color: #eef2e6;
+  }
 }
 
-.s5demo {
+/* ── Demo link ────────────────────────────────────── */
+
+.demoBtn {
   background: none;
   border: none;
   padding: 0;
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: #0f1a08;
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
   text-decoration: underline;
-  cursor: pointer;
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
 
-  @media (min-width: 700px) { font-size: 15px; }
-}
-
-.s5btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 16px 28px;
-
-  @media (min-width: 500px) { width: auto; }
-  background: #0f1a08;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 120ms ease, transform 120ms ease;
-
-  @media (min-width: 700px) {
-    font-size: 17px;
-    padding: 18px 36px;
+  &:hover {
+    color: #475569;
   }
 }

@@ -5,6 +5,44 @@
   to   { opacity: 1; }
 }
 
+/* ── Desktop split layout ─────────────────────────── */
+
+.desktopLayout {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.leftPane {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.rightPane {
+  position: relative;
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  border-left: 1px solid rgba(15, 26, 8, 0.08);
+}
+
+.mobileLayout {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
 /* ── Page shell ───────────────────────────────────── */
 
 .page {

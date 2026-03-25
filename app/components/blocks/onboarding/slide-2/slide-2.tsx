@@ -9,8 +9,8 @@ interface Slide2Props {
 
 export function Slide2({ by }: Slide2Props) {
   const op = AnimationTransforms.opacity(by);
-  const tx = AnimationTransforms.x(-100, by, 100, 0.2);
-  const ty = AnimationTransforms.y(100, by, 100, 0.2);
+  const tx = AnimationTransforms.x(-100, by, 100, 0.2);      // left text: enters from left
+  const txRight = AnimationTransforms.x(100, by, -100, 0.2); // right text: enters from right
 
   return (
     <div className={`${sharedStyles.slide} ${sharedStyles.slideDark}`}>
@@ -23,7 +23,6 @@ export function Slide2({ by }: Slide2Props) {
               {
                 opacity: op,
                 "--tx": `${tx}vh`,
-                "--ty": `${ty}vh`,
               } as React.CSSProperties
             }
           >
@@ -39,8 +38,7 @@ export function Slide2({ by }: Slide2Props) {
             style={
               {
                 opacity: op,
-                "--tx": `${tx}vh`,
-                "--ty": `${ty}vh`,
+                "--tx": `${txRight}vh`,
               } as React.CSSProperties
             }
           >
