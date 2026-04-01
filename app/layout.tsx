@@ -14,6 +14,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Pharmchat",
   description: "Clinical procurement intelligence for Pharmchat",
+  icons: {
+    icon: "/icon.png",
+  },
   robots: {
     index: false,
     follow: false,
